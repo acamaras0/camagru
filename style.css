@@ -1,9 +1,9 @@
 h1 {
   font-family: cursive;
   color: white;
-  font-size: xx-large;
+  font-size:xx-large;
   text-align: center;
-  margin-bottom: 10vw;
+  margin-bottom: 7vw;
 }
 
 button {
@@ -18,7 +18,7 @@ button {
   box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
     rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
   box-sizing: border-box;
-  cursor:nw-resize;
+  cursor: nw-resize;
   display: inline-flex;
   fill: currentcolor;
   font-size: 14px;
@@ -36,10 +36,11 @@ button {
   z-index: 0;
   flex-direction: column;
   margin-left: 38vw;
+  margin-top: 3%;
 }
 
 .login {
-  margin-top: 2vw;
+  margin-top: 1%;
 }
 
 body {
@@ -47,11 +48,17 @@ body {
   background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
   display: flow-root;
   margin: 10vw;
+  margin-bottom: 10vw;
 }
 
 footer div {
-  padding-top: 10vw;
+  padding-top: 19vw;
   font-family: cursive;
   font-size: small;
   text-align: center;
+}
+
+img.camera {
+  margin-left: 39vw;
+  width: 3%;
 }

@@ -10,9 +10,10 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <h1>Camagru</h1>
 </head>
 <body>
+    <img src="img/cam.png" alt="camera" class="camera">
+    <h1>Camagru</h1>
     <div class="signin">
         <button>Sign in</button>
     </div>
