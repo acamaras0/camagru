@@ -20,8 +20,11 @@
         <input></input>
     </div>
     <div class="password">
-        Password:
+        Password: 
         <input></input>
+    </div>
+    <div class="forgot">
+        <button>Forgotten password?</button>
     </div>
 
     <div class="footer">

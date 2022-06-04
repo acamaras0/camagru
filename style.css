@@ -70,11 +70,16 @@ img.camera1 {
 
 div.username{
   margin-left: 32vw;
+  font-family: cursive;
 
 }
 
 div.password{
   margin-top: 1%;
   margin-left: 32vw;
+  font-family: cursive;
+}
 
+div.forgot{
+  margin-right: 40vw;
 }
