@@ -62,3 +62,19 @@ img.camera {
   margin-left: 38.8vw;
   width: 3%;
 }
+
+img.camera1 {
+  margin-left: 38.8vw;
+  width: 3%;
+}
+
+div.username{
+  margin-left: 32vw;
+
+}
+
+div.password{
+  margin-top: 1%;
+  margin-left: 32vw;
+
+}
