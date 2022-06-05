@@ -69,14 +69,14 @@ img.camera1 {
 }
 
 div.username{
-  margin-left: 32vw;
+  margin-left: 33vw;
   font-family: cursive;
 
 }
 
 div.password{
   margin-top: 1%;
-  margin-left: 32vw;
+  margin-left: 33vw;
   font-family: cursive;
 }
 
@@ -84,7 +84,7 @@ div.forgot{
   margin-right: 40vw;
 }
 
-div.create{
-  margin-left: 32vw;
+form.createaccount{
+  margin-left: 33.5vw;
   font-family: cursive;
 }

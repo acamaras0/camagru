@@ -17,11 +17,11 @@ session_start();
 
     <div class="username">
         Username:
-        <input></input>
+        <input required></input>
     </div>
     <div class="password">
         Password: 
-        <input></input>
+        <input required></input>
     </div>
     <div class="forgot">
         <button>Forgotten password?</button>
