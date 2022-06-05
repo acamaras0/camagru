@@ -83,3 +83,8 @@ div.password{
 div.forgot{
   margin-right: 40vw;
 }
+
+div.create{
+  margin-left: 32vw;
+  font-family: cursive;
+}
