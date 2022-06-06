@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
     <div class="camera">
-        <img src="img/cam.png" alt="camera">
+    <a href="index.php"><img src="img/cam.png" alt="camera"></a>
     </div>
     <div class="header">
         <h1>Camagru</h1>
@@ -25,7 +25,7 @@ session_start();
             </div>
             <p>Or would you like to create an account?</p>
             <div class="signin">
-            <a href="create.php"><button>Sign up</button></a>
+            <a href="create.php"><button>Sign up</button></a> 
             </div>
         </div>
     </div>

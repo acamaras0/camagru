@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="camera">
-        <img src="img/cam.png" alt="camera">
+    <a href="index.php"><img src="img/cam.png" alt="camera"></a>
     </div>
     <div class="header">
         <h1>Camagru</h1>

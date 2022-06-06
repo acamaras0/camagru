@@ -3,7 +3,8 @@
 html {
   margin: 0;
   padding: 0;
-  background-image: url(img/156\ Witch\ Dance.png);
+  /* background-image: url(img/156\ Witch\ Dance.png); */
+  background-image: url(img/063\ Soft\ Cherish.png);
   color: white;
   font-family: "Cormorant Garamond", serif;
   font-size: 1.5vh;
@@ -34,6 +35,11 @@ html {
   padding: 10px;
   border: inset 1px white;
   border-radius: none;
+  font-family: inherit;
+  /* color: rgb(123, 116, 166); */
+  color: rgb(85 20 66);;
+  font-size: large;
+  
 }
 
 .signup-container button {
@@ -45,7 +51,8 @@ html {
   font-size: 20px;
   border: none;
   color: white;
-  background-color: rgb(155 146 205);
+  /* background-color: rgb(155 146 205); */
+  background-color: rgb(85 20 66);
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
 }
@@ -86,4 +93,9 @@ label.question {
 
 div.login {
   margin-bottom: 10px;
+}
+
+.input{
+  font-family: inherit;
+  color: rgb(155 146 205);
 }
