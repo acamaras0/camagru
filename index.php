@@ -15,14 +15,18 @@ session_start();
     <div class="camera">
         <img src="img/cam.png" alt="camera">
     </div>
+    <div class="header">
+        <h1>Camagru</h1>
+    </div>
     <div class="middle">
         <div class="signup-container">
-            <div class="signin">
-                <button>Sign up</button>
+            <div class="login">
+            <a href="login.php"><button>Log in</button></a>
             </div>
-        <div class="login">
-            <button>Log in</button>
-        </div>
+            <p>Or would you like to create an account?</p>
+            <div class="signin">
+            <a href="create.php"><button>Sign up</button></a>
+            </div>
         </div>
     </div>
     <div class="footer">

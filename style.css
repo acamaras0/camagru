@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
 
 html {
   margin: 0;
   padding: 0;
   background-image: url(img/156\ Witch\ Dance.png);
   color: white;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 1.5vh;
 }
 
@@ -35,8 +35,9 @@ html {
   border: inset 1px white;
   border-radius: none;
 }
+
 .signup-container button {
-  margin-top: 4vh;
+  margin-top: 2vh;
   width: 60%;
   padding: 10px;
   border-radius: none;
@@ -48,19 +49,22 @@ html {
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
 }
+
 .signup-container button:hover {
   opacity: 0.6;
   transform: scale(1.1);
 }
+
 .input-element label {
   margin-bottom: 0;
 }
 
 footer div {
-  padding-top: 19vw;
   text-align: center;
-  font-size: 15px;
+  font-size: 12px;
+  margin-top: 40px;
 }
+
 .camera {
   width: 100%;
   display: flex;
@@ -68,6 +72,18 @@ footer div {
 }
 
 .camera img {
-  width: 50px;
+  width: 40px;
   padding-top: 10%;
+}
+
+h1 {
+  text-align: center;
+}
+
+label.question {
+  width: 100%;
+}
+
+div.login {
+  margin-bottom: 10px;
 }

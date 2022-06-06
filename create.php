@@ -15,6 +15,9 @@ session_start();
     <div class="camera">
         <img src="img/cam.png" alt="camera">
     </div>
+    <div class="header">
+        <h1>Camagru</h1>
+    </div>
     <div class="middle">
         <div class="signup-container">
             <h1>Sign up</h1>
