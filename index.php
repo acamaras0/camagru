@@ -12,16 +12,19 @@ session_start();
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <img src="img/cam.png" alt="camera" class="camera">
-    <h1>Camagru</h1>
-    <div class="signin">
-        <button>Sign in</button>
+    <div class="camera">
+        <img src="img/cam.png" alt="camera">
     </div>
-
-    <div class="login">
-        <button>Log in</button>
+    <div class="middle">
+        <div class="signup-container">
+            <div class="signin">
+                <button>Sign up</button>
+            </div>
+        <div class="login">
+            <button>Log in</button>
+        </div>
+        </div>
     </div>
-
     <div class="footer">
     <?php	include('partials/footer.php');	?>
     </div>

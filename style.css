@@ -1,90 +1,73 @@
-h1 {
-  font-family: cursive;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+
+html {
+  margin: 0;
+  padding: 0;
+  background-image: url(img/156\ Witch\ Dance.png);
   color: white;
-  font-size:xx-large;
-  text-align: center;
-  margin-bottom: 7vw;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5vh;
 }
 
-button {
-  font-family: cursive;
-  color: white;
-  font-size: 1vw;
-  background-image: radial-gradient(circle, #00d4ff 0%, #5c0067 100%);
-  align-items: center;
-  background-color: rgb(179, 179, 179);
-  border-radius: 24px;
-  border-style: none;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
-    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
-  box-sizing: border-box;
-  cursor: nw-resize;
-  display: inline-flex;
-  fill: currentcolor;
-  font-size: 14px;
-  font-weight: 500;
-  height: 48px;
+.middle {
+  width: 100%;
+  display: flex;
   justify-content: center;
-  letter-spacing: 0.25px;
-  line-height: normal;
-  max-width: 100%;
-  overflow: visible;
-  padding: 2px 24px;
-  text-align: center;
-  touch-action: manipulation;
-  width: auto;
-  z-index: 0;
+  align-items: center;
+  margin-top: 12vh;
+}
+
+.signup-container {
+  display: flex;
   flex-direction: column;
-  margin-left: 38vw;
-  margin-top: 3%;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.134);
+  padding: 50px;
+  border-radius: none;
+  width: 260px;
+  line-height: 2;
 }
 
-.login {
-  margin-top: 1%;
+.signup-container input {
+  width: 90%;
+  padding: 10px;
+  border: inset 1px white;
+  border-radius: none;
 }
-
-body {
+.signup-container button {
+  margin-top: 4vh;
+  width: 60%;
+  padding: 10px;
+  border-radius: none;
+  font-family: inherit;
+  font-size: 20px;
+  border: none;
   color: white;
-  background-image: radial-gradient(circle, #5c0067 0%, #00d4ff 100%);
-  display: flow-root;
-  margin: 10vw;
-  margin-bottom: 10vw;
+  background-color: rgb(155 146 205);
+  cursor: pointer;
+  transition: 0.3s opacity, 0.3s transform;
+}
+.signup-container button:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+.input-element label {
+  margin-bottom: 0;
 }
 
 footer div {
   padding-top: 19vw;
-  font-family: cursive;
-  font-size: small;
   text-align: center;
+  font-size: 15px;
+}
+.camera {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-img.camera {
-  margin-left: 38.8vw;
-  width: 3%;
-}
-
-img.camera1 {
-  margin-left: 38.8vw;
-  width: 3%;
-}
-
-div.username{
-  margin-left: 33vw;
-  font-family: cursive;
-
-}
-
-div.password{
-  margin-top: 1%;
-  margin-left: 33vw;
-  font-family: cursive;
-}
-
-div.forgot{
-  margin-right: 40vw;
-}
-
-form.createaccount{
-  margin-left: 33.5vw;
-  font-family: cursive;
+.camera img {
+  width: 50px;
+  padding-top: 10%;
 }

@@ -12,21 +12,26 @@ session_start();
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <img src="img/cam.png" alt="camera" class="camera1">
-    <h1>Login</h1>
+    <div class="camera">
+        <img src="img/cam.png" alt="camera">
+    </div>
+<div class="middle">
+    <div class="signup-container">
+        <h1>Login</h1>
 
-    <div class="username">
-        Username:
-        <input required></input>
+        <div class="username">
+            Username:
+            <input required></input>
+        </div>
+        <div class="password">
+            Password: 
+            <input required></input>
+        </div>
+        <div class="forgot">
+            <button>Forgotten password?</button>
+        </div>
     </div>
-    <div class="password">
-        Password: 
-        <input required></input>
-    </div>
-    <div class="forgot">
-        <button>Forgotten password?</button>
-    </div>
-
+</div>
     <div class="footer">
     <?php	include('partials/footer.php');	?>
     </div>
