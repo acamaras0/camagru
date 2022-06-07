@@ -24,11 +24,11 @@ session_start();
 
             <div class="username">
                 Username:
-                <input required></input>
+                <input type="text" required></input>
             </div>
             <div class="password">
                 Password: 
-                <input required></input>
+                <input type="password" required></input>
             </div>
             <div class="log">
                 <a href="auth.php"><button>Let's go!</button></a>

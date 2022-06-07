@@ -39,9 +39,8 @@ html {
   border-radius: none;
   font-family: inherit;
   /* color: rgb(123, 116, 166); */
-  color: rgb(85 20 66);;
+  color: #6e104a;
   font-size: large;
-  
 }
 
 .signup-container button {
@@ -54,7 +53,7 @@ html {
   border: none;
   color: white;
   /* background-color: rgb(155 146 205); */
-  background-color: rgb(85 20 66);
+  background-color: #3d1635;
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
 }
@@ -95,9 +94,4 @@ label.question {
 
 div.login {
   margin-bottom: 10px;
-}
-
-.input{
-  font-family: inherit;
-  color: rgb(155 146 205);
 }

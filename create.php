@@ -38,12 +38,12 @@ session_start();
 
             <div class="password-new input-element">
                 <label>Password</label>
-                <input type="text" required>
+                <input type="password" required>
             </div>
 
             <div class="repeat-password input-element">
                 <label>Repeat password</label>
-                <input type="text" required>
+                <input type="password" required>
             </div>
 
             <div class="button-container">

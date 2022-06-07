@@ -25,7 +25,7 @@
 
             <div class="email">
                 Email address:
-                <input required></input>
+                <input type="email" required></input>
             </div>
             <div class="forgot">
                 <a href="password_link.php"><button>Submit</button></a>
