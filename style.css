@@ -3,11 +3,13 @@
 html {
   margin: 0;
   padding: 0;
-  /* background-image: url(img/156\ Witch\ Dance.png); */
-  background-image: url(img/063\ Soft\ Cherish.png);
-  color: white;
+  background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
+  /*background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);*/
+  color: rgb(255, 255, 255);
   font-family: "Cormorant Garamond", serif;
   font-size: 1.5vh;
+  width: 100%;
+  height: 100%;
 }
 
 .middle {
