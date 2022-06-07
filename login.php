@@ -31,7 +31,7 @@ session_start();
                 <input required></input>
             </div>
             <div class="log">
-                <a href="authentificate.php"><button>Let's go!</button></a>
+                <a href="auth.php"><button>Let's go!</button></a>
             </div>
             <div class="forgot">
                 <a href="forgot_password.php"><button>Forgotten password?</button></a>
