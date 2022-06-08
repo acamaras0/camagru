@@ -1,4 +1,6 @@
 <?php
+require_once('connection.php');
+require_once('send_email.php');
 session_start();
 ?>
 
@@ -19,35 +21,34 @@ session_start();
         <h1>Camagru</h1>
     </div>
     <div class="middle">
-        <form action="post">
+        <form class= "form" method="POST">
             <div class="signup-container">
                 <h1>Sign up</h1>
                 <div class="email-new input-element">
                     <label>Email address</label>
-                    <input type="email" required>
+                    <input type="email" name="email" required>
                 </div>
                 <div class="fullname input-element">
                     <label>Full name</label>
-                    <input type="text" required>
+                    <input type="text" name="name" required>
                 </div>
                 <div class="username-new input-element">
                     <label>Username</label>
-                    <input type="text" required>
+                    <input type="text" name="login" required>
                 </div>
                 <div class="password-new input-element">
                     <label>Password</label>
-                    <input type="password" required>
+                    <input type="password" name="passwd" required>
                 </div>
                 <div class="repeat-password input-element">
                     <label>Repeat password</label>
-                    <input type="password" required>
+                    <input type="password" name="re-passwd" required>
                 </div>
                 <div class="button-container">
-                    <button class="create-button">
+                    <button class="create-button" type="submit" name="submit" value="OK">
                         Sign up
                     </button>
                 </div>
-            
             </div>
         </form>
     </div>

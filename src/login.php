@@ -24,14 +24,14 @@ session_start();
             <form action="post">
                 <div class="username">
                     Username:
-                    <input type="text" required></input>
+                    <input type="text" name="login" required></input>
                 </div>
                 <div class="password">
                     Password:
-                    <input type="password" required></input>
+                    <input type="password" name="passwd" required></input>
                 </div>
                 <div class="log">
-                    <a href="auth.php"><button>Let's go!</button></a>
+                    <button type="submit" name="submit" value="LOG IN">Let's go!</button>
                 </div>
              </form>
             <div class="forgot">
