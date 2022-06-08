@@ -20,17 +20,18 @@
     </div>
 
     <div class="middle">
-        <div class="signup-container">
-            <h1>Forgotten password</h1>
-
-            <div class="email">
-                Email address:
-                <input type="email" required></input>
+        <form action="post">
+            <div class="signup-container">
+                <h1>Forgotten password</h1>
+                <div class="email">
+                    Email address:
+                    <input type="email" required></input>
+                </div>
+                <div class="forgot">
+                    <a href="password_link.php"><button>Submit</button></a>
+                </div>
             </div>
-            <div class="forgot">
-                <a href="password_link.php"><button>Submit</button></a>
-            </div>
-        </div>
+        </form>
     </div>
     <div class="footer">
     <?php	include('../partials/footer.php');	?>

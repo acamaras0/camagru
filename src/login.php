@@ -21,18 +21,19 @@ session_start();
     <div class="middle">
         <div class="signup-container">
             <h1>Login</h1>
-
-            <div class="username">
-                Username:
-                <input type="text" required></input>
-            </div>
-            <div class="password">
-                Password: 
-                <input type="password" required></input>
-            </div>
-            <div class="log">
-                <a href="auth.php"><button>Let's go!</button></a>
-            </div>
+            <form action="post">
+                <div class="username">
+                    Username:
+                    <input type="text" required></input>
+                </div>
+                <div class="password">
+                    Password:
+                    <input type="password" required></input>
+                </div>
+                <div class="log">
+                    <a href="auth.php"><button>Let's go!</button></a>
+                </div>
+             </form>
             <div class="forgot">
                 <a href="forgot_password.php"><button>Forgotten password?</button></a>
             </div>

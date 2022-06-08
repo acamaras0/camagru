@@ -21,10 +21,10 @@ try
     $sql = "CREATE TABLE IF NOT EXISTS `user_info`(
         id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         email VARCHAR(100) NOT NULL,
-        customer_name VARCHAR(50) NOT NULL,
-        pass_word VARCHAR(1000) NOT NULL,
+        u_name VARCHAR(50) NOT NULL,
+        pwd VARCHAR(1000) NOT NULL,
         activation_code VARCHAR(255) NOT NULL,
-        acti_status int(11) NOT NULL,
+        activ_status int(11) NOT NULL,
         notif_status int(11) NOT NULL,
         reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )";
