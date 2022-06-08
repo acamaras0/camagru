@@ -5,7 +5,7 @@ try
 {
     $conn = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE DATABASE IF NOT EXISTS customer_db";
+    $sql = "CREATE DATABASE IF NOT EXISTS camagru_db";
     $conn->exec($sql);
 }
 catch(PDOException $e)
@@ -16,9 +16,9 @@ $conn = null;
 
 try
 {
-    $conn = new PDO($DB_DNS, $DB_USER, $DB_PASSWORD);
+    $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE TABLE IF NOT EXISTS `customer_info`(
+    $sql = "CREATE TABLE IF NOT EXISTS `user_info`(
         id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         email VARCHAR(100) NOT NULL,
         customer_name VARCHAR(50) NOT NULL,
