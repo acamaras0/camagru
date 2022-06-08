@@ -22,11 +22,11 @@ require_once("setup.php");
     <div class="middle">
         <div class="signup-container">
             <div class="login">
-            <a href="login.php"><button>Log in</button></a>
+            <a href="src/login.php"><button>Log in</button></a>
             </div>
             <p>Or would you like to create an account?</p>
             <div class="signin">
-            <a href="create.php"><button>Sign up</button></a> 
+            <a href="src/create.php"><button>Sign up</button></a> 
             </div>
         </div>
     </div>

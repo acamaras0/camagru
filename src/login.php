@@ -9,11 +9,11 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
     <div class="camera">
-        <a href="index.php"><img src="img/cam.png" alt="camera"></a>
+        <a href="../index.php"><img src="../img/cam.png" alt="camera"></a>
     </div>
     <div class="header">
         <h1>Camagru</h1>
@@ -39,7 +39,7 @@ session_start();
         </div>
     </div>
     <div class="footer">
-    <?php	include('partials/footer.php');	?>
+    <?php	include('../partials/footer.php');	?>
     </div>
 </body>
 </html>
