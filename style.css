@@ -3,8 +3,8 @@
 html {
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
-  /*background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);*/
+  /*background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);*/
+  background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
   color: rgb(255, 255, 255);
   font-family: "Cormorant Garamond", serif;
   font-size: 1.5vh;
@@ -39,7 +39,7 @@ html {
   border-radius: none;
   font-family: inherit;
   /* color: rgb(123, 116, 166); */
-  color: #6e104a;
+  color: #0a0508;
   font-size: large;
 }
 
@@ -52,8 +52,8 @@ html {
   font-size: 20px;
   border: none;
   color: white;
-  /* background-color: rgb(155 146 205); */
-  background-color: #3d1635;
+  /*background-color: #3d1635;*/
+  background-color: #8f81fa;
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
 }
