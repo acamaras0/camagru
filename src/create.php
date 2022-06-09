@@ -2,6 +2,7 @@
 require_once('connection.php');
 require_once('send_email.php');
 session_start();
+
 ?>
 
 <!DOCTYPE html>
