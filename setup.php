@@ -20,6 +20,7 @@ try
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "CREATE TABLE IF NOT EXISTS `user_info`(
         id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        fullname VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL,
         u_name VARCHAR(50) NOT NULL,
         pwd VARCHAR(1000) NOT NULL,
