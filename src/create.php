@@ -15,7 +15,7 @@
         <h1>Camagru</h1>
     </div>
     <div class="middle">
-        <form class= "form" method="POST">
+        <form class= "form" action="create.php" method="POST">
             <div class="signup-container">
                 <h1>Sign up</h1>
                 <div class="email-new input-element">
@@ -39,9 +39,7 @@
                     <input type="password" name="re-passwd" required>
                 </div>
                 <div class="button-container">
-                    <button class="create-button" type="submit" name="submit" value="OK">
-                        Sign up
-                    </button>
+                    <button class="create-button" type="submit" name="submit">Sign up</button>
                 </div>
             </div>
         </form>
@@ -66,15 +64,16 @@ $status = 0;
 $notifications = 1;
 $activation_code = md5($new_email.time());
 
-if($_POST['email'] && $_POST['name'] && $_POST['login'] && $_POST['passwd'] === $_POST['re-passwd'] && $_POST['submit'] && $_POST['submit'] === 'OK')
+if($_POST['email'] && $_POST['name'] && $_POST['login'] && $_POST['passwd'] === $_POST['re-passwd'] && isset($_POST['submit']))
 {
     $new_pwd = hash('whirlpool', $new_pwd);
     try
     {
         $conn = connection();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stm = $conn->prepare("INSERT INTO user_info (email, fullname, u_name, pwd, activation_code, activ_status, notif_status)
                                VALUES (:new_email, :new_fullname, :new_user, :new_pwd, :activation_code, :activ_status, :notif_status)");
-        $stm->bindParam(':new_mail', $new_mail, PDO::PARAM_STR);
+        $stm->bindParam(':new_email', $new_email, PDO::PARAM_STR);
         $stm->bindParam(':new_fullname', $new_fullname, PDO::PARAM_STR);
         $stm->bindParam(':new_user', $new_user, PDO::PARAM_STR);
         $stm->bindParam(':new_pwd', $new_pwd, PDO::PARAM_STR);
