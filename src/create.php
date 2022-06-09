@@ -39,7 +39,7 @@
                     <input type="password" name="re-passwd" required>
                 </div>
                 <div class="button-container">
-                    <button class="create-button" type="submit" name="submit">Sign up</button>
+                    <a href="login.php"><button class="create-button" type="submit" name="submit">Sign up</button></a>
                 </div>
             </div>
         </form>
@@ -51,6 +51,7 @@
 </html>
 
 <?php
+require_once('user_verification.php');
 require_once('connection.php');
 // require_once('send_email.php');
 session_start();
@@ -66,27 +67,40 @@ $activation_code = md5($new_email.time());
 
 if($_POST['email'] && $_POST['name'] && $_POST['login'] && $_POST['passwd'] === $_POST['re-passwd'] && isset($_POST['submit']))
 {
-    $new_pwd = hash('whirlpool', $new_pwd);
-    try
+    $double_user_verification = verif_user($new_email, $new_user);
+    if ($double_user_verification == 0)
     {
-        $conn = connection();
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stm = $conn->prepare("INSERT INTO user_info (email, fullname, u_name, pwd, activation_code, activ_status, notif_status)
-                               VALUES (:new_email, :new_fullname, :new_user, :new_pwd, :activation_code, :activ_status, :notif_status)");
-        $stm->bindParam(':new_email', $new_email, PDO::PARAM_STR);
-        $stm->bindParam(':new_fullname', $new_fullname, PDO::PARAM_STR);
-        $stm->bindParam(':new_user', $new_user, PDO::PARAM_STR);
-        $stm->bindParam(':new_pwd', $new_pwd, PDO::PARAM_STR);
-        $stm->bindParam(':activation_code', $activation_code, PDO::PARAM_STR);
-        $stm->bindParam(':activ_status', $status, PDO::PARAM_STR);
-        $stm->bindParam(':notif_status', $notifications, PDO::PARAM_STR);
-        $stm->execute();
+        $new_pwd = hash('whirlpool', $new_pwd);
+        try
+        {
+            $conn = connection();
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stm = $conn->prepare("INSERT INTO user_info (email, fullname, u_name, pwd, activation_code, activ_status, notif_status)
+                                VALUES (:new_email, :new_fullname, :new_user, :new_pwd, :activation_code, :activ_status, :notif_status)");
+            $stm->bindParam(':new_email', $new_email, PDO::PARAM_STR);
+            $stm->bindParam(':new_fullname', $new_fullname, PDO::PARAM_STR);
+            $stm->bindParam(':new_user', $new_user, PDO::PARAM_STR);
+            $stm->bindParam(':new_pwd', $new_pwd, PDO::PARAM_STR);
+            $stm->bindParam(':activation_code', $activation_code, PDO::PARAM_STR);
+            $stm->bindParam(':activ_status', $status, PDO::PARAM_STR);
+            $stm->bindParam(':notif_status', $notifications, PDO::PARAM_STR);
+            $stm->execute();
+        }
+        catch(PDOException $e)
+        {
+            echo $stm . "<br>" . $e->getMessage();
+        }
+        $conn = null;
+        echo "User created succesfully!";
     }
-    catch(PDOException $e)
+    else if($double_user_verification == 2)
     {
-        echo $stm . "<br>" . $e->getMessage();
+        echo "Email address already in use.";
     }
-    $conn = null;
+    else if($double_user_verification == 1)
+    {
+        echo "Username already in use.";
+    }
 }
 
 ?>
