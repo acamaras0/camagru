@@ -95,3 +95,9 @@ label.question {
 div.login {
   margin-bottom: 10px;
 }
+
+.php-messages
+{
+  font-family: inherit;
+  margin-top: 7px;
+}

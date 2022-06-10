@@ -21,7 +21,7 @@ session_start();
     <div class="middle">
         <div class="signup-container">
             <h1>Login</h1>
-            <form action="post">
+            <form class= "form" action="login.php" method="POST">
                 <div class="username">
                     Username:
                     <input type="text" name="login" required></input>
@@ -37,6 +37,18 @@ session_start();
             <div class="forgot">
                 <a href="forgot_password.php"><button>Forgotten password?</button></a>
             </div>
+            <div class="php-messages">
+                <?php
+                    if($_GET['message'] == 1)
+                    {
+                        echo "User created succesfully!";
+                    }
+                    else if($_GET['message'] == 2)
+                    {
+                        echo "Email address not verified or username or password incorrect.";
+                    }
+                ?>
+            </div>
         </div>
     </div>
     <div class="footer">
@@ -44,3 +56,21 @@ session_start();
     </div>
 </body>
 </html>
+
+<?php
+require_once("auth.php");
+$check = auth($_POST['login'], $_POST['passwd']);
+if ($check == 2)
+{
+    $_SESSION['logged_in_user'] = $_POST['login'];
+    header('Location: newsfeed.php');
+    exit();
+}
+else if ($check == 1)
+{
+    header('Location: login.php?message=2');
+    exit();
+}
+else
+    return;
+?>

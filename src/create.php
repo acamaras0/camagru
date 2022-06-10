@@ -39,7 +39,19 @@
                     <input type="password" name="re-passwd" required>
                 </div>
                 <div class="button-container">
-                    <a href="login.php"><button class="create-button" type="submit" name="submit">Sign up</button></a>
+                    <button class="create-button" type="submit" name="submit">Sign up</button>
+                </div>
+                <div class="php-messages">
+                <?php
+                    if($_GET['message'] == 2)
+                    {
+                        echo "Email address already in use.";
+                    }
+                    else if($_GET['message'] == 3)
+                    {
+                        echo "Username already in use.";
+                    }
+                    ?>
                 </div>
             </div>
         </form>
@@ -91,16 +103,19 @@ if($_POST['email'] && $_POST['name'] && $_POST['login'] && $_POST['passwd'] === 
             echo $stm . "<br>" . $e->getMessage();
         }
         $conn = null;
-        echo "User created succesfully!";
+        header("Location: login.php?message=1");
+        exit();
+
     }
     else if($double_user_verification == 2)
     {
-        echo "Email address already in use.";
+        header("Location: create.php?message=2");
+        exit();
     }
     else if($double_user_verification == 1)
     {
-        echo "Username already in use.";
+        header("Location: create.php?message=3");
+        exit();
     }
 }
-
 ?>
