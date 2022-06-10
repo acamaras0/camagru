@@ -109,7 +109,7 @@ div.login {
 .png-wrap {
   display: flex;
   justify-content: center;
-  width: 5%;
+  width: 7%;
 }
 
 img.png {
@@ -120,7 +120,17 @@ img.png {
 }
 
 .png-header {
+  padding-top: 3vh;
   display: flex;
+  justify-content: center;
   width: 100%;
-  
 }
+
+div.settings{
+  padding-right: 7vw;
+}
+
+div.profile{
+  padding-right: 7vw;
+}
+

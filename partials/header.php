@@ -10,9 +10,9 @@ session_start();
 	<body>
 		<div class="png-header">
             <div class="png-wrap">
-                <a href="../src/settings.php"><img class="png" src="../img/settings.png" alt="settings"></a>
-                <a href="../src/profile.php"><img class="png" src="../img/profile.png" alt="profile"></a>
-                <a href="../src/logout.php"><img class="png" src="../img/logout.png" alt="logout"></a>
+                <div class="settings"><a href="../src/settings.php"><img class="png" src="../img/settings.png" alt="settings"></a></div>
+                <div class="profile"><a href="../src/profile.php"><img class="png" src="../img/profile.png" alt="profile"></a></div>
+                <div class="logout"><a href="../src/logout.php"><img class="png" src="../img/logout.png" alt="logout"></a></div>
             </div>
 		</div>
     </body>

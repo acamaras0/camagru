@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="header">
-        <?php	include('../partials/header.php');	?>
+        <?php include('../partials/header.php'); ?>
     </div>
     
     <div class="middle">
@@ -22,9 +22,8 @@
         </form>
     </div>
     
-
     <div class="footer">
         <?php	include('../partials/footer.php');	?>
     </div>
 </body>
-</html>
+</html> 
