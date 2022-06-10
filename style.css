@@ -4,7 +4,12 @@ html {
   margin: 0;
   padding: 0;
   /*background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);*/
-  background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
+  background-image: linear-gradient(
+    -225deg,
+    #69eacb 0%,
+    #eaccf8 48%,
+    #6654f1 100%
+  );
   color: rgb(255, 255, 255);
   font-family: "Cormorant Garamond", serif;
   font-size: 1.5vh;
@@ -73,7 +78,7 @@ footer div {
   margin-top: 40px;
 }
 
-.camera{
+.camera {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -96,8 +101,26 @@ div.login {
   margin-bottom: 10px;
 }
 
-.php-messages
-{
+.php-messages {
   font-family: inherit;
   margin-top: 7px;
+}
+
+.png-wrap {
+  display: flex;
+  justify-content: center;
+  width: 5%;
+}
+
+img.png {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: 20px;
+}
+
+.png-header {
+  display: flex;
+  width: 100%;
+  
 }

@@ -31,7 +31,7 @@ session_start();
                     <input type="password" name="passwd" required></input>
                 </div>
                 <div class="log">
-                    <button type="submit" name="submit" value="LOG IN">Let's go!</button>
+                    <button type="submit" name="submit" value="">Let's go!</button>
                 </div>
              </form>
             <div class="forgot">

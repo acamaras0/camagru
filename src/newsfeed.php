@@ -12,12 +12,10 @@
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-    <div class="camera">
-        <a href="../index.php"><img src="../img/cam.png" alt="camera"></a>
-    </div>
     <div class="header">
-        <h1>Camagru</h1>
+        <?php	include('../partials/header.php');	?>
     </div>
+    
     <div class="middle">
         <form class= "form" action="" method="POST">
             
