@@ -12,7 +12,7 @@ session_start();
             <div class="png-wrap">
                 <div class="settings"><a href="../src/settings.php"><img class="png" src="../img/settings.png" alt="settings"></a></div>
                 <div class="profile"><a href="../src/profile.php"><img class="png" src="../img/profile.png" alt="profile"></a></div>
-                <div class="logout"><a href="../src/logout.php"><img class="png" src="../img/logout.png" alt="logout"></a></div>
+                <div><a href="../src/logout.php"><img class="png" src="../img/logout.png" alt="logout"></a></div>
             </div>
 		</div>
     </body>

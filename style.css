@@ -134,3 +134,7 @@ div.profile{
   padding-right: 7vw;
 }
 
+div.logout{
+  max-width: 2.5vh;
+}
+

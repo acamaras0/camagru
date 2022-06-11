@@ -13,10 +13,10 @@
 </head>
 <body>
 <div class="camera">
-        <a href="../newsfeed.php"><img src="../img/cam.png" alt="camera"></a>
+        <a href="newsfeed.php"><img src="../img/cam.png" alt="camera"></a>
     </div>
     <div class="header">
-        <?php include('../partials/header.php'); ?>
+        <?php include('../partials/header_newsfeed.php'); ?>
     </div>
     
     <div class="middle">
