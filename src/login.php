@@ -63,7 +63,7 @@ $check = auth($_POST['login'], $_POST['passwd']);
 if ($check == 2)
 {
     $_SESSION['logged_in_user'] = $_POST['login'];
-    header('Location: profile.php');
+    header('Location: newsfeed.php');
     exit();
 }
 else if ($check == 1)
