@@ -65,7 +65,7 @@
 <?php
 require_once('user_verification.php');
 require_once('connection.php');
-// require_once('send_email.php');
+require_once('send_email.php');
 session_start();
 
 $new_email = $_POST['email'];
@@ -103,6 +103,7 @@ if($_POST['email'] && $_POST['name'] && $_POST['login'] && $_POST['passwd'] === 
             echo $stm . "<br>" . $e->getMessage();
         }
         $conn = null;
+        send_email($new_email, $activation_code, $new_user, $new_pwd, 1);
         header("Location: login.php?message=1");
         exit();
 
