@@ -138,3 +138,9 @@ div.logout{
   max-width: 2.5vh;
 }
 
+#goodbye{
+  font-family: inherit;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 40vh;
+}
