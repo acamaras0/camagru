@@ -15,7 +15,7 @@ $_SESSION['logged_in_user'] = "";
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-    <p id="goodbye">See ya later!</p>
+    <p id="message">See ya later!</p>
 </body>
 </html>
 
