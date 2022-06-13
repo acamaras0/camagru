@@ -44,7 +44,7 @@
             $conn = connection();
             $sql = "SELECT activation_code FROM user_info WHERE BINARY activation_code='$activation_code'";
             $qry = $conn->query($sql);
-            $res = $qry->fetch(PDO::FETCH_ASSOC);
+            $res = $qry->fetchAll(PDO::FETCH_ASSOC);
             if($res)
             {
                 foreach($res as $key)
@@ -68,14 +68,15 @@
 
     if(isset($_GET['code']) && !empty($_GET['code']))
     {
-        $activ_code = $_GET['code'];
-        $status = code_check($activ_code);
+        $activation_code = $_GET['code'];
+        $status = code_check($activation_code);
         if($status == 1)
         {
-            update_status($activ_code);
+            update_status($activation_code);
             echo "Your account has been activated!";
+            header("Refresh: 1; login.php");
         }
     }
     else 
-        echo "Error."
+        echo "A problem has occured. Try agin later.";
 ?>
