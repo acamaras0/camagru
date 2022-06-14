@@ -37,6 +37,42 @@ html {
   line-height: 2;
 }
 
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.134);
+  padding: 50px;
+  border-radius: none;
+  width: 260px;
+  line-height: 2;
+}
+
+.upload-container input{
+  width: 50%;
+  padding: 10px;
+  border: inset 1px white;
+  border-radius: none;
+  font-family: inherit;
+  color: #0a0508;
+  font-size: medium;
+}
+
+input[type="file"]{
+  width: 100%;
+}
+
+input[type="file"]::file-selector-button {
+  width: 50%;
+  padding: 10px;
+  border: inset 1px white;
+  border-radius: none;
+  font-family: inherit;
+  color: #0a0508;
+  font-size: medium;
+}
+ 
 .signup-container input {
   width: 90%;
   padding: 10px;
@@ -141,7 +177,6 @@ div.pic{
 div.logout{
   max-width: 2.5vh;
 }
-
 
 #message{
   font-family: inherit;

@@ -78,7 +78,7 @@
     </div>
     
     <div class="middle">
-        <div class="signup-container">
+        <div class="upload-container">
             <form action="upload.php" method="post" enctype="multipart/form-data">
                 Select image to upload:
 
