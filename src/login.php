@@ -41,7 +41,7 @@ session_start();
                 <?php
                     if($_GET['message'] == 1)
                     {
-                        echo "User created succesfully!";
+                        echo "User created succesfully! Activate your account by clicking the link provided in your email!";
                     }
                     else if($_GET['message'] == 2)
                     {
