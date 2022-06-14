@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +20,10 @@ session_start();
     </div>
     
     <div class="middle">
-        <form class= "form" action="" method="POST">
-            
-        </form>
-    </div>
+
     
+    </div>
+
     <div class="footer">
         <?php	include('../partials/footer.php');	?>
     </div>

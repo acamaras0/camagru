@@ -134,9 +134,14 @@ div.profile{
   padding-right: 7vw;
 }
 
+div.pic{
+  padding-right: 7vw;
+}
+
 div.logout{
   max-width: 2.5vh;
 }
+
 
 #message{
   font-family: inherit;
