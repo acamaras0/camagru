@@ -74,7 +74,7 @@
         {
             update_status($activation_code);
             echo "Your account has been activated!";
-            header("Refresh: 1; login.php");
+            header("Refresh: 1.5; login.php");
         }
     }
     else 
