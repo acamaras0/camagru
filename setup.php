@@ -45,6 +45,7 @@ try
     $sql = "CREATE TABLE IF NOT EXISTS `user_pictures`(
         id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         picture_path TEXT NOT NULL,
+        created_at timestamp not null default current_timestamp(),
         picture_name TEXT NOT NULL,
         picture_owner VARCHAR(50) NOT NULL,
         cam_shot INT(11) NOT NULL
