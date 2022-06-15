@@ -180,7 +180,7 @@ div.logout{
 
 #message{
   font-family: inherit;
-  font-size: 30px;
   text-align: center;
-  margin-top: 40vh;
+  /*margin-top: 40vh;
+  font-size: 30px;*/
 }
