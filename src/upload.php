@@ -5,7 +5,10 @@
 
     $target_dir = "../uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+    $file_name = basename($_FILES["fileToUpload"]["name"]);
+    $file_user = $_SESSION['logged_in_user'];
     $uploadOk = 1;
+    $shot = 0;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) 
@@ -52,7 +55,21 @@
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
             {
                 $conn = connection();
-                $sql = $conn->prepare(INSERT INTO )
+                $sql = $conn->prepare("INSERT INTO user_pictures(picture_path, picture_name, picture_owner, cam_shot)
+                                        VALUES (:picture_path, :picture_name, :picture_owner, :cam_shot)");
+                $sql->bindParam(':picture_path', $target_file, PDO::PARAM_STR);
+                $sql->bindParam(':picture_name', $file_name, PDO::PARAM_STR);
+                $sql->bindParam(':picture_owner', $file_user, PDO::PARAM_STR);
+                $sql->bindParam(':cam_shot', $shot, PDO::PARAM_STR);
+                $sql->execute();
+                $conn = null;
+                if($imageFileType == "jpg" || $imageFileType == "jpeg")
+                    $img = imagecreatefromjpeg($target_file);
+                else if ($imageFileType == "png")
+                    $img = imagecreatefrompng($target_file);
+                else if ($imageFileType == "gif")
+                    $img = imagecreatefromgif($target_file);
+                $scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
                 print_msg("The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.");
             } 
             else 
