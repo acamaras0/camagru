@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("setup.php");
+require_once("connection.php");
 if ($_SESSION['logged_in_user'] != "")
     header("Location: ./src/profile.php");
 ?>
@@ -22,9 +23,6 @@ if ($_SESSION['logged_in_user'] != "")
         <h1>Camagru</h1>
     </div>
     <div class="index-middle">
-
-        
-
         <div class="index-container">
             <div class="login">
             <a href="src/login.php"><button>Log in</button></a>
@@ -34,27 +32,45 @@ if ($_SESSION['logged_in_user'] != "")
             <a href="src/create.php"><button>Sign up</button></a> 
             </div>
         </div>
-    </div>
+        
+        <?php
+        $conn = connection();
+        if (isset($_GET['page_no']) && $_GET['page_no'] != "")
+            $page = $_GET['page_no'];
+        else
+        {
+            $page = 1;
+        }
+
+        $total_pictures_per_page = 5;
+        $pictures = ($page - 1) * $total_pictures_per_page;
+        $next_page = $page + 1;
+        $prev_page = $page - 1;
+        $sql = "SELECT COUNT(*) FROM user_pictures";
+        $qry = $conn->query($sql);
+        $res = $qry->fetchAll(PDO::FETCH_ASSOC);
+        $total_pictures = $res[0]['COUNT(*)'];
+        $total_pages = ceil($total_pictures / $total_pictures_per_page);
+        try
+        {
+            $conn = connection();
+        }
+        catch {}
+        ?>
+        
 
 
-
-
-    <div class="index-gallery">
-        <div class="gallery-container">
-            <div class="login">
-            <a href="src/login.php"><button>Log in</button></a>
+        <div class="index-gallery">
+            <div class="gallery-container">
+            
+            
+            
+            
+            
             </div>
-            <p>Or would you like to create an account?</p>
-            <div class="signin">
-            <a href="src/create.php"><button>Sign up</button></a> 
             </div>
-        </div>
+            
     </div>
-
-
-
-
-
     <div class="footer">
     <?php	include('partials/footer.php');	?>
     </div>
