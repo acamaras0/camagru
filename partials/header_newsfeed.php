@@ -8,6 +8,7 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="../style.css">
 	</head>
 	<body>
+		<h1>Newsfeed</h1>
 		<div class="png-header">
             <div class="png-wrap">
                 <div class="settings"><a href="../src/settings.php"><img class="png" src="../img/settings.png" alt="settings"></a></div>

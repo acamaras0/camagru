@@ -9,7 +9,7 @@
     $file_user = $_SESSION['logged_in_user'];
     $uploadOk = 1;
     $shot = 0;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) 
     {

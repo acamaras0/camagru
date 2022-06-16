@@ -21,8 +21,11 @@ if ($_SESSION['logged_in_user'] != "")
     <div class="header">
         <h1>Camagru</h1>
     </div>
-    <div class="middle">
-        <div class="signup-container">
+    <div class="index-middle">
+
+        
+
+        <div class="index-container">
             <div class="login">
             <a href="src/login.php"><button>Log in</button></a>
             </div>
@@ -32,6 +35,26 @@ if ($_SESSION['logged_in_user'] != "")
             </div>
         </div>
     </div>
+
+
+
+
+    <div class="index-gallery">
+        <div class="gallery-container">
+            <div class="login">
+            <a href="src/login.php"><button>Log in</button></a>
+            </div>
+            <p>Or would you like to create an account?</p>
+            <div class="signin">
+            <a href="src/create.php"><button>Sign up</button></a> 
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <div class="footer">
     <?php	include('partials/footer.php');	?>
     </div>

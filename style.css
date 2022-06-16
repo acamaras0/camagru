@@ -66,6 +66,58 @@ html {
   line-height: 2;
 }
 
+.index-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.134);
+  padding: 50px;
+  border-radius: none;
+  width: 260px;
+  line-height: 2;
+}
+.index-middle {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 12vh;
+}
+.index-container button {
+  margin-top: 2vh;
+  width: 60%;
+  padding: 10px;
+  border-radius: none;
+  font-family: inherit;
+  font-size: 20px;
+  border: none;
+  color: white;
+  /*background-color: #3d1635;*/
+  /*background-color: #8f81fa;*/
+  background-color: rgb(184, 176, 250);
+  cursor: pointer;
+  transition: 0.3s opacity, 0.3s transform;
+}
+
+.index-gallery {
+  display: flex;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.134);
+  padding: 50px;
+  border-radius: none;
+  width: 260px;
+  line-height: 2;
+}
+.gallery-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 12vh;
+}
+
+
 .upload-container {
   display: flex;
   flex-direction: column;

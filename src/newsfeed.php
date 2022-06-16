@@ -20,7 +20,6 @@
         <body>
         <div class="camera">
                 <a href="newsfeed.php"><img src="../img/cam.png" alt="camera"></a>
-                <div class="profile_name"><?php echo $key['picture_owner'];?></div>
             </div>
             <div class="header">
                 <?php include('../partials/header_newsfeed.php'); ?>
