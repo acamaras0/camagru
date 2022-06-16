@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
 
+a.index-picture 
+{
+  display: flex;
+  justify-content: center;
+  width: 60%;
+}
+
 html {
   margin: 0;
   padding: 0;
@@ -112,6 +119,12 @@ html {
   line-height: 2;
   margin-top: 2px;
 }
+
+.camera-index {
+  display: flex;
+  justify-content: center;
+}
+
 .gallery-container {
   width: 100%;
   display: flex;
