@@ -16,10 +16,12 @@ if ($_SESSION['logged_in_user'] != "")
 </head>
 <body>
     <div class="camera-index">
-        <a class="index-picture" href="./src/landing.php"><img src="img/cam.png" alt="camera"></a>
+        <a class="index-picture" href="./src/landing.php"><img class="index-cam" src="img/cam.png" alt="camera"></a>
     </div>
-
+    
     <div class="header">
+        <h1>Welcome to Camagru!</h1>
+        <h1>Click the icon above and let's get started!</h1>
     </div>
 
     <div class="footer">
