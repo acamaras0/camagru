@@ -88,18 +88,22 @@ html {
   width: 260px;
   line-height: 2;
 }
-
+.gallery{
+  display: flex;
+  justify-content: space-evenly;
+}
 .picture-gallery{
-  width: 100%;
+  width: 15%;
+  border: 3px white solid;
 }
 .index-middle {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 12vh;
+  margin-top: 5vh;
   flex-direction: column;
-
+  margin-bottom: 5vh;
 }
 .index-container button {
   margin-top: 2vh;
@@ -122,29 +126,16 @@ html {
   transform: scale(1.1);
 }
 
-.index-gallery {
-  display: table-cell;
-  padding: 2vw;
-  padding-bottom: 8vh;
-}
 .pagination {
   text-align: center;
   font-size: large;
   color: white;
+  padding-top: 10px;
 }
 .camera-index {
   display: flex;
   justify-content: center;
 }
-
-.gallery-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 12vh;
-}
-
 
 .upload-container {
   display: flex;

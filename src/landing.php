@@ -53,7 +53,6 @@ if ($_SESSION['logged_in_user'] != "")
         $res = $qry->fetchAll(PDO::FETCH_ASSOC);
         $total_pictures = $res[0]['COUNT(*)'];
         $total_pages = ceil($total_pictures / $total_pictures_per_page);
-        print_r($res[0]['COUNT(*)']);
         try
         {
             $conn = connection();
@@ -69,11 +68,9 @@ if ($_SESSION['logged_in_user'] != "")
                     	<!DOCTYPE html>
 						<html>
 						<body>
-                        <div class="index-gallery">
-                            <div class="gallery-container">
+                            <div class="gallery">
                                 <img class="picture-gallery" src=<?php echo $key['picture_path'];?>>
                             </div>
-                        </div>
                         </body>
                         </html>
                     <?php
