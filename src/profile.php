@@ -3,10 +3,11 @@
     require_once("connection.php");
 
     $conn = connection();
+    $pic_owner = $_SESSION['logged_in_user'];
     try
         {
             $conn1 = connection();
-            $sqlid = "SELECT id FROM user_info";
+            $sqlid = "SELECT id FROM user_info WHERE u_name='$pic_owner'";
             $qryid = $conn->query($sqlid);
             $user = $qryid->fetch(PDO::FETCH_ASSOC);
         }

@@ -6,15 +6,15 @@
     $target_dir = "../uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $file_name = basename($_FILES["fileToUpload"]["name"]);
-    $pic_owner = $_SESSION['logged_in_user'];
     $uploadOk = 1;
     $shot = 0;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $pic_owner = $_SESSION['logged_in_user'];
 
     try
     {
         $conn1 = connection();
-        $sqlid = "SELECT id FROM user_info WHERE ";
+        $sqlid = "SELECT id FROM user_info WHERE u_name='$pic_owner'";
         $qryid = $conn1->query($sqlid);
         $user_id = $qryid->fetch(PDO::FETCH_ASSOC);
     }
