@@ -85,6 +85,7 @@ if ($_SESSION['logged_in_user'] != "")
     ?>
         <div class="pagination">
         <a <?php if($page > 1){echo "href='?page_no=$prev_page'";} ?>> ⫷⫷⫷ </a>&nbsp&nbsp&nbsp&nbsp&nbsp
+        <?php echo $page; ?>&nbsp&nbsp&nbsp&nbsp&nbsp
         <a <?php if($page < $total_pages){echo "href='?page_no=$next_page'";} ?>> ⫸⫸⫸ </a>
         </div>
     <div class="footer">

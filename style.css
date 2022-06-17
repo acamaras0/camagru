@@ -89,12 +89,14 @@ html {
   line-height: 2;
 }
 .gallery{
-  display: flex;
+  display: contents;
   justify-content: space-evenly;
+  padding: 1%;
 }
 .picture-gallery{
   width: 15%;
-  border: 3px white solid;
+  border: 2px rgb(255, 255, 255) solid;
+  border-radius: 5%;
 }
 .index-middle {
   width: 100%;
