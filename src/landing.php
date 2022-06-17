@@ -56,7 +56,7 @@ if ($_SESSION['logged_in_user'] != "")
         try
         {
             $conn = connection();
-            $sql0 = "SELECT picture_path, picture_name, picture_owner, created_at FROM `user_pictures` ORDER BY id DESC LIMIT $pictures, $total_pictures_per_page";
+            $sql0 = "SELECT picture_path, picture_name, id_owner, created_at FROM `user_pictures` ORDER BY id DESC LIMIT $pictures, $total_pictures_per_page";
             $qry0 = $conn->query($sql0);
             $res0 = $qry0->fetchAll(PDO::FETCH_ASSOC);
             if($res0)
@@ -84,12 +84,12 @@ if ($_SESSION['logged_in_user'] != "")
         $conn = null;
     ?>
         <div class="pagination">
-        <a <?php if($page > 1){echo "href='?page_no=$prev_page'";} ?>> ⫷⫷⫷ </a>&nbsp&nbsp&nbsp&nbsp&nbsp
-        <?php echo $page; ?>&nbsp&nbsp&nbsp&nbsp&nbsp
-        <a <?php if($page < $total_pages){echo "href='?page_no=$next_page'";} ?>> ⫸⫸⫸ </a>
+            <a <?php if($page > 1){echo "href='?page_no=$prev_page'";} ?>> ⫷⫷⫷ </a>&nbsp&nbsp&nbsp&nbsp&nbsp
+            <?php echo $page; ?>&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a <?php if($page < $total_pages){echo "href='?page_no=$next_page'";} ?>> ⫸⫸⫸ </a>
         </div>
-    <div class="footer">
-        <?php	include('partials/footer.php');	?>
-    </div>
-</body>
+        <div class="footer">
+            <?php   include('../partials/footer.php');	?>
+        </div>
+    </body>
 </html>

@@ -8,7 +8,7 @@ a.index-picture {
 
 .index-cam {
   max-width: 60%;
-  padding-top: 30vh;
+  padding-top: 15vh;
 }
 
 html {
@@ -53,9 +53,9 @@ html {
   flex-direction: column;
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.259);
-  padding: 50px;
+  padding: 3vw;
   border-radius: none;
-  width: 260px;
+  width: 38vh;
   line-height: 2;
   font-size: large;
 } 
@@ -89,8 +89,8 @@ html {
   line-height: 2;
 }
 .gallery{
-  display: contents;
-  justify-content: space-evenly;
+  display: flex;
+  justify-content: center;
   padding: 1%;
 }
 .picture-gallery{
@@ -98,6 +98,7 @@ html {
   border: 2px rgb(255, 255, 255) solid;
   border-radius: 5%;
 }
+
 .index-middle {
   width: 100%;
   display: flex;

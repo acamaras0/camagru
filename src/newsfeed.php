@@ -3,8 +3,19 @@
     require_once("connection.php");
 
     $conn = connection();
-    $user = $_SESSION['logged_in_user'];
-    $sql = "SELECT picture_path, picture_name, picture_owner, created_at FROM `user_pictures` WHERE picture_owner='$user' ORDER BY id DESC";
+        try
+        {
+            $conn1 = connection();
+            $sqlid = "SELECT id FROM user_info";
+            $qryid = $conn->query($sqlid);
+            $user = $qryid->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e)
+        {
+            echo $qry . "<br>" . $e->getMessage();
+        }
+        $conn1 = null;
+    $sql = "SELECT picture_path, picture_name, picture_owner, id_owner, created_at FROM `user_pictures` WHERE id_owner='$user' ORDER BY id DESC";
     $qry = $conn->query($sql);
     $res = $qry->fetchAll(PDO::FETCH_ASSOC);?>
 
