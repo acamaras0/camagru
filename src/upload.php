@@ -63,7 +63,7 @@
                 $sql->bindParam(':picture_path', $target_file, PDO::PARAM_STR);
                 $sql->bindParam(':picture_name', $file_name, PDO::PARAM_STR);
                 $sql->bindParam(':picture_owner', $pic_owner, PDO::PARAM_STR);
-                $sql->bindParam(':id_owner', $user, PDO::PARAM_STR);
+                $sql->bindParam(':id_owner', extract($user), PDO::PARAM_STR);
                 $sql->bindParam(':cam_shot', $shot, PDO::PARAM_STR);
                 $sql->execute();
                 $conn = null;

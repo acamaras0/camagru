@@ -3,7 +3,8 @@
     require_once("connection.php");
     require_once("get_user_id.php");
 
-    $user = get_id();
+    $id = get_id();
+    $user = extract($id);
     $conn = connection();
     $sql = "SELECT picture_path, picture_name, picture_owner, id_owner, created_at FROM `user_pictures` WHERE id_owner='$user' ORDER BY id DESC";
     $qry = $conn->query($sql);
