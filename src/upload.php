@@ -2,6 +2,7 @@
     session_start();
     require_once("print_msg.php");
     require_once("connection.php");
+    require_once("get_user_id.php");
 
     $target_dir = "../uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -10,19 +11,9 @@
     $shot = 0;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $pic_owner = $_SESSION['logged_in_user'];
+    $user = get_id();
+    print_r($user);
 
-    try
-    {
-        $conn1 = connection();
-        $sqlid = "SELECT id FROM user_info WHERE u_name='$pic_owner'";
-        $qryid = $conn1->query($sqlid);
-        $user_id = $qryid->fetch(PDO::FETCH_ASSOC);
-    }
-    catch(PDOException $e)
-    {
-        echo $qry . "<br>" . $e->getMessage();
-    }
-    $conn1 = null;
 
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) 
@@ -74,7 +65,7 @@
                 $sql->bindParam(':picture_path', $target_file, PDO::PARAM_STR);
                 $sql->bindParam(':picture_name', $file_name, PDO::PARAM_STR);
                 $sql->bindParam(':picture_owner', $pic_owner, PDO::PARAM_STR);
-                $sql->bindParam(':id_owner', $user_id, PDO::PARAM_STR);
+                $sql->bindParam(':id_owner', $user, PDO::PARAM_STR);
                 $sql->bindParam(':cam_shot', $shot, PDO::PARAM_STR);
                 $sql->execute();
                 $conn = null;
