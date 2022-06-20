@@ -1,9 +1,9 @@
 <?php
-    session_start();
+session_start();
 
-    if($_SESSION['logged_in_user'] == "")
-        header("Location: newsfeed.php");
-    $_SESSION['logged_in_user'] = "";
+if($_SESSION['logged_in_user'] == "")
+    header("Location: newsfeed.php");
+$_SESSION['logged_in_user'] = "";
 ?>
 
 <!DOCTYPE html>

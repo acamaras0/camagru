@@ -12,7 +12,7 @@ function send_email($address, $activation_code, $username, $password, $type)
     {
         $recipient = $address;
         $subject = "Reset your password";
-        $content = "Hello there! Reset your password by clicking the link provided in this e-mail!" . PHP_EOL . PHP_EOL . "http://localhost:8080/camagru/src/reset_form.php?key=$username&reset=$password&mail=$address";
+        $content = "Hello there! Reset your password by clicking the link provided in this e-mail!" . PHP_EOL . PHP_EOL . "http://localhost:8080/camagru/src/reset_password.php?key=$username&reset=$password&mail=$address";
         mail($recipient, $subject, $content);
     }
     else if ($type == 3)

@@ -1,5 +1,30 @@
 <?php
 session_start();
+require_once("auth.php");
+require_once("print_msg.php");
+
+$check = auth($_POST['login'], $_POST['passwd']);
+if (isset($_POST['submit']))
+{
+    if ($check == 2)
+    {
+        $_SESSION['logged_in_user'] = $_POST['login'];
+        print_msg("Succesfully logged in!");
+        header('Refresh: 2; newsfeed.php');
+        exit();
+    }
+    else if ($check == 1)
+    {
+        print_msg("Email address not verified.");
+        header('Refresh: 3; login.php?message=2');
+        exit();
+    }
+    else if ($check == 0)
+    {
+        print_msg("Username or password incorrect.");
+        header('Refresh: 3; login.php?message=3');
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,22 +62,6 @@ session_start();
             <div class="forgot">
                 <a href="forgot_password.php"><button>Forgotten password?</button></a>
             </div>
-            <div class="php-messages">
-                <?php
-                    if($_GET['message'] == 1)
-                    {
-                        echo "User created succesfully! Activate your account by clicking the link provided in your email!";
-                    }
-                    else if($_GET['message'] == 2)
-                    {
-                        echo "Email address not verified.";
-                    }
-                    else if($_GET['message'] == 3)
-                    {
-                        echo "Username or password incorrect.";
-                    }
-                ?>
-            </div>
         </div>
     </div>
     <div class="footer">
@@ -60,24 +69,3 @@ session_start();
     </div>
 </body>
 </html>
-
-<?php
-require_once("auth.php");
-$check = auth($_POST['login'], $_POST['passwd']);
-if (isset($_POST['submit']))
-{
-    if ($check == 2)
-    {
-        $_SESSION['logged_in_user'] = $_POST['login'];
-        header('Location: newsfeed.php');
-        exit();
-    }
-    else if ($check == 1)
-    {
-        header('Location: login.php?message=2');
-        exit();
-    }
-    else if ($check == 0)
-        header('Location: login.php?message=3');
-}
-?>
