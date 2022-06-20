@@ -45,7 +45,11 @@ session_start();
                     }
                     else if($_GET['message'] == 2)
                     {
-                        echo "Email address not verified or username or password incorrect.";
+                        echo "Email address not verified.";
+                    }
+                    else if($_GET['message'] == 3)
+                    {
+                        echo "Username or password incorrect.";
                     }
                 ?>
             </div>
@@ -60,17 +64,20 @@ session_start();
 <?php
 require_once("auth.php");
 $check = auth($_POST['login'], $_POST['passwd']);
-if ($check == 2)
+if (isset($_POST['submit']))
 {
-    $_SESSION['logged_in_user'] = $_POST['login'];
-    header('Location: newsfeed.php');
-    exit();
+    if ($check == 2)
+    {
+        $_SESSION['logged_in_user'] = $_POST['login'];
+        header('Location: newsfeed.php');
+        exit();
+    }
+    else if ($check == 1)
+    {
+        header('Location: login.php?message=2');
+        exit();
+    }
+    else if ($check == 0)
+        header('Location: login.php?message=3');
 }
-else if ($check == 1)
-{
-    header('Location: login.php?message=2');
-    exit();
-}
-else
-    return;
 ?>

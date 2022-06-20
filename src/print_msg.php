@@ -8,7 +8,7 @@ function print_msg($message)
         <link rel="stylesheet" type="text/css" href="../style.css">
     </head>
     <body>
-        <div id="message"><?php echo $message;?></div>
+        <div class="php-messages"><?php echo $message;?></div>
     </body>
     </html>
 

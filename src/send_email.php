@@ -8,5 +8,19 @@ function send_email($address, $activation_code, $username, $password, $type)
         $content = "Hello there! Activate your Camagru account by clicking the link provided in this e-mail!" . PHP_EOL . PHP_EOL . "http://localhost:8080/camagru/src/account_verification.php?code=$activation_code";
         mail($recipient, $subject, $content);
     }
+    else if ($type == 2)
+    {
+        $recipient = $address;
+        $subject = "Reset your password";
+        $content = "Hello there! Reset your password by clicking the link provided in this e-mail!" . PHP_EOL . PHP_EOL . "http://localhost:8080/camagru/src/reset_form.php?key=$username&reset=$password&mail=$address";
+        mail($recipient, $subject, $content);
+    }
+    else if ($type == 3)
+    {
+        $recipient = $address;
+        $subject = "You've got a new comment on your picture!";
+        $content = "It seems someone's been commenting on your post! Go check it out fast!" . PHP_EOL . PHP_EOL . "http://localhost:8080/camagru/src/login.php";
+        mail($recipient, $subject, $content);
+    }
 }
 ?>

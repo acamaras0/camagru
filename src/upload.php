@@ -14,7 +14,7 @@
     $shot = 0;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $pic_owner = $_SESSION['logged_in_user'];
-    // $user = get_id();
+    get_id();
     $user = $_SESSION['logged_user_id'];
 
     // Check if image file is a actual image or fake image

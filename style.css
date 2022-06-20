@@ -17,7 +17,7 @@ a.index-picture {
 }
 
 html {
-  margin: 0;
+  margin: 30px;
   padding: 0;
   /*background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);*/
   /* background-image: linear-gradient(
@@ -35,11 +35,11 @@ html {
 }
 
 .center-container{
-  width: 100%;
   display: flex;
-  justify-content: space-between;
   flex-direction: row-reverse;
+  justify-content: space-evenly;
   align-items: center;
+  width: 100%;
 }
 
 @media only screen and (max-width: 1000px){
@@ -172,7 +172,7 @@ html {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.134);
+  background-color: rgb(184, 176, 250);
   padding: 50px;
   border-radius: none;
   width: 260px;
@@ -276,6 +276,8 @@ div.login {
 .php-messages {
   font-family: inherit;
   margin-top: 7px;
+  text-align: center;
+  color: red;
 }
 
 .png-wrap {
