@@ -29,6 +29,28 @@ html {
   height: 100%;
 }
 
+.center-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1000px){
+  .center-container{
+    flex-direction: column;
+  }
+  .arrows{
+   font-size: 10px;
+  }
+}
+.images-container{
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin-right: 0;
+}
+
 .middle {
   width: 100%;
   display: flex;
@@ -89,24 +111,26 @@ html {
   line-height: 2;
 }
 .gallery{
+  width: 100%;
   display: flex;
   justify-content: center;
   padding: 1%;
 }
 .picture-gallery{
-  width: 15%;
+  width: 30%;
   border: 2px rgb(255, 255, 255) solid;
   border-radius: 5%;
 }
 
 .index-middle {
-  width: 100%;
+  /* width: 100%; */
+  margin-left: 10vw;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
   flex-direction: column;
-  margin-bottom: 5vh;
+  /* margin-bottom: 5vh; */
 }
 .index-container button {
   margin-top: 2vh;
@@ -212,10 +236,16 @@ input[type="file"]::file-selector-button {
   margin-bottom: 0;
 }
 
+/* footer{
+  position: absolute;
+  right: 45%;
+  bottom: 0;
+} */
+
 footer div {
   text-align: center;
   font-size: 12px;
-  margin-top: 40px;
+  margin-top: 10vh;
 }
 
 .camera {

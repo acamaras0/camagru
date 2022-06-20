@@ -2,6 +2,8 @@
     session_start();
     require_once("connection.php");
     require_once("get_user_id.php");
+    // if (!isset($_SESSION['logged_user_id']))
+    //     header('location:login.php');
 
     $id = get_id();
     $user = extract($id);

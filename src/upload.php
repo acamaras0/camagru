@@ -4,6 +4,9 @@
     require_once("connection.php");
     require_once("get_user_id.php");
 
+    if (!isset($_SESSION['logged_user_id']))
+        header('location:../index.php');
+
     $target_dir = "../uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $file_name = basename($_FILES["fileToUpload"]["name"]);
@@ -11,7 +14,8 @@
     $shot = 0;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $pic_owner = $_SESSION['logged_in_user'];
-    $user = get_id();
+    // $user = get_id();
+    $user = $_SESSION['logged_user_id'];
 
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) 
@@ -63,7 +67,7 @@
                 $sql->bindParam(':picture_path', $target_file, PDO::PARAM_STR);
                 $sql->bindParam(':picture_name', $file_name, PDO::PARAM_STR);
                 $sql->bindParam(':picture_owner', $pic_owner, PDO::PARAM_STR);
-                $sql->bindParam(':id_owner', extract($user), PDO::PARAM_STR);
+                $sql->bindParam(':id_owner', $user, PDO::PARAM_STR);
                 $sql->bindParam(':cam_shot', $shot, PDO::PARAM_STR);
                 $sql->execute();
                 $conn = null;

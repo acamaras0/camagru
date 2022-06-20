@@ -63,6 +63,7 @@ $check = auth($_POST['login'], $_POST['passwd']);
 if ($check == 2)
 {
     $_SESSION['logged_in_user'] = $_POST['login'];
+    get_id();
     header('Location: newsfeed.php');
     exit();
 }
