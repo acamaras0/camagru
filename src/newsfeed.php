@@ -3,12 +3,12 @@
     require_once("connection.php");
     require_once("get_user_id.php");
     // if (!isset($_SESSION['logged_user_id']))
-    //     header('location:login.php');
+    //      header('location:login.php');
 
     $id = get_id();
     $user = extract($id);
     $conn = connection();
-    $sql = "SELECT picture_path, picture_name, picture_owner, id_owner, created_at FROM `user_pictures` WHERE id_owner='$user' ORDER BY id DESC";
+    $sql = "SELECT * FROM `user_pictures` ORDER BY created_at DESC";
     $qry = $conn->query($sql);
     $res = $qry->fetchAll(PDO::FETCH_ASSOC);?>
 

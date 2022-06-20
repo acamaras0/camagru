@@ -8,7 +8,7 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="../style.css">
 	</head>
 	<body>
-		<h1>Profile</h1>
+		<h1><?php echo $_SESSION['logged_in_user'];?></h1>
 		<div class="png-header">
 			<div class="png-wrap">
 				<div class="settings"><a href="../src/settings.php"><img class="png" src="../img/settings.png" alt="settings"></a></div>
