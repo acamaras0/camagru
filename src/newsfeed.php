@@ -36,7 +36,7 @@
             ?>
                 <div class="middle-profile">
                     <div class="border-profile">
-                        <div class="username"><?php echo $key['picture_owner'];?></div>
+                        <div class="username"><?php echo "@" . $key['picture_owner'];?></div>
                         <?php echo " " . $key['created_at']?>
                         <img class="picture" src=<?php echo $key['picture_path'];?>>
                     </div>
