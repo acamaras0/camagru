@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("setup.php");
+require_once("./config/setup.php");
 if ($_SESSION['logged_in_user'] != "")
     header("Location: ./src/profile.php");
 ?>
