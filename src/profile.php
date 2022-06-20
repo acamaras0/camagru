@@ -1,7 +1,8 @@
 <?php
     session_start();
     require_once("connection.php");
-
+    require_once("get_user_id.php");
+    get_id();
     $user = $_SESSION['logged_user_id'];
     $conn = connection();
     $sql = "SELECT * FROM `user_pictures` WHERE id_owner='$user' ORDER BY id DESC";
