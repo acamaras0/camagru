@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create account</title>
+    <title>Settings</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -48,7 +48,7 @@ session_start();
         </form>
     </div>
     <div class="footer">
-    <?php	include('../partials/footer.php');	?>
+        <?php	include('../partials/footer.php');	?>
     </div>
 </body>
 </html>
