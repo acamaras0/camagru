@@ -1,6 +1,7 @@
 <?php
 include("database.php");
 
+//create database
 try
 {
     $conn = new PDO($DB_HOST, $DB_USER, $DB_PASSWORD);
@@ -14,6 +15,7 @@ catch(PDOException $e)
 }
 $conn = null;
 
+//create user_info table
 try
 {
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
@@ -38,6 +40,7 @@ catch(PDOException $e)
 }
 $conn = null;
 
+//create user_pictures table
 try
 {
     $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
@@ -58,5 +61,11 @@ catch(PDOException $e)
     echo $sql . "<br>" . $e->getMessage();
 }
 $conn = null;
+
+//create user_likes table
+
+
+
+//create user_comments table
 
 ?>
