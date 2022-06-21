@@ -7,6 +7,7 @@ A small sneak peek:
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/1.png)
 
+The login page:
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/2.png)
 
