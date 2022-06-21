@@ -42,7 +42,7 @@
                          ?>
                          <form action="delete_pic.php" method="post">
                             <button class="delete" type="submit" name="delete_pic" value="Delete"> <img src="../img/delete.png" width="18" alt="del"></button>
-                            <input type="hidden" name="picture_path" value=<?php echo $k['picture_path'];?>>
+                            <input type="hidden" name="picture_path" value=<?php echo $key['picture_path'];?>>
                         </form>
                         <?php
                         }
