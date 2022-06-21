@@ -2,6 +2,8 @@
     require_once('user_verification.php');
     require_once('connection.php');
     require_once('send_email.php');
+    require_once('character_check.php');
+    require_once('print_msg.php');
     session_start();
 
     $new_email = $_POST['email'];
@@ -12,6 +14,25 @@
     $status = 0;
     $notifications = 1;
     $activation_code = md5($new_email.time());
+
+    if(isset($_POST['submit']))
+    {
+        if(strlen($new_user) > 20 || strlen($new_user) < 4)
+        {
+            print_msg("Username has to be in between 4 and 20 characters long.");
+            header('Refresh: 2; create.php');
+        }
+        else if ( character_check($new_user) == 1)
+        {
+            print_msg("It can only contain aphabetical characters, numbers and underscores.");
+            header('Refresh: 2; create.php');
+        }
+        else if (($new_pwd != $re_pwd) || strlen($new_pwd < 10) || number_check($new_pwd) == 0 || character_check($new_pwd) == 0)
+        {
+            print_msg("Passwords have to be identical, minimum 10 characters long, including a number, a capital letter and a special character.");
+            header('Refresh: 3; create.php');
+        }
+    }
 
     if($_POST['email'] && $_POST['name'] && $_POST['login'] && $_POST['passwd'] === $_POST['re-passwd'] && isset($_POST['submit']))
     {
@@ -40,22 +61,22 @@
             }
             $conn = null;
             send_email($new_email, $activation_code, $new_user, $new_pwd, 1);
-            header("Location: login.php?message=1");
-            exit();
-
+            print_msg("User created succesfully!");
+            header("Refresh: 2; login.php?message=1");
         }
         else if($double_user_verification == 2)
         {
-            header("Location: create.php?message=2");
-            exit();
+            print_msg("Email address already in use.");
+            header("Refresh: 2; create.php?message=2");
         }
         else if($double_user_verification == 1)
         {
-            header("Location: create.php?message=3");
-            exit();
+            print_msg("Username already in use.");
+            header("Refresh: 2; create.php?message=3");
         }
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +88,7 @@
 </head>
 <body>
     <div class="camera">
-        <a href="../index.php"><img src="../img/cam.png" alt="camera"></a>
+        <a href="landing.php"><img src="../img/cam.png" alt="camera"></a>
     </div>
     <div class="header">
         <h1>Camagru</h1>
@@ -98,18 +119,6 @@
                 </div>
                 <div class="button-container">
                     <button class="create-button" type="submit" name="submit">Sign up</button>
-                </div>
-                <div class="php-messages">
-                <?php
-                    if($_GET['message'] == 2)
-                    {
-                        echo "Email address already in use.";
-                    }
-                    else if($_GET['message'] == 3)
-                    {
-                        echo "Username already in use.";
-                    }
-                    ?>
                 </div>
             </div>
         </form>

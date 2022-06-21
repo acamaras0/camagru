@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once("connection.php");
+    require_once("print_msg.php");
 
     function update_status($activation_code)
     {
@@ -56,12 +57,12 @@
         if($status == 1)
         {
             update_status($activation_code);
-            echo "Your account has been activated!";
+            print_msg("Your account has been activated!");
             header("Refresh: 1.5; login.php");
         }
     }
     else 
-        echo "A problem has occured. Try agin later.";
+        print_msg("A problem has occured. Try agin later.");
 ?>
 
 <!DOCTYPE html>

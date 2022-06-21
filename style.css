@@ -26,7 +26,8 @@ html {
     #eaccf8 48%,
     #6654f1 100%
   ); */
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
+  background-image: url("img/background.png");
   color: rgb(0, 0, 0);
   font-family: "Cormorant Garamond", serif;
   font-size: 1.5vh;
@@ -279,7 +280,7 @@ div.login {
   color: black;
   background-color: rgb(184, 176, 250);
   padding: 3%;
-  margin: 5%;
+  margin: 3%;
 }
 
 #message

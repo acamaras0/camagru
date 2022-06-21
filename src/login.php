@@ -38,7 +38,7 @@ if (isset($_POST['submit']))
 </head>
 <body>
     <div class="camera">
-        <a href="../index.php"><img src="../img/cam.png" alt="camera"></a>
+        <a href="landing.php"><img src="../img/cam.png" alt="camera"></a>
     </div>
     <div class="header">
         <h1>Camagru</h1>

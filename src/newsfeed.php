@@ -5,6 +5,8 @@
     // if (!isset($_SESSION['logged_user_id']))
     //      header('location:login.php');
 
+    if ($_SESSION['logged_in_user'] == "")
+        header("Location: ../index.php");
     $conn = connection();
     $sql = "SELECT * FROM `user_pictures` ORDER BY created_at DESC";
     $qry = $conn->query($sql);
