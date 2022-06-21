@@ -90,6 +90,21 @@ html {
   font-size: large;
 } 
 
+.border-profile button.delete {
+  margin-left: 92%;
+  border-radius: none;
+  font-family: inherit;
+  font-size: 20px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  transition: 0.3s opacity, 0.3s transform;
+}
+.border-profile button.delete:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
 .username{
   padding-bottom: 1.5vh;
   font-size: larger;
