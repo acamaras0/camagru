@@ -1,13 +1,13 @@
 # camagru
 
-A small Instagram-like site that enables users to make and share photo edits. Basic functionalities, you find on most sites with a user database, are implemented, and the usage of frameworks is forbidden.
-
+A small Instagram-like site that enables users to make and share photo edits. 
 
 A small sneak peek:
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/1.png)
 
-The login page:
+The usage of frameworks is forbidden.
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/2.png)
 
+Basic functionalities are implemented (i.e new user creation, login posibility, uploading pictures or capturing them using webcam, commenting and liking them or user information modifications: change username, password or email.)
