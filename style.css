@@ -27,7 +27,7 @@ html {
     #6654f1 100%
   ); */
   /*background-color: #ffffff;*/
-  background-image: url("img/background.png");
+  background-image: url("img/background2.png");
   color: rgb(0, 0, 0);
   font-family: "Cormorant Garamond", serif;
   font-size: 1.5vh;
@@ -82,7 +82,8 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: rgba(183, 176, 250, 0.452);
+  /*background-color: rgba(183, 176, 250, 0.452);*/
+  background-color: rgb(120 145 197 / 92%);
   padding: 3vw;
   border-radius: none;
   width: 38vh;
@@ -91,7 +92,7 @@ html {
 } 
 
 .border-profile button.delete {
-  margin-left: 92%;
+  margin-left: 92.5%;
   border-radius: none;
   font-family: inherit;
   font-size: 20px;
@@ -115,7 +116,8 @@ html {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color:  rgba(183, 176, 250, 0.452);
+  /*background-color:  rgba(183, 176, 250, 0.452);*/
+  background-color: rgb(120 145 197 / 69%);
   padding: 50px;
   border-radius: none;
   width: 260px;
@@ -127,7 +129,8 @@ html {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color:  rgba(183, 176, 250, 0.452);
+  /*background-color:  rgba(183, 176, 250, 0.452);*/
+  background-color: rgb(120 145 197 / 69%);
   padding: 48px;
   border-radius: none;
   width: 260px;
@@ -162,7 +165,7 @@ html {
   font-size: 20px;
   border: none;
   color: rgb(10, 10, 10);
-  background-color: rgb(184, 176, 250);
+  background-color: rgb(255, 255, 255);
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
 }
@@ -188,7 +191,8 @@ html {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: rgb(184, 176, 250);
+  background-color: rgb(120 145 197 / 69%);
+  /*background-color: rgb(184, 176, 250);*/
   padding: 50px;
   border-radius: none;
   width: 260px;
@@ -239,7 +243,8 @@ input[type="file"]::file-selector-button {
   font-size: 20px;
   border: none;
   color: rgb(3, 3, 3);
-  background-color: rgb(184, 176, 250);
+  /*background-color: rgb(184, 176, 250);*/
+  background-color: rgb(255, 255, 255);
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
 }
@@ -293,7 +298,8 @@ div.login {
   margin-top: 7px;
   text-align: center;
   color: black;
-  background-color: rgb(184, 176, 250);
+  /*background-color: rgb(184, 176, 250);*/
+  background-color: rgb(120 145 197 / 69%);
   padding: 3%;
   margin: 3%;
 }
@@ -304,7 +310,8 @@ div.login {
   margin-top: 7px;
   text-align: center;
   color: black;
-  background-color: rgb(184, 176, 250);
+  background-color: rgb(120 145 197 / 69%);
+  /*background-color: rgb(184, 176, 250);*/
   padding: 3%;
   margin: 5%;
   margin-top: 50%;
