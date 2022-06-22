@@ -69,7 +69,7 @@ if(isset($_POST['submit']))
                 header('Refresh  2; settings.php');
             }
         }
-        if (!empty($username))
+        if (!empty($new_username))
         {
             if (info_check(2, 0, $user) == 1)
             {
@@ -77,16 +77,16 @@ if(isset($_POST['submit']))
                 {
                     $conn = connection();
                     $sql = $conn->prepare("UPDATE user_info SET u_name=:new_username WHERE u_name='$user'");
-                    $sql->bindParam(':new_username', $username, PDO::PARAM_STR);
+                    $sql->bindParam(':new_username', $new_username, PDO::PARAM_STR);
                     $sql->execute();
-                    $sql = $conn->prepare("UPDATE user_images SET picture_owner=:picture_owner WHERE picture_owner='$user'");
-                    $sql->bindParam(':picture_owner', $username, PDO::PARAM_STR);
+                    $sql = $conn->prepare("UPDATE user_pictures SET picture_owner=:picture_owner WHERE picture_owner='$user'");
+                    $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
                     $sql->execute();
                     $sql = $conn->prepare("UPDATE user_comments SET picture_owner=:picture_owner WHERE picture_owner='$user'");
-                    $sql->bindParam(':picture_owner', $username, PDO::PARAM_STR);
+                    $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
                     $sql->execute();
                     $sql = $conn->prepare("UPDATE user_likes SET picture_owner=:picture_owner WHERE picture_owner='$user'");
-                    $sql->bindParam(':picture_owner', $username, PDO::PARAM_STR);
+                    $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
                     $sql->execute();
                 }
                 catch(PDOException $e)
@@ -122,7 +122,7 @@ if(isset($_POST['submit']))
                 }
                 $conn = null;
                 print_msg("Password successfully changed.");
-                header('Refresh: 2; settings.php');
+                header('Refresh: 2; profile.php');
             }
             else
             {
@@ -136,9 +136,9 @@ if(isset($_POST['submit']))
         print_msg("Password incorrect! Try again!");
         header('Refresh: 2; settings.php');
     }
+    
 }
-
-if (isset($_POST['delete_user']))
+else if (isset($_POST['delete_user']))
 {
     if (auth($user, $current_password) == 2)
     {
@@ -147,7 +147,7 @@ if (isset($_POST['delete_user']))
             $conn = connection();
             $sql = "DELETE FROM user_info WHERE u_name='$user'";
             $conn->exec($sql);
-            $sql = "DELETE FROM user_pictures WHERE  u_name='$user'";
+            $sql = "DELETE FROM user_pictures WHERE  picture_owner='$user'";
             $conn->exec($sql);
             // $sql = "DELETE FROM user_comments WHERE id_owner='$user_id'";
             // $conn->exec($sql);
@@ -160,8 +160,9 @@ if (isset($_POST['delete_user']))
             echo $qry . "<br>" . $e->getMessage();
         }
         $conn = null;
+        $_SESSION['logged_in_user'] == "";
         print_msg("Account deleted successfully!");
-        header('Refresh: 3; landing.php');
+        header('Refresh: 2; login.php');
     }
     else
     {

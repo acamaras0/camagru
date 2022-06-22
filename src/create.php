@@ -61,7 +61,7 @@
             }
             $conn = null;
             send_email($new_email, $activation_code, $new_user, $new_pwd, 1);
-            print_msg("User created succesfully!");
+            print_msg("User created succesfully! Activation link sent!");
             header("Refresh: 2; login.php?message=1");
         }
         else if($double_user_verification == 2)
