@@ -44,6 +44,31 @@ if(isset($_POST['submit']))
                 header('Refresh  2; settings.php');
             }
         }
+        if (!empty($full_name))
+        {
+            if (info_check(2, 0, $user) == 1)
+            {
+                try
+                {
+                    $conn = connection();
+                    $sql = $conn->prepare("UPDATE user_info SET fullname=:new_fullname WHERE u_name='$user'");
+                    $sql->bindParam(':new_fullname', $full_name, PDO::PARAM_STR);
+                    $sql->execute();
+                }
+                catch(PDOException $e)
+                {
+                    echo $qry . "<br>" . $e->getMessage();
+                }
+                $conn = null;
+                print_msg("Fullname succesfully changed.");
+                header('Refresh: 2; settings.php');
+            }
+            else
+            {
+                print_msg("Something went wrong. Try again!");
+                header('Refresh  2; settings.php');
+            }
+        }
         if (!empty($username))
         {
             if (info_check(2, 0, $user) == 1)
@@ -70,7 +95,7 @@ if(isset($_POST['submit']))
                 }
                 $conn = null;
                 $_SESSION['logged_in_user'] = $username;
-                print_msg("Username succesfully changed.");
+                print_msg("Username successfully changed.");
                 header('Refresh: 2; settings.php');
             }
             else
@@ -96,7 +121,7 @@ if(isset($_POST['submit']))
                     echo $qry . "<br>" . $e->getMessage();
                 }
                 $conn = null;
-                print_msg("Password succesfully changed.");
+                print_msg("Password successfully changed.");
                 header('Refresh: 2; settings.php');
             }
             else
@@ -122,19 +147,21 @@ if (isset($_POST['delete_user']))
             $conn = connection();
             $sql = "DELETE FROM user_info WHERE u_name='$user'";
             $conn->exec($sql);
-            $sql = "DELETE FROM user_pictures WHERE picture_path='$img'";
+            $sql = "DELETE FROM user_pictures WHERE  u_name='$user'";
             $conn->exec($sql);
             // $sql = "DELETE FROM user_comments WHERE id_owner='$user_id'";
             // $conn->exec($sql);
             // $sql = "DELETE FROM user_likes WHERE id_owner='$user_id'";
             // $conn->exec($sql);
-            unlink($img);
+            //unlink($img);
         }
         catch(PDOException $e)
         {
             echo $qry . "<br>" . $e->getMessage();
         }
         $conn = null;
+        print_msg("Account deleted successfully!");
+        header('Refresh: 3; landing.php');
     }
     else
     {
@@ -180,7 +207,7 @@ if (isset($_POST['delete_user']))
                     <label>Change password</label>
                     <input type="password" name="passwd" value="">
                     <label>Repeat new password</label>
-                    <input type="password" name="re-passwd"  value="" required>
+                    <input type="password" name="re-passwd"  value="">
                 </div>
                 <div class="current-password input-element">
                     <label>Input your current password in order to save the changes:
