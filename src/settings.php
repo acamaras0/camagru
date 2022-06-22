@@ -94,7 +94,7 @@ if(isset($_POST['submit']))
                     echo $qry . "<br>" . $e->getMessage();
                 }
                 $conn = null;
-                $_SESSION['logged_in_user'] = $username;
+                $_SESSION['logged_in_user'] = $new_username;
                 print_msg("Username successfully changed.");
                 header('Refresh: 2; settings.php');
             }
@@ -190,8 +190,17 @@ else if (isset($_POST['delete_user']))
         <?php include('../partials/header_settings.php'); ?>
     </div>
     <div class="middle">
+        <form class="form" action="notifications_update.php" method="post">
+            <div class="notifi">
+            <div class="notif-container">
+                <label>Notifications</label>
+                <input class="notif" type="submit" name="on" value="ON" />
+                <input class="notif" type="submit" name="off" value="OFF" />
+            </div>
+            </div>
         <form class= "form" action="settings.php" method="POST">
             <div class="signup-container">
+                </form>
                 <div class="email-new input-element">
                     <label>Change e-mail address</label>
                     <input type="email" name="email" value="">
@@ -213,7 +222,7 @@ else if (isset($_POST['delete_user']))
                 <div class="current-password input-element">
                     <label>Input your current password in order to save the changes:
                     </label>
-                    <input type="password" name="current-passwd"  value="" required>
+                    <input type="password" name="current-passwd"  value="">
                 </div>
                 <div class="button-container">
                     <button class="create-button" type="submit" name="submit"  value="OK">Submit changes</button>

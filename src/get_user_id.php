@@ -18,7 +18,7 @@ function get_id()
     {
         echo $qry . "<br>" . $e->getMessage();
     }
-    
+    $conn = null;
     return $user;
 }
 ?>

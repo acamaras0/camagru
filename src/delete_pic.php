@@ -17,10 +17,10 @@ if(isset($_POST['delete_pic']) && isset($_POST['picture_path']))
         $conn = connection();
         $sql = "DELETE FROM user_pictures WHERE picture_path='$img'";
         $conn->exec($sql);
-        // $sql = "DELETE FROM user_comments WHERE id_owner='$user_id'";
-        // $conn->exec($sql);
-        // $sql = "DELETE FROM user_likes WHERE id_owner='$user_id'";
-        // $conn->exec($sql);
+        $sql = "DELETE FROM user_comments WHERE id_owner='$user_id'";
+        $conn->exec($sql);
+        $sql = "DELETE FROM user_likes WHERE id_owner='$user_id'";
+        $conn->exec($sql);
         unlink($img);
     }
     catch(PDOException $e)

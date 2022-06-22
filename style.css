@@ -353,3 +353,21 @@ div.logout{
   max-width: 2.5vh;
 }
 
+.notif-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(120 145 197 / 69%);
+  padding: 50px;
+  border-radius: none;
+  width: 260px;
+}
+input.notif
+{
+  background-color: rgba(255, 255, 255, 0.69);
+  font-family: inherit;
+  margin:5%;
+  margin-left: 40%;
+  margin-right: 40%;
+}
