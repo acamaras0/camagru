@@ -190,7 +190,7 @@ else if (isset($_POST['delete_user']))
         <?php include('../partials/header_settings.php'); ?>
     </div>
     <div class="middle">
-        <form class="form" action="notifications_update.php" method="post">
+        <form class="form2" action="notifications_update.php" method="post">
             <div class="notifi">
             <div class="notif-container">
                 <label>Notifications</label>
@@ -198,9 +198,9 @@ else if (isset($_POST['delete_user']))
                 <input class="notif" type="submit" name="off" value="OFF" />
             </div>
             </div>
+        </form>
         <form class= "form" action="settings.php" method="POST">
             <div class="signup-container">
-                </form>
                 <div class="email-new input-element">
                     <label>Change e-mail address</label>
                     <input type="email" name="email" value="">
@@ -221,17 +221,17 @@ else if (isset($_POST['delete_user']))
                 </div>
                 <div class="current-password input-element">
                     <label>Input your current password in order to save the changes:
-                    </label>
-                    <input type="password" name="current-passwd"  value="">
+                        </label>
+                        <input type="password" name="current-passwd"  value="">
+                    </div>
+                    <div class="button-container">
+                        <button class="create-button" type="submit" name="submit"  value="OK">Submit changes</button>
+                    </div>
+                    <div class="button-container">
+                        <button class="delete-button" type="delete_user" name="delete_user" value="OK">Delete account</button>
+                    </div>
                 </div>
-                <div class="button-container">
-                    <button class="create-button" type="submit" name="submit"  value="OK">Submit changes</button>
-                </div>
-                <div class="button-container">
-                    <button class="delete-button" type="delete_user" name="delete_user" value="OK">Delete account</button>
-                </div>
-            </div>
-        </form>
+            </form>
     </div>
     <div class="footer">
         <?php	include('../partials/footer.php');	?>

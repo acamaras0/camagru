@@ -65,6 +65,7 @@ html {
   justify-content: center;
   align-items: center;
   margin-top: 12vh;
+  flex-direction: column;
 }
 
 .middle-profile{
