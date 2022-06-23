@@ -53,9 +53,17 @@
                         </form>
                     </div>
                     <?php
-                    $comments = "SELECT * FROM user_comments WHERE picture_name='$id'";
-                    $qry_comments= $conn->query($comments);
-                    $res_commnets = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
+                    try
+                    {
+                        $comments = "SELECT * FROM user_comments WHERE picture_name='$id'";
+                        $qry_comments= $conn->query($comments);
+                        $res_commnets = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
+                    }
+                    catch(PDOException $e)
+                    {
+                        echo $qry0 . "<br>" . $e->getMessage();
+                    }
+                    $conn = null;
                     foreach($res_commnets as $key_comments)
                     {
                     ?>
@@ -75,7 +83,6 @@
         }
     }
 ?>
-
             <div class="footer">
                 <?php	include('../partials/footer.php');	?>
             </div>
