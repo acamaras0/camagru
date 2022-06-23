@@ -44,6 +44,11 @@
                         <div class="username"><?php echo "@" . $key['picture_owner'];?></div>
                         <?php echo " " . $key['created_at']?>
                         <img class="picture" src=<?php echo $key['picture_path'];?>>
+
+                        <form class="comments" action="comments.php" method="post">
+                        <textarea class="comment" name="comment" placeholder=". . ."></textarea>
+                        <button  class="submit-comment" type="submit" name="submit" value="OK"><img src="../img/send.png" width="18" alt="del"></button>
+                        </form>
                     </div>
                 </div>
         <?php

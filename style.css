@@ -107,6 +107,20 @@ html {
   transform: scale(1.1);
 }
 
+.border-profile button.submit-comment {
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s opacity, 0.3s transform;
+  margin-bottom: 3vh;
+  background-color: inherit;
+}
+
+.border-profile button.submit-comment:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+
 .username{
   padding-bottom: 1.5vh;
   font-size: larger;
@@ -371,4 +385,22 @@ input.notif
   margin:5%;
   margin-left: 40%;
   margin-right: 40%;
+}
+
+textarea {
+  width: 100%;
+  height: 4vh;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  margin-top: 7px;
+}
+
+form.comments
+{
+  display:contents; 
 }
