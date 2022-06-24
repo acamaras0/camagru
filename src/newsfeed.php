@@ -7,7 +7,7 @@
         header("Location: ../index.php");
     get_id();
     $conn = connection();
-    $username = $_SESSION['logged_in_user'];
+    $username = $_SESSION['logged_user_id'];
     if (isset($_GET['page_no']) && $_GET['page_no'] != "")
     {
         $page = $_GET['page_no'];
@@ -82,6 +82,10 @@
                             $comments = "SELECT * FROM user_comments WHERE picture_name='$id'";
                             $qry_comments= $conn->query($comments);
                             $res_comments = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
+
+                            $sql = "SELECT u_name FROM user_info WHERE id='$username'"; 
+                            $qry = $conn->query($sql);
+                            $u_name = $qry->fetchAll(PDO::FETCH_ASSOC);
                             foreach($res_comments as $key_comments)
                             {
                             ?>
@@ -89,7 +93,7 @@
                                 <html lang="en">
                                 <body>
                                     <div class="show-comments">
-                                        <p class="com"><div class="user_com"><?php echo "@". $username?>
+                                        <p class="com"><div class="user_com"><?php echo "@". $u_name[0]['u_name']?>
                                         &nbsp<?php echo $key_comments['comments']?></div></p>
                                     </div>
                                 </body>

@@ -60,5 +60,4 @@ if(isset($_POST['submit']))
         header("Refresh: 2; newsfeed.php");
     }
 }
-
 ?>

@@ -4,6 +4,7 @@ require_once('connection.php');
 require_once('print_msg.php');
 require_once('info_check.php');
 require_once('auth.php');
+require_once('get_user_id.php');
 
 if ($_SESSION['logged_in_user'] == "")
     header("Location: landing.php");
@@ -14,6 +15,8 @@ $new_username = $_POST['username'];
 $password = $_POST['passwd'];
 $repeat_password = $_POST['re-passwd'];
 $current_password = $_POST['current-passwd'];
+get_id();
+$user_id = $_SESSION['logged_user_id'];
 
 if(isset($_POST['submit']))
 {
@@ -145,20 +148,20 @@ else if (isset($_POST['delete_user']))
         try
         {
             $conn = connection();
-            $sql = "SELECT * FROM user_pictures WHERE u_name:='$user'";
+            $sql = "SELECT picture_path FROM user_pictures WHERE u_name:='$user'";
             $qry = $conn->query($sql);
             $res = $qry->fetchAll(PDO::FETCH_ASSOC);
+            foreach($res as $key)
+            {
+                $path = $key['picture_path'];
+                unlink($path);
+            }
         }
         catch(PDOException $e)
         {
             echo $qry . "<br>" . $e->getMessage();
         }
         $conn = null;
-        foreach($res as $key)
-        {
-            $path = $key['picture_path'];
-            unlink($path);
-        }
         try
         {
             $conn = connection();
@@ -166,9 +169,9 @@ else if (isset($_POST['delete_user']))
             $conn->exec($sql);
             $sql = "DELETE FROM user_pictures WHERE  picture_owner='$user'";
             $conn->exec($sql);
-            $sql = "DELETE FROM user_comments WHERE id_owner='$user_id'";
+            $sql = "DELETE FROM user_comments WHERE  picture_owner='$user_id'";
             $conn->exec($sql);
-            $sql = "DELETE FROM user_likes WHERE id_owner='$user_id'";
+            $sql = "DELETE FROM user_likes WHERE  picture_owner='$user_id'";
             $conn->exec($sql);
         }
         catch(PDOException $e)
@@ -176,9 +179,9 @@ else if (isset($_POST['delete_user']))
             echo $qry . "<br>" . $e->getMessage();
         }
         $conn = null;
-        $_SESSION['logged_in_user'] == "";
         print_msg("Account deleted successfully!");
         header('Refresh: 10; ../index.php');
+        $_SESSION['logged_in_user'] == "";
     }
     else
     {
