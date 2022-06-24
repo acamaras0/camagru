@@ -39,7 +39,7 @@ if(isset($_POST['submit']))
         try
         {
             $conn = connection();
-            $sql = $conn->prepare("SELECT * FROM user_info WHERE u_name='$picture_owner'");
+            $sql = "SELECT * FROM user_info WHERE u_name='$picture_owner'";
             $sql = $conn->query($sql);
             $res = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -47,8 +47,11 @@ if(isset($_POST['submit']))
         {
             echo $sql . "<br>" . $e->getMessage();
         }
+        print_r($res[0]['email']);
         if($res[0]['notif_status'] == 1)
+        {
             send_email($res[0]['email'], 0, 0, 0, 3);
+        }
         $conn = null;
     }
     else

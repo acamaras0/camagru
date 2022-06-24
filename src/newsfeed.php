@@ -7,6 +7,7 @@
         header("Location: ../index.php");
     get_id();
     $conn = connection();
+    $username = $_SESSION['logged_in_user'];
     if (isset($_GET['page_no']) && $_GET['page_no'] != "")
     {
         $page = $_GET['page_no'];
@@ -48,28 +49,54 @@
      $sql0 = "SELECT * FROM `user_pictures` ORDER BY id DESC LIMIT $pictures, $total_pictures_per_page";
      $qry0 = $conn->query($sql0);
      $res0 = $qry0->fetchAll(PDO::FETCH_ASSOC);
-        if($res0)
-        {
-            foreach($res0 as $key)
-            {
-                $picture_id = $key['picture_name'];
-                ?>
-                    <div class="middle-profile">
-                        <div class="border-profile">
+     if ($res0)
+     {
+         foreach($res0 as $key0)
+         {
+             $id = $key0['picture_name'];
+             ?>
+                 <div class="middle-profile">
+                     <div class="border-profile">
                             <?php
-                            if ($_SESSION['logged_user_id'] == $key['id_owner'])
+                            if ($_SESSION['logged_user_id'] == $key0['id_owner'])
                             {
                             ?>
-                            <form action="delete_pic.php" method="post">
-                                <button class="delete" type="submit" name="delete_pic" value="Delete"> <img src="../img/delete.png" width="18" alt="del"></button>
-                                <input type="hidden" name="picture_path" value=<?php echo $key['picture_path'];?>>
-                            </form>
+                                <form action="delete_pic.php" method="post">
+                                    <button class="delete" type="submit" name="delete_pic" value="Delete"> <img src="../img/delete.png" width="18" alt="del"></button>
+                                    <input type="hidden" name="picture_path" value=<?php echo $key0['picture_path'];?>>
+                                </form>
                             <?php
                             }
                             ?>
-                            <div class="username"><?php echo "@" . $key['picture_owner'];?></div>
-                            <?php echo " " . $key['created_at']?>
-                            <img class="picture" src=<?php echo $key['picture_path'];?>>
+                            <div class="username"><?php echo "@" . $key0['picture_owner'];?></div>
+                            <?php echo " " . $key0['created_at']?>
+                            <img class="picture" src=<?php echo $key0['picture_path'];?>>
+
+                            <form class="comments" action="comments.php" method="post">
+                                <textarea class="comments" name="comments" placeholder=". . ."></textarea>
+                                <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
+                                <input type="hidden" name="picture_name" value=<?php echo $key0['picture_name'];?>>
+                                <button  class="submit-comment" type="submit" name="submit" value="OK"><img src="../img/send.png" width="18" alt="del"></button>
+                            </form>
+                            <?php
+                            $comments = "SELECT * FROM user_comments WHERE picture_name='$id'";
+                            $qry_comments= $conn->query($comments);
+                            $res_comments = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
+                            foreach($res_comments as $key_comments)
+                            {
+                            ?>
+                                <!DOCTYPE html>
+                                <html lang="en">
+                                <body>
+                                    <div class="show-comments">
+                                        <p class="com"><div class="user_com"><?php echo "@". $username?>
+                                        &nbsp<?php echo $key_comments['comments']?></div></p>
+                                    </div>
+                                </body>
+                            </html>
+                            <?php
+                            } 
+                            ?>
                         </div>
                     </div>
             <?php

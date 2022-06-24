@@ -2,6 +2,7 @@
     session_start();
     require_once("connection.php");
     require_once("get_user_id.php");
+    
     if ($_SESSION['logged_in_user'] == "")
         header("Location: ../index.php");
     get_id();
