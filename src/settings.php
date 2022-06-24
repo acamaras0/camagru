@@ -148,10 +148,10 @@ else if (isset($_POST['delete_user']))
         try
         {
             $conn = connection();
-            $sql = "SELECT picture_path FROM user_pictures WHERE u_name:='$user'";
+            $sql = "SELECT picture_path FROM user_pictures WHERE id_owner:='$user_id'";
             $qry = $conn->query($sql);
             $res = $qry->fetchAll(PDO::FETCH_ASSOC);
-            foreach($res as $key)
+            foreach($res[0] as $key)
             {
                 $path = $key['picture_path'];
                 unlink($path);
@@ -169,9 +169,9 @@ else if (isset($_POST['delete_user']))
             $conn->exec($sql);
             $sql = "DELETE FROM user_pictures WHERE  picture_owner='$user'";
             $conn->exec($sql);
-            $sql = "DELETE FROM user_comments WHERE  picture_owner='$user_id'";
+            $sql = "DELETE FROM user_comments WHERE  id_owner='$user_id'";
             $conn->exec($sql);
-            $sql = "DELETE FROM user_likes WHERE  picture_owner='$user_id'";
+            $sql = "DELETE FROM user_likes WHERE  id_owner='$user_id'";
             $conn->exec($sql);
         }
         catch(PDOException $e)
