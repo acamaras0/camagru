@@ -145,15 +145,31 @@ else if (isset($_POST['delete_user']))
         try
         {
             $conn = connection();
+            $sql = "SELECT * FROM user_pictures WHERE u_name:='$user'";
+            $qry = $conn->query($sql);
+            $res = $qry->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e)
+        {
+            echo $qry . "<br>" . $e->getMessage();
+        }
+        $conn = null;
+        foreach($res as $key)
+        {
+            $path = $key['picture_path'];
+            unlink($path);
+        }
+        try
+        {
+            $conn = connection();
             $sql = "DELETE FROM user_info WHERE u_name='$user'";
             $conn->exec($sql);
             $sql = "DELETE FROM user_pictures WHERE  picture_owner='$user'";
             $conn->exec($sql);
-            // $sql = "DELETE FROM user_comments WHERE id_owner='$user_id'";
-            // $conn->exec($sql);
-            // $sql = "DELETE FROM user_likes WHERE id_owner='$user_id'";
-            // $conn->exec($sql);
-            //unlink($img);
+            $sql = "DELETE FROM user_comments WHERE id_owner='$user_id'";
+            $conn->exec($sql);
+            $sql = "DELETE FROM user_likes WHERE id_owner='$user_id'";
+            $conn->exec($sql);
         }
         catch(PDOException $e)
         {
@@ -162,7 +178,7 @@ else if (isset($_POST['delete_user']))
         $conn = null;
         $_SESSION['logged_in_user'] == "";
         print_msg("Account deleted successfully!");
-        header('Refresh: 2; login.php');
+        header('Refresh: 10; ../index.php');
     }
     else
     {

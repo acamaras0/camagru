@@ -3,6 +3,7 @@ session_start();
 require_once('print_msg.php');
 require_once('connection.php');
 require_once('send_email.php');
+require_once('get_user_id.php');
 
 if ($_SESSION['logged_in_user'] == "")
 header("Location: ../index.php");
@@ -13,9 +14,10 @@ if(isset($_POST['submit']))
 {
     if(!empty($_POST['comments']))
     {
+        header('Location: newsfeed.php');
         $username = $_SESSION['logged_in_user'];
         $picture_name = $_POST['picture_name'];
-        $picture_owner = $_POST['picture_path'];
+        $picture_owner = $_POST['picture_owner'];
         $comm = htmlspecialchars($_POST['comments']);
         try
         {

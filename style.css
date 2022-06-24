@@ -404,3 +404,9 @@ form.comments
 {
   display:contents; 
 }
+
+.show-comments
+{
+  background-color: white;
+  display: flex;
+}
