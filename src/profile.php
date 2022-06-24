@@ -46,7 +46,7 @@
                         <img class="picture" src=<?php echo $key['picture_path'];?>>
 
                         <form class="comments" action="comments.php" method="post">
-                            <textarea class="comment" name="comment" placeholder=". . ."></textarea>
+                            <textarea class="comments" name="comments" placeholder=". . ."></textarea>
                             <input type="hidden" name="picture_path" value=<?php echo $key['picture_path'];?>>
                             <input type="hidden" name="picture_name" value=<?php echo $key['picture_name'];?>>
                             <button  class="submit-comment" type="submit" name="submit" value="OK"><img src="../img/send.png" width="18" alt="del"></button>
@@ -57,7 +57,7 @@
                     {
                         $comments = "SELECT * FROM user_comments WHERE picture_name='$id'";
                         $qry_comments= $conn->query($comments);
-                        $res_commnets = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
+                        $res_comments = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
                     }
                     catch(PDOException $e)
                     {
@@ -67,15 +67,16 @@
                     foreach($res_commnets as $key_comments)
                     {
                     ?>
-                    <!DOCTYPE html>
-                    <html lang="en">
-                    <body>
-                        <div class="show-comments">
-                            <p class="com"><div class="user_com"><?php echo $key_comments['picture_owner']?>
-                            &nbsp<?php echo $key_comments['comments']?></div></p>
-                        </div>
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <body>
+                            <div class="show-comments">
+                                <p class="com"><div class="user_com"><?php echo $key_comments['picture_owner']?>
+                                &nbsp<?php echo $key_comments['comments']?></div></p>
+                            </div>
                     <?php
-                    } ?>
+                    } 
+                    ?>
                     </body>
                     </html>
                 </div>
