@@ -37,6 +37,9 @@
             foreach($res as $key)
             {
                 $id = $key['picture_name'];
+                $likes_sql = "SELECT * FROM user_likes WHERE picture_name='$id'";
+                $likes_qry = $conn->query($likes_sql);
+                $res_likes = $likes_qry->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                     <div class="middle-profile">
                         <div class="border-profile">
@@ -47,6 +50,13 @@
                             <div class="username"><?php echo "@" . $key['picture_owner'];?></div>
                             <?php echo " " . $key['created_at']?>
                             <img class="picture" src=<?php echo $key['picture_path'];?>>
+
+                            <form class="likes" action="likes.php" method="post">
+                                <button  class="like" type="like" name="like" value="OK"><img src="../img/heart.png" width="18" alt="del"></button>
+                                <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
+                                <input type="hidden" name="picture_name" value=<?php echo $key0['picture_name'];?>>
+                                <input type="hidden" name="logged_in_user" value=<?php echo $username;?>>
+                            </form>
 
                             <form class="comments" action="comments.php" method="post">
                                 <textarea class="comments" name="comments" placeholder=". . ."></textarea>
