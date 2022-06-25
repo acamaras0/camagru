@@ -37,7 +37,7 @@
             foreach($res as $key)
             {
                 $id = $key['picture_name'];
-                $likes_sql = "SELECT * FROM user_likes WHERE picture_name='$id'";
+                $likes_sql = "SELECT COUNT(*) FROM user_likes WHERE picture_name='$id'";
                 $likes_qry = $conn->query($likes_sql);
                 $res_likes = $likes_qry->fetchAll(PDO::FETCH_ASSOC);
                 ?>
@@ -50,14 +50,15 @@
                             <div class="username"><?php echo "@" . $key['picture_owner'];?></div>
                             <?php echo " " . $key['created_at']?>
                             <img class="picture" src=<?php echo $key['picture_path'];?>>
-
-                            <form class="likes" action="likes_count.php" method="post">
-                                <button  class="like" type="like" name="heart" value="OK"><img src="../img/heart.png" width="20" alt="del"></button>
-                                <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
-                                <input type="hidden" name="picture_name" value=<?php echo $key0['picture_name'];?>>
-                                <input type="hidden" name="user_like" value=<?php echo $username;?>>
-                            </form>
-
+                            <div class="like-container">
+                                <form class="likes" action="likes_count.php" method="post">
+                                    <button  class="like" type="like" name="heart" value="OK"><img src="../img/heart.png" width="20" alt="del"></button>
+                                    <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
+                                    <input type="hidden" name="picture_name" value=<?php echo $key0['picture_name'];?>>
+                                    <input type="hidden" name="user_like" value=<?php echo $user;?>>
+                                </form>
+                                <p class="like_count"><?php echo $res_likes[0]['COUNT(*)'];?></p>
+                            </div>
                             <form class="comments" action="comments.php" method="post">
                                 <textarea class="comments" name="comments" placeholder=". . ."></textarea>
                                 <input type="hidden" name="picture_owner" value=<?php echo $key['picture_owner'];?>>
