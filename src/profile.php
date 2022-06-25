@@ -51,11 +51,11 @@
                             <?php echo " " . $key['created_at']?>
                             <img class="picture" src=<?php echo $key['picture_path'];?>>
 
-                            <form class="likes" action="likes.php" method="post">
-                                <button  class="like" type="like" name="like" value="OK"><img src="../img/heart.png" width="18" alt="del"></button>
+                            <form class="likes" action="likes_count.php" method="post">
+                                <button  class="like" type="like" name="heart" value="OK"><img src="../img/heart.png" width="20" alt="del"></button>
                                 <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
                                 <input type="hidden" name="picture_name" value=<?php echo $key0['picture_name'];?>>
-                                <input type="hidden" name="logged_in_user" value=<?php echo $username;?>>
+                                <input type="hidden" name="user_like" value=<?php echo $username;?>>
                             </form>
 
                             <form class="comments" action="comments.php" method="post">
