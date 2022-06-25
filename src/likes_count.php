@@ -24,7 +24,20 @@ if (isset($_POST['heart']) && isset($_POST['user_like']))
     }
     $conn = null;
 
-    if($res_owner[0]['id_owner'] != $user_like)
+    try
+    {
+        $conn = connection();
+        $owner_likes = "SELECT like_owner FROM user_likes WHERE picture_name='$picture_name'";
+        $qry_likes= $conn->query($owner_likes);
+        $res_likes = $qry_likes->fetchAll(PDO::FETCH_ASSOC);
+    }
+    catch(PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+    $conn = null;
+
+    if(($res_owner[0]['id_owner'] != $user_like) && ($res_likes[0]['like_owner'] != $user_like))
     {
         try
         {
@@ -42,13 +55,13 @@ if (isset($_POST['heart']) && isset($_POST['user_like']))
         }
         $conn = null;
     }
-    else
+    if ($res_likes[0]['like_owner'] == $user_like)
     {
         try
         {
             $conn = connection();
             $del = "DELETE FROM user_likes WHERE picture_name ='$picture_name'";
-            $conn = exec($del);
+            $conn->exec($del);
         }
         catch(PDOException $e)
         {
