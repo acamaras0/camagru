@@ -410,3 +410,15 @@ form.comments
   background-color: white;
   display: flex;
 }
+
+.border-profile button.like {
+  border-radius: none;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  transition: 0.3s opacity, 0.3s transform;
+}
+.border-profile button.like:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+}

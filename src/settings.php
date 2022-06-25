@@ -151,7 +151,8 @@ else if (isset($_POST['delete_user']))
             $sql = "SELECT picture_path FROM user_pictures WHERE id_owner:='$user_id'";
             $qry = $conn->query($sql);
             $res = $qry->fetchAll(PDO::FETCH_ASSOC);
-            foreach($res[0] as $key)
+            print_r($res);
+            foreach($res as $key)
             {
                 $path = $key['picture_path'];
                 unlink($path);
