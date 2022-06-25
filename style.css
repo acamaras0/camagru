@@ -7,8 +7,14 @@ a.index-picture {
   padding-bottom: 15vh;
 }
 
-.header{
+/* .header{
   padding-bottom: 7vw;
+} */
+
+img.picture
+{
+  margin-top: 2%;
+  border: 7px white solid;
 }
 
 .index-cam {
@@ -88,7 +94,7 @@ html {
   padding: 3vw;
   border-radius: none;
   width: 38vh;
-  line-height: 2;
+  line-height: 1;
   font-size: large;
 } 
 
