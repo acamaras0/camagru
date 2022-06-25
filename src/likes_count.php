@@ -2,12 +2,9 @@
 session_start();
 require_once('connection.php');
 require_once('print_msg.php');
-require_once('get_user_id.php');
 
 if ($_SESSION['logged_in_user'] == "")
 header("Location: ../index.php");
-get_id();
-$user_id = $_SESSION['logged_user_id'];
 if (isset($_POST['heart']) && isset($_POST['user_like']))
 {
     header('Location: newsfeed.php');
@@ -17,7 +14,7 @@ if (isset($_POST['heart']) && isset($_POST['user_like']))
     try
     {
         $conn = connection();
-        $owner = "SELECT picture_owner FROM user_pictures WHERE picture_name='$picture_name'";
+        $owner = "SELECT id_owner FROM user_pictures WHERE picture_name='$picture_name'";
         $qry_owner= $conn->query($owner);
         $res_owner = $qry_owner->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -26,16 +23,18 @@ if (isset($_POST['heart']) && isset($_POST['user_like']))
         echo $sql . "<br>" . $e->getMessage();
     }
     $conn = null;
-    if($res_owner[0]['picture_owner'] != $user_like)
+
+    if($res_owner[0]['id_owner'] != $user_like)
     {
         try
         {
             $conn = connection();
-            $insert = $conn->prepare("INSERT INTO user_likes (picture_name, like_owner, id_owner)
+            $sql = $conn->prepare("INSERT INTO user_likes (picture_name, like_owner, id_owner)
                                         VALUES (:picture_name, :like_owner, :id_owner)");
-            $insert->bindParam(':picture_name', $picture_name, PDO::PARAM_STR);
-            $insert->bindParam(':like_owner', $user_like, PDO::PARAM_STR);
-            $insert->bindParam(':id_owner', $user_id, PDO::PARAM_STR);
+            $sql->bindParam(':picture_name', $picture_name, PDO::PARAM_STR);
+            $sql->bindParam(':like_owner', $user_like, PDO::PARAM_STR);
+            $sql->bindParam(':id_owner', $res_owner[0]['id_owner'], PDO::PARAM_STR);
+            $sql->execute();
         }
         catch(PDOException $e)
         {
