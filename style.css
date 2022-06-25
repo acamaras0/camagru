@@ -418,6 +418,7 @@ form.comments
 }
 
 .border-profile button.like {
+  margin-top: 25%;
   border-radius: none;
   border: none;
   background-color: inherit;
@@ -427,4 +428,12 @@ form.comments
 .border-profile button.like:hover {
   opacity: 0.6;
   transform: scale(1.1);
+}
+
+.like-container
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  display: flex;
+
 }

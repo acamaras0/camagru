@@ -74,15 +74,15 @@
                             <div class="username"><?php echo "@" . $key0['picture_owner'];?></div>
                             <?php echo " " . $key0['created_at']?>
                             <img class="picture" src=<?php echo $key0['picture_path'];?>>
-
-                            <form class="likes" action="likes_count.php" method="post">
-                                <button  class="like" type="like" name="heart" value="OK"><img src="../img/heart.png" width="20" alt="del"></button>
-                                <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
-                                <input type="hidden" name="picture_name" value=<?php echo $key0['picture_name'];?>>
-                                <input type="hidden" name="user_like" value=<?php echo $username;?>>
-                            </form>
-                            <p class="like_count"><?php echo $res_likes[0]['COUNT(*)'];?></p>
-
+                            <div class="like-container">
+                                <form class="likes" action="likes_count.php" method="post">
+                                    <button  class="like" type="like" name="heart" value="OK"><img src="../img/heart.png" width="20" alt="del"></button>
+                                    <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
+                                    <input type="hidden" name="picture_name" value=<?php echo $key0['picture_name'];?>>
+                                    <input type="hidden" name="user_like" value=<?php echo $username;?>>
+                                </form>
+                                <p class="like_count"><?php echo $res_likes[0]['COUNT(*)'];?></p>
+                            </div>
                             <form class="comments" action="comments.php" method="post">
                                 <textarea class="comments" name="comments" placeholder=". . ."></textarea>
                                 <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
