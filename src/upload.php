@@ -133,8 +133,8 @@
 	</script>
     <style>
         div.webcam {
-        width: 500px;
-        height: 400px;
+        width: 400px;
+        height: 300px;
         border: 2px solid black;
         position: relative;
         }
@@ -145,6 +145,7 @@
         }
         button#but{
         margin-top: 2vh;
+        margin-left: 2vh;
         width: 70%;
         padding: 10px;
         border-radius: none;
@@ -160,12 +161,11 @@
     
     <div class="middle">
         <div class="webcam">
-		    <video id="vid"></video>
-	    </div>
-	    <br />
-	    <div><button id="but" autoplay>
-		    Enable camera
-	    </button></div>
+            <div><video id="vid"></video></div>
+        </div>
+        <div><button id="but" autoplay>
+            Enable camera
+        </button></div>
         <br />
         <div class="upload-container">
             <form action="upload.php" method="post" enctype="multipart/form-data">
