@@ -94,18 +94,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Upload</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-<div class="camera">
-        <a href="newsfeed.php"><img src="../img/cam.png" alt="camera"></a>
+    <div class="camera">
+            <a href="newsfeed.php"><img src="../img/cam.png" alt="camera"></a>
+        </div>
+        <div class="header">
+            <?php include('../partials/header_profile.php'); ?>
     </div>
-    <div class="header">
-        <?php include('../partials/header_profile.php'); ?>
-    </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		var but = document.getElementById("but");
+		var video = document.getElementById("vid");
+		var mediaDevices = navigator.mediaDevices;
+		vid.muted = true;
+		but.addEventListener("click", () => {
+
+		// Accessing the user camera and video.
+		mediaDevices
+			.getUserMedia({
+			video: true,
+			audio: true,
+			})
+			.then((stream) => {
+
+			// Changing the source of video to current stream.
+			video.srcObject = stream;
+			video.addEventListener("loadedmetadata", () => {
+				video.play();
+			});
+			})
+			.catch(alert);
+		});
+	});
+	</script>
+    <style>
+        div.webcam {
+        width: 500px;
+        height: 400px;
+        border: 2px solid black;
+        position: relative;
+        }
+        video {
+        width: 500px;
+        height: 400px;
+        object-fit: cover;
+        }
+        button#but{
+        margin-top: 2vh;
+        width: 70%;
+        padding: 10px;
+        border-radius: none;
+        font-family: inherit;
+        font-size: 20px;
+        border: none;
+        color: rgb(3, 3, 3);
+        background-color: rgb(120 145 197 / 69%);
+        /*background-color: rgb(255, 255, 255);*/
+        cursor: pointer;
+        }
+    </style>
     
     <div class="middle">
+        <div class="webcam">
+		    <video id="vid"></video>
+	    </div>
+	    <br />
+	    <div><button id="but" autoplay>
+		    Enable camera
+	    </button></div>
+        <br />
         <div class="upload-container">
             <form action="upload.php" method="post" enctype="multipart/form-data">
                 Select image to upload:
@@ -115,6 +176,7 @@
             </form>
         </div>
     </div>
+
     <div class="footer">
         <?php	include('../partials/footer.php');	?>
     </div>

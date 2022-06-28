@@ -430,10 +430,8 @@ form.comments
   transform: scale(1.1);
 }
 
-.like-container
-{
+.like-container{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   display: flex;
-
 }
