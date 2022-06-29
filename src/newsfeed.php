@@ -125,9 +125,9 @@
     $conn = null;
 ?>
     <div class="pagination">
-            <a class="arrows" <?php if($page > 1){echo "href='?page_no=$prev_page'";} ?>> ⫷⫷⫷ </a>&nbsp&nbsp&nbsp&nbsp&nbsp
+            <a class="arrows" <?php if($page > 1){echo "href='?page_no=$prev_page'";} ?>> ⬅ </a>&nbsp&nbsp&nbsp&nbsp&nbsp
             <?php echo $page; ?>&nbsp&nbsp&nbsp&nbsp&nbsp
-            <a class="arrows" <?php if($page < $total_pages){echo "href='?page_no=$next_page'";} ?>> ⫸⫸⫸ </a>
+            <a class="arrows" <?php if($page < $total_pages){echo "href='?page_no=$next_page'";} ?>> ➡ </a>
     </div>
         <div class="footer">
             <?php	include('../partials/footer.php');	?>
