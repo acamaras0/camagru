@@ -108,12 +108,12 @@
     </div>    
     <div class="sticker-container">
         <div class="sticker-middle">
-            <img src="../stickers/unicorn1.png" alt="">
-            <img src="../stickers/unicorn2.png" alt="">
-            <img src="../stickers/unicorn3.png" alt="">
-            <img src="../stickers/unicorn4.png" alt="">
-            <img src="../stickers/unicorn5.png" alt="">
-            <img src="../stickers/unicorn6.png" alt="">
+            <img id="1" onclick="s_Path1()" src="../stickers/unicorn1.png" alt="">
+            <img id="2" onclick="s_Path2()" src="../stickers/unicorn2.png" alt="">
+            <img id="3" onclick="s_Path3()" src="../stickers/unicorn3.png" alt="">
+            <img id="4" onclick="s_Path4()" src="../stickers/unicorn4.png" alt="">
+            <img id="5" onclick="s_Path5()" src="../stickers/unicorn5.png" alt="">
+            <img id="6" onclick="s_Path6()" src="../stickers/unicorn6.png" alt="">
         </div>
     </div>
     <div class="middle">
@@ -151,6 +151,30 @@
                     $(".image-tag").val(data_uri);
                     document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
                 } );
+            }
+
+            function s_path1(){
+
+            }
+
+            function s_path2(){
+                
+            }
+
+            function s_path3(){
+                
+            }
+
+            function s_path4(){
+                
+            }
+
+            function s_path5(){
+                
+            }
+
+            function s_path6(){
+                
             }
         </script>
         <br />
