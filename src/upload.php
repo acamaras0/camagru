@@ -106,6 +106,16 @@
         <div class="header">
             <?php include('../partials/header_profile.php'); ?>
     </div>    
+    <div class="sticker-container">
+        <div class="sticker-middle">
+            <img src="../stickers/unicorn1.png" alt="">
+            <img src="../stickers/unicorn2.png" alt="">
+            <img src="../stickers/unicorn3.png" alt="">
+            <img src="../stickers/unicorn4.png" alt="">
+            <img src="../stickers/unicorn5.png" alt="">
+            <img src="../stickers/unicorn6.png" alt="">
+        </div>
+    </div>
     <div class="middle">
         <div class="container">
             <form method="POST" action="store_web_pic.php">
@@ -131,7 +141,7 @@
                 width: 490,
                 height: 390,
                 image_format: 'jpeg',
-                jpeg_quality: 90
+                jpeg_quality: 100
             });
         
             Webcam.attach( '#my_camera' );

@@ -70,7 +70,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 12vh;
+  margin-top: 1vh;
   flex-direction: column;
 }
 
@@ -93,7 +93,7 @@ html {
   background-color: rgb(120 145 197 / 92%);
   padding: 3vw;
   border-radius: none;
-  width: 38vh;
+  width: 50vh;
   line-height: 1;
   font-size: large;
 } 
@@ -443,6 +443,19 @@ form.comments
   flex-wrap: wrap;
 }
 
+input[type="button"], button.btn.btn-success{
+  padding: 10px;
+  border: inset 1px rgb(0, 0, 0);
+  border-radius: none;
+  font-family: inherit;
+  color: #0a0508;
+  font-size: medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #results{
   display: flex;
   justify-content: center;
@@ -455,3 +468,20 @@ form.comments
   margin-top: 2vh;
 }
 
+.sticker-middle{
+  display: flex;
+  flex-direction: center;
+  height: 15vh;
+  border: solid rgb(120 145 197 / 69%) 3px;
+  background-color: white;
+}
+
+.sticker-container{
+  margin-top: 3vh;
+  display: flex;
+  justify-content: center;
+}
+.sticker-container img
+{
+  height:85%;
+}
