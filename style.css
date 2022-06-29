@@ -437,7 +437,3 @@ form.comments
   display: flex;
 }
 
-.webcam {
-  display: grid;
-  align-content: center;
-}

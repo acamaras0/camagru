@@ -96,60 +96,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        var but = document.getElementById("but");
-        var video = document.getElementById("vid");
-        var mediaDevices = navigator.mediaDevices;
-        vid.muted = true;
-        but.addEventListener("click", () => {
-  
-          // Accessing the user camera and video.
-          mediaDevices
-            .getUserMedia({
-              video: true,
-              audio: true,
-            })
-            .then((stream) => {
-  
-              // Changing the source of video to current stream.
-              video.srcObject = stream;
-              video.addEventListener("loadedmetadata", () => {
-                video.play();
-              });
-            })
-            .catch(alert);
-        });
-    });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 </head>
-    <style>
-        div.webcam {
-        width: 500px;
-        height: 400px;
-        border: 2px solid black;
-        position: relative;
-        display: contents;
-        }
-        video {
-        width: 500px;
-        height: 400px;
-        object-fit: cover;
-        }
-        button#but{
-        margin-top: 2vh;
-        margin-left: 2vh;
-        width: 70%;
-        padding: 10px;
-        border-radius: none;
-        font-family: inherit;
-        font-size: 20px;
-        border: none;
-        color: rgb(3, 3, 3);
-        background-color: rgb(120 145 197 / 69%);
-        cursor: pointer;
-        }
-    </style>
 <body>
     <div class="camera">
             <a href="newsfeed.php"><img src="../img/cam.png" alt="camera"></a>
@@ -158,12 +107,42 @@
             <?php include('../partials/header_profile.php'); ?>
     </div>    
     <div class="middle">
-        <div class="webcam">
-            <div><button id="but" autoplay>
-                Enable camera
-            </button></div>
-            <div><video id="vid"></video></div>
+        <div class="container">
+            <form method="POST" action="store_web_pic.php">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="my_camera"></div>
+                        <br/>
+                        <input type=button value="Take Snapshot" onClick="take_snapshot()">
+                        <input type="hidden" name="image" class="image-tag">
+                    </div>
+                    <div class="col-md-6">
+                        <div id="results">Your captured image will appear here...</div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <br/>
+                        <button class="btn btn-success" name="submit-web" value ="submit-web">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
+        <script language="JavaScript">
+            Webcam.set({
+                width: 490,
+                height: 390,
+                image_format: 'jpeg',
+                jpeg_quality: 90
+            });
+        
+            Webcam.attach( '#my_camera' );
+        
+            function take_snapshot() {
+                Webcam.snap( function(data_uri) {
+                    $(".image-tag").val(data_uri);
+                    document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+                } );
+            }
+        </script>
         <br />
         <div class="upload-container">
             <form action="upload.php" method="post" enctype="multipart/form-data">
