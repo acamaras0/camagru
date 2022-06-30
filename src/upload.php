@@ -85,6 +85,27 @@
                 print_msg("Sorry, there was an error uploading your file.");
             }
         }
+        if (isset($_POST['stamp']))
+        {
+            $sticker_path = $_POST['stamp'];
+            $sticker = imagecreatefrompng($sticker_path);
+            if ($file_type == "jpeg" || $file_type == "jpg")
+                $img = imagecreatefromjpeg($photo_file);
+            if ($file_type == "png")
+                $img = imagecreatefrompng($photo_file);
+
+            $margin_r = 1;
+            $margin_b = 1;
+
+            $sx = imagesx($sticker);
+            $sy = imagesy($sticker);
+
+            imagecopy($img, $sticker, imagesx($img) - $sx - $margin_r, imagesy($img) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
+            $scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
+            imagejpeg($scale, $file_name, 100);
+            imagedestroy($img);
+            imagedestroy($scale);
+        }
     }
 ?>
 
@@ -96,8 +117,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload</title>
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
 </head>
 <body>
     <div class="camera">
@@ -108,75 +127,26 @@
     </div>    
     <div class="sticker-container">
         <div class="sticker-middle">
-            <img id="1" onclick="s_Path1()" src="../stickers/unicorn1.png" alt="">
-            <img id="2" onclick="s_Path2()" src="../stickers/unicorn2.png" alt="">
-            <img id="3" onclick="s_Path3()" src="../stickers/unicorn3.png" alt="">
-            <img id="4" onclick="s_Path4()" src="../stickers/unicorn4.png" alt="">
-            <img id="5" onclick="s_Path5()" src="../stickers/unicorn5.png" alt="">
-            <img id="6" onclick="s_Path6()" src="../stickers/unicorn6.png" alt="">
+            <img id="s1" onclick="s_path1()" src="../stickers/unicorn1.png" alt="">
+            <img id="s2" onclick="s_path2()" src="../stickers/unicorn2.png" alt="">
+            <img id="s3" onclick="s_path3()" src="../stickers/unicorn3.png" alt="">
+            <img id="s4" onclick="s_path4()" src="../stickers/unicorn4.png" alt="">
+            <img id="s5" onclick="s_path5()" src="../stickers/unicorn5.png" alt="">
+            <img id="s6" onclick="s_path6()" src="../stickers/unicorn6.png" alt="">
         </div>
     </div>
     <div class="middle">
         <div class="container">
-            <form method="POST" action="store_web_pic.php">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="my_camera"></div>
-                        <br/>
-                        <input type=button value="Take Snapshot" onClick="take_snapshot()">
-                        <input type="hidden" name="image" class="image-tag">
-                    </div>
-                    <div class="col-md-6">
-                        <div id="results">Your captured image will appear here...</div>
-                    </div>
-                    <div class="col-md-12 text-center">
-                        <br/>
-                        <button class="btn btn-success" name="submit-web" value ="submit-web">Submit</button>
-                    </div>
-                </div>
-            </form>
+            <video id="video" width="340" height="240" autoplay></video>
+            <button id="start_camera"><img src="../img/cam.png" width="30"></button>
+            <button id="take_photo"><p>Pick a sticker!</p><img src="../img/capture.png" width="30"></button>
+            <canvas id="canvas" width="375" height="280" value="canvas"></canvas>
+            <form class="form" action="store_web_pic.php" method="POST" enctype="multipart/form-data">
+				<button id="web_add" type="submit" name="submit-web" value="">Submit</button>
+				<input type="hidden" id="web_photo" name="new_pic" value="">
+				<input type="hidden" id="stamp" name="stamp" value="">
+			</form>
         </div>
-        <script language="JavaScript">
-            Webcam.set({
-                width: 490,
-                height: 390,
-                image_format: 'jpeg',
-                jpeg_quality: 100
-            });
-        
-            Webcam.attach( '#my_camera' );
-        
-            function take_snapshot() {
-                Webcam.snap( function(data_uri) {
-                    $(".image-tag").val(data_uri);
-                    document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-                } );
-            }
-
-            function s_path1(){
-
-            }
-
-            function s_path2(){
-                
-            }
-
-            function s_path3(){
-                
-            }
-
-            function s_path4(){
-                
-            }
-
-            function s_path5(){
-                
-            }
-
-            function s_path6(){
-                
-            }
-        </script>
         <br />
         <div class="upload-container">
             <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -184,9 +154,79 @@
 
                 <div class="choose"><input type="file" name="fileToUpload" id="fileToUpload" required></div>
                 <div class="upload"><input type="submit" value="Upload" name="submit"></div>
+                <input type="hidden" id="stamp1" name="stamp" value="">
             </form>
         </div>
     </div>
+        <script>
+
+            let click_button = document.getElementById("take_photo"),
+            start_camera = document.getElementById("start_camera"),
+            canvas = document.getElementById("canvas"),
+            new_pic = document.getElementById("web_photo");
+            stamp_web = document.getElementById("stamp"),
+            stamp_add = document.getElementById("stamp1"),
+            camera = document.getElementById("video"),
+            check = 0,
+            u1 = document.getElementById("s1"),
+            u2 = document.getElementById("s2"),
+            u3 = document.getElementById("s3"),
+            u4 = document.getElementById("s4"),
+            u5 = document.getElementById("s5"),
+            u6 = document.getElementById("s6");
+
+            function s_path1(){
+                stamp_web.value = u1.src;
+                console.log(stamp_web);
+                stamp_add.value = u1.src;
+                check = 1;
+            }
+
+            function s_path2(){
+                stamp_web.value = u2.src;
+                stamp_add.value = u2.src;
+                check = 1;
+            }
+
+            function s_path3(){
+                stamp_web.value = u3.src;
+                stamp_add.value = u3.src;
+                check = 1;                
+            }
+
+            function s_path4(){
+                stamp_web.value = u4.src;
+                stamp_add.value = u4.src;
+                check = 1;
+            }
+
+            function s_path5(){
+                stamp_web.value = u5.src;
+                stamp_add.value = u5.src;
+                check = 1;
+            }
+
+            function s_path6(){
+                stamp_web.value = u6.src;
+                stamp_add.value = u6.src;
+                check = 1;
+            }
+
+            start_camera.addEventListener('click', async function() {
+		        let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+		        video.srcObject = stream;
+        	});
+
+	        click_button.addEventListener('click', function() {
+		        if (check == 1)
+		        {
+			        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+			        let image_data_url = canvas.toDataURL('image/jpeg');
+			        new_pic.value = image_data_url;
+		        }
+	        });
+                
+        </script>
 
     <div class="footer">
         <?php	include('../partials/footer.php');	?>

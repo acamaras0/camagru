@@ -455,11 +455,9 @@ input[type="button"], button.btn.btn-success{
   align-items: center;
 }
 
-
-#results{
+video#video{
   display: flex;
   justify-content: center;
-  margin-top: 2vh;
 }
 
 .col-md-12.text-center{
