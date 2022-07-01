@@ -35,7 +35,7 @@ error_reporting(E_ALL);
             print_msg ("File is not an image.");
             $uploadOk = 0;
         }
-        // Check if file already exists
+         // Check if file already exists
         if (file_exists($target_file)) 
         {
             print_msg("Sorry, file already exists.");

@@ -42,8 +42,8 @@ if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
         $sticker = imagecreatefrompng($sticker_path);
         $picture = imagecreatefromjpeg($file);
 
-        $margin_r = 10;
-		$margin_b = 10;
+        $margin_r = 1;
+		$margin_b = 1;
 	
 		$sx = imagesx($sticker);
 		$sy = imagesy($sticker);
