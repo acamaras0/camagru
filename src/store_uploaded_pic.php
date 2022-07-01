@@ -64,7 +64,8 @@
         } 
         else 
         {
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
+            //move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
             {
                 $conn = connection();
                 $sql = $conn->prepare("INSERT INTO user_pictures(picture_path, picture_name, picture_owner, id_owner, cam_shot)
@@ -112,8 +113,7 @@
 
             imagecopy($img, $sticker, imagesx($img) - $sx - $margin_r, imagesy($img) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
             $scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
-            imagejpeg($scale, $file_name, 100);
-            move_uploaded_file($img, $target_dir);
+            imagejpeg($scale, $target_file, 100);
             imagedestroy($img);
             imagedestroy($scale);
         }
