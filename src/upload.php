@@ -56,7 +56,7 @@ header('location:../index.php');
 
                 <div class="choose"><input type="file" name="fileToUpload" id="fileToUpload" required></div>
                 <div class="upload"><input type="submit" value="Upload" name="submit"></div>
-                <input type="hidden" id="stamp1" name="stamp" value="">
+                <input type="hidden" id="stamp1" name="stamp" value="../stickers/unicorn1.png">
             </form>
         </div>
     </div>
@@ -67,6 +67,8 @@ header('location:../index.php');
             canvas = document.getElementById("canvas"),
             new_pic = document.getElementById("web_photo");
             camera = document.getElementById("video"),
+            sticker_web = document.getElementById("stamp"),
+            sticker_device = document.getElementById("stamp1"),
             check = 0,
             u1 = document.getElementById("s1"),
             u2 = document.getElementById("s2"),
@@ -77,36 +79,48 @@ header('location:../index.php');
 
             function s_path1(){
                 sticker_preview.style.backgroundImage = "url(" + u1.src  +")";
+                sticker_web.value = u1.src;
+                sticker_device.value = u1.src;
                 //sticker_preview1.style.backgroundImage = "url(" + u1.src  +")";
                 check = 1;
             }
 
             function s_path2(){
                 sticker_preview.style.backgroundImage = "url(" + u2.src  +")";
+                sticker_web.value = u2.src;
+                sticker_device.value = u2.src;
                 //sticker_preview1.style.backgroundImage = "url(" + u2.src  +")";
                 check = 1;
             }
 
             function s_path3(){
                 sticker_preview.style.backgroundImage = "url(" + u3.src  +")";
+                sticker_web.value = u3.src;
+                sticker_device.value = u3.src;
                 //sticker_preview1.style.backgroundImage = "url(" + u3.src  +")";
                 check = 1;                
             }
 
             function s_path4(){
                 sticker_preview.style.backgroundImage = "url(" + u4.src  +")";
+                sticker_web.value = u4.src;
+                sticker_device.value = u4.src;
                 //sticker_preview1.style.backgroundImage = "url(" + u4.src  +")";
                 check = 1;
             }
 
             function s_path5(){
                 sticker_preview.style.backgroundImage = "url(" + u5.src  +")";
+                sticker_web.value = u5.src;
+                sticker_device.value = u5.src;
                 //sticker_preview1.style.backgroundImage = "url(" + u5.src  +")";
                 check = 1;
             }
 
             function s_path6(){
                 sticker_preview.style.backgroundImage = "url(" + u6.src  +")";
+                sticker_web.value = u6.src;
+                sticker_device.value = u6.src;
                 //sticker_preview1.style.backgroundImage = "url(" + u6.src  +")";
                 check = 1;
             }

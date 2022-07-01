@@ -95,7 +95,8 @@ error_reporting(E_ALL);
         }
         if (isset($_POST['stamp']))
         {
-            $sticker_path = $_POST['stamp'];
+            $sticker_path = $_POST['stamp1'];
+            echo "<script>console.log('Debug Objects: " . $sticker_path . "' );</script>";
             $sticker = imagecreatefrompng($sticker_path);
             if ($file_type == "jpeg" || $file_type == "jpg")
                 $img = imagecreatefromjpeg($target_file);
