@@ -1,26 +1,26 @@
 <?php
 
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+// ini_set('display_errors', '1');
+// ini_set('display_startup_errors', '1');
+// error_reporting(E_ALL);
 
     session_start();
     require_once("print_msg.php");
     require_once("connection.php");
     require_once("get_user_id.php");
 
-    if (!isset($_SESSION['logged_user_id']))
+    if (empty($_SESSION['logged_in_user']))
         header('location:../index.php');
 
     $target_dir = "../uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $file_name = basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1;
-    $shot = 0;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $pic_owner = $_SESSION['logged_in_user'];
     get_id();
     $user = $_SESSION['logged_user_id'];
+    $uploadOk = 1;
+    $shot = 0;
 
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) 
@@ -83,14 +83,15 @@ error_reporting(E_ALL);
                 else if ($imageFileType == "gif")
                     $img = imagecreatefromgif($target_file);
                 $scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
+                imagejpeg($scale, $target_file, 100);
                 imagedestroy($img);
                 imagedestroy($scale);
                 header("Location: upload.php");
-                print_msg("The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.");
+                //print_msg("The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.");
             }
             else 
             {
-                print_msg("Sorry, there was an error uploading your file.");
+                print_msg("Sorry, there was an error.");
             }
         }
         if (isset($_POST['stamp']))
@@ -99,10 +100,12 @@ error_reporting(E_ALL);
             $sticker = imagecreatefrompng($sticker_path);
             if ($imageFileType == "jpeg" || $imageFileType== "jpg")
                 $img = imagecreatefromjpeg($target_file);
-            if ($imageFileType == "png")
+            else if ($imageFileType == "png")
                 $img = imagecreatefrompng($target_file);
-            $margin_r = 10;
-            $margin_b = 10;
+            else if ($imageFileType == "gif")
+                $img = imagecreatefromgif($target_file);
+            $margin_r = 1;
+            $margin_b = 1;
 
             $sx = imagesx($sticker);
             $sy = imagesy($sticker);
@@ -110,6 +113,7 @@ error_reporting(E_ALL);
             imagecopy($img, $sticker, imagesx($img) - $sx - $margin_r, imagesy($img) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
             $scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
             imagejpeg($scale, $file_name, 100);
+            move_uploaded_file($img, $target_dir);
             imagedestroy($img);
             imagedestroy($scale);
         }
