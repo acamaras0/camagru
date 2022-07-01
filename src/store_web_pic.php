@@ -6,17 +6,18 @@ require_once('print_msg.php');
 
 if (isset($_SESSION['logged_in_user']) == "")
     header("Location: landing.php");
+
 if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
 {
     header("Location: upload.php");
     get_id();
     $user = $_SESSION['logged_user_id'];
     $pic_owner = $_SESSION['logged_in_user'];
-    $img = $_POST['new_pic'];
+    $picture = $_POST['new_pic'];
     $folderPath = "../uploads/";
     $shot = 1;
     $sticker_path = $_POST['stamp'];
-    $image_parts = explode(";base64,", $img);
+    $image_parts = explode(";base64,", $picture);
     $image_type_aux = explode("image/", $image_parts[0]);
     $image_type = $image_type_aux[1];
     
@@ -47,10 +48,10 @@ if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
 		$sx = imagesx($sticker);
 		$sy = imagesy($sticker);
 
-        imagecopy($img, $sticker, imagesx($img) - $sx - $margin_r, imagesy($img) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
+        imagecopy($picture, $sticker, imagesx($picture) - $sx - $margin_r, imagesy($picture) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
 		header('Content-type: image/png');
-		imagejpeg($img, $file, 95);
-		imagedestroy($img);
+		imagejpeg($picture, $file, 95);
+		imagedestroy($picture);
         print_msg("The file ". $file_name . "has been uploaded.");
 
     }

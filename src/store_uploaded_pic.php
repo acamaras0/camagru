@@ -87,7 +87,7 @@ error_reporting(E_ALL);
                 imagedestroy($scale);
                 header("Location: upload.php");
                 print_msg("The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.");
-            } 
+            }
             else 
             {
                 print_msg("Sorry, there was an error uploading your file.");
@@ -95,16 +95,14 @@ error_reporting(E_ALL);
         }
         if (isset($_POST['stamp']))
         {
-            $sticker_path = $_POST['stamp1'];
-            echo "<script>console.log('Debug Objects: " . $sticker_path . "' );</script>";
+            $sticker_path = $_POST['stamp'];
             $sticker = imagecreatefrompng($sticker_path);
-            if ($file_type == "jpeg" || $file_type == "jpg")
+            if ($imageFileType == "jpeg" || $imageFileType== "jpg")
                 $img = imagecreatefromjpeg($target_file);
-            if ($file_type == "png")
+            if ($imageFileType == "png")
                 $img = imagecreatefrompng($target_file);
-
-            $margin_r = 1;
-            $margin_b = 1;
+            $margin_r = 10;
+            $margin_b = 10;
 
             $sx = imagesx($sticker);
             $sy = imagesy($sticker);

@@ -45,7 +45,7 @@ header('location:../index.php');
             <canvas id="canvas" width="375" height="280" value="canvas"></canvas>
             <form class="form" action="store_web_pic.php" method="POST" enctype="multipart/form-data">
                 <button id="web_add" type="submit" name="submit-web" value="">Submit</button>
-				<input type="image" id="web_photo" name="new_pic" value="">
+				<input type="hidden" id="web_photo" name="new_pic" value="">
 				<input type="hidden" id="stamp" name="stamp" value="">
 			</form>
         </div>
@@ -56,7 +56,7 @@ header('location:../index.php');
 
                 <div class="choose"><input type="file" name="fileToUpload" id="fileToUpload" required></div>
                 <div class="upload"><input type="submit" value="Upload" name="submit"></div>
-                <input type="hidden" id="stamp1" name="stamp" value="../stickers/unicorn1.png">
+                <input type="hidden" id="stamp1" name="stamp" value="">
             </form>
         </div>
     </div>
