@@ -466,6 +466,16 @@ form.comments
   background-position-y: top;
 }
 
+.canvas-preview {
+  position:absolute;
+  height: 280px;
+  width: 375px;
+  background-repeat: no-repeat;
+  background-size: 90px;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+
 .sticker-middle{
   display: flex;
   flex-direction: center;

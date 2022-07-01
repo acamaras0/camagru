@@ -62,6 +62,7 @@ if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
 }
 else
 {
-    print_msg("Something went wrong.");
+    print_msg("You forgot to pick a sticker!");
+    header("Refresh: 3; upload.php");
 }
 ?>
