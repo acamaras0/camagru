@@ -28,11 +28,11 @@ header('location:../index.php');
         <p>Pick a sticker:</p>
             <div class="sticker-container">
                 <div class="sticker-middle">
-                    <img id="s1" onclick="s_path1()" src="../stickers/unicorn1.png" alt="">
-                    <img id="s2" onclick="s_path2()" src="../stickers/unicorn2.png" alt="">
-                    <img id="s3" onclick="s_path3()" src="../stickers/unicorn3.png" alt="">
-                    <img id="s4" onclick="s_path4()" src="../stickers/unicorn4.png" alt="">
-                    <img id="s5" onclick="s_path5()" src="../stickers/unicorn5.png" alt="">
+                    <img id="s1" src="../stickers/unicorn1.png" alt="">
+                    <img id="s2" src="../stickers/unicorn2.png" alt="">
+                    <img id="s3" src="../stickers/unicorn3.png" alt="">
+                    <img id="s4" src="../stickers/unicorn4.png" alt="">
+                    <img id="s5" src="../stickers/unicorn5.png" alt="">
                 </div>
             </div>
             <button id="start_camera">Open camera!</button>
@@ -48,6 +48,7 @@ header('location:../index.php');
                 <button id="web_add" type="submit" name="submit-web" value="">Submit</button>
 				<input type="hidden" id="web_photo" name="new_pic" value="">
 				<input type="hidden" id="stamp" name="stamp" value="">
+                <input type="hidden" id="stamp0" name="stamp0" value="">
 			</form>
         </div>
         <br />
@@ -57,6 +58,7 @@ header('location:../index.php');
                 <div class="choose"><input type="file" name="fileToUpload" id="fileToUpload" required></div>
                 <div class="upload"><input type="submit" value="Upload" name="submit"></div>
                 <input type="hidden" id="stamp1" name="stamp" value="">
+                <input type="hidden" id="stamp2" name="stamp0" value="">
             </form>
         </div>
     </div>
@@ -67,52 +69,51 @@ header('location:../index.php');
             new_pic = document.getElementById("web_photo");
             camera = document.getElementById("video"),
             sticker_web = document.getElementById("stamp"),
+            sticker_web1 = document.getElementById("stamp0"),
             sticker_device = document.getElementById("stamp1"),
+            sticker_device1 = document.getElementById("stamp2"),
             check = 0,
+            click = 0;
             u1 = document.getElementById("s1"),
             u2 = document.getElementById("s2"),
             u3 = document.getElementById("s3"),
             u4 = document.getElementById("s4"),
             u5 = document.getElementById("s5");
 
-            function s_path1(){
-                canvas_preview.style.backgroundImage = "url(" + u1.src  +")";
-                sticker_web.value = u1.src;
-                sticker_device.value = u1.src;
-                //sticker_preview1.style.backgroundImage = "url(" + u1.src  +")";
-                check = 1;
-            }
+            const paths = new Array(
+                "../stickers/unicorn1.png",
+                "../stickers/unicorn2.png",
+                "../stickers/unicorn3.png",
+                "../stickers/unicorn4.png",
+                "../stickers/unicorn5.png",
+            )
 
-            function s_path2(){
-                canvas_preview.style.backgroundImage = "url(" + u2.src  +")";
-                sticker_web.value = u2.src;
-                sticker_device.value = u2.src;
-                //sticker_preview1.style.backgroundImage = "url(" + u2.src  +")";
-                check = 1;
-            }
+            u1.addEventListener("click", () => sticker(0));
+            u2.addEventListener("click", () => sticker(1));
+            u3.addEventListener("click", () => sticker(2));
+            u4.addEventListener("click", () => sticker(3));
+            u5.addEventListener("click", () => sticker(4));
 
-            function s_path3(){
-                canvas_preview.style.backgroundImage = "url(" + u3.src  +")";
-                sticker_web.value = u3.src;
-                sticker_device.value = u3.src;
-                //sticker_preview1.style.backgroundImage = "url(" + u3.src  +")";
-                check = 1;                
-            }
-
-            function s_path4(){
-                canvas_preview.style.backgroundImage = "url(" + u4.src  +")";
-                sticker_web.value = u4.src;
-                sticker_device.value = u4.src;
-                //sticker_preview1.style.backgroundImage = "url(" + u4.src  +")";
+            function sticker(i){
+                click++;
                 check = 1;
-            }
 
-            function s_path5(){
-                canvas_preview.style.backgroundImage = "url(" + u5.src  +")";
-                sticker_web.value = u5.src;
-                sticker_device.value = u5.src;
-                //sticker_preview1.style.backgroundImage = "url(" + u5.src  +")";
-                check = 1;
+                if (click===1)
+                {
+                    canvas_preview.style.backgroundImage = "url(" + paths[i]  +")";
+                    sticker_web.value = paths[i];
+                    sticker_device.value = paths[i];
+                    click++;
+                }
+                else if (click === 2)
+                {
+                    canvas_preview1.style.backgroundImage = "url(" + paths[i]  +")";
+                    sticker_web1.value = paths[i];
+                    sticker_device1.value = paths[i];
+                    click++;
+                }
+                if (click === 3)
+                    click = 1;
             }
 
             start_camera.addEventListener('click', async function() {

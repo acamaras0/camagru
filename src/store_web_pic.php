@@ -17,6 +17,7 @@ if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
     $folderPath = "../uploads/";
     $shot = 1;
     $sticker_path = $_POST['stamp'];
+    $sticker_path0 = $_POST['stamp0'];
     $image_parts = explode(";base64,", $picture);
     $image_type_aux = explode("image/", $image_parts[0]);
     $image_type = $image_type_aux[1];
@@ -49,8 +50,17 @@ if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
 		$sy = imagesy($sticker);
 
         imagecopy($picture, $sticker, imagesx($picture) - $sx - $margin_r, imagesy($picture) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
-		header('Content-type: image/png');
-		imagejpeg($picture, $file, 95);
+        if (isset($_POST['stamp0']))
+        {
+            $sticker0 = imagecreatefrompng($sticker_path0);
+            $sx0 = imagesx($sticker0);
+		    $sy0 = imagesy($sticker0);
+            $margin_l=260;
+            $margin_t=160;
+            imagecopy($picture, $sticker0, imagesx($picture) - $sx0 - $margin_l, imagesy($picture) - $sy0 - $margin_t, 0, 0, imagesx($sticker0), imagesy($sticker0));
+        }
+        header('Content-type: image/png');
+		imagejpeg($picture, $file, 100);
 		imagedestroy($picture);
         print_msg("The file ". $file_name . "has been uploaded.");
 

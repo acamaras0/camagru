@@ -112,6 +112,16 @@
             $sy = imagesy($sticker);
 
             imagecopy($img, $sticker, imagesx($img) - $sx - $margin_r, imagesy($img) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
+            if (isset($_POST['stamp0']))
+            {
+                $sticker_path0 = $_POST['stamp0'];
+                $sticker0 = imagecreatefrompng($sticker_path0);
+                $sx0 = imagesx($sticker0);
+                $sy0 = imagesy($sticker0);
+                $margin_l=270;
+                $margin_t=125;
+                imagecopy($img, $sticker0, imagesx($img) - $sx0 - $margin_l, imagesy($img) - $sy0 - $margin_t, 0, 0, imagesx($sticker0), imagesy($sticker0));
+            }
             $scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
             imagejpeg($scale, $target_file, 100);
             imagedestroy($img);
