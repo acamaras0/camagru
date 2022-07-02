@@ -56,14 +56,11 @@ html {
   .arrows{
   font-size: 10px;
   }
-  .border-profile{
-    width:44vh;
-  }
 }
 .images-container{
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   margin-right: 10px;
   margin-top: 51px;
 }
