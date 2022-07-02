@@ -14,7 +14,7 @@ a.index-picture {
 img.picture
 {
   margin-top: 2%;
-  border: 7px white solid;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.09);
 }
 
 .index-cam {
@@ -33,7 +33,7 @@ html {
     #6654f1 100%
   ); */
   /*background-color: #ffffff;*/
-  background-image: url("img/background2.png");
+  background-image: url("img/background.png");
   color: rgb(0, 0, 0);
   font-family: "Cormorant Garamond", serif;
   font-size: 1.5vh;
@@ -49,12 +49,15 @@ html {
   width: 100%;
 }
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 390px){
   .center-container{
   flex-direction: column;
   }
   .arrows{
   font-size: 10px;
+  }
+  .border-profile{
+    width:44vh;
   }
 }
 .images-container{
@@ -72,6 +75,7 @@ html {
   align-items: center;
   margin-top: 1vh;
   flex-direction: column;
+  font-size: large;
 }
 
 .middle-profile{
@@ -90,10 +94,12 @@ html {
   flex-direction: column;
   justify-content: center;
   /*background-color: rgba(183, 176, 250, 0.452);*/
-  background-color: rgb(120 145 197 / 92%);
+  /*background-color: rgb(120 145 197 / 92%);*/
+  background-image: url("img/background.png");
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 3vw;
   border-radius: none;
-  width: 50vh;
+  width: 44vh;
   line-height: 1;
   font-size: large;
 } 
@@ -122,9 +128,24 @@ html {
   background-color: inherit;
 }
 
-.border-profile button.submit-comment:hover {
+.border-profile button.submit-comment:hover, button.like:hover {
   opacity: 0.6;
   transform: scale(1.1);
+}
+
+.border-profile button.like{
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s opacity, 0.3s transform;
+  margin-bottom: 1vh;
+  margin-top: 2vh;
+  background-color: inherit;
+}
+
+p.like_count{
+  margin-top: 2.7vh;
+
 }
 
 .username{
@@ -138,7 +159,9 @@ html {
   justify-content: center;
   text-align: center;
   /*background-color:  rgba(183, 176, 250, 0.452);*/
-  background-color: rgb(120 145 197 / 69%);
+  /* background-color: rgb(120 145 197 / 69%); */
+  background-image: url("img/background.png");
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 50px;
   border-radius: none;
   width: 260px;
@@ -152,7 +175,9 @@ html {
   justify-content: center;
   text-align: center;
   /*background-color:  rgba(183, 176, 250, 0.452);*/
-  background-color: rgb(120 145 197 / 69%);
+  /* background-color: rgb(120 145 197 / 69%); */
+  background-image: url("img/background.png");
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 48px;
   border-radius: none;
   width: 260px;
@@ -168,6 +193,7 @@ html {
 .picture-gallery{
   width: 30%;
   border: 2px rgba(183, 176, 250, 0.452);
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   border-radius: 2%;
 }
 
@@ -187,7 +213,7 @@ html {
   font-size: 20px;
   border: none;
   color: rgb(10, 10, 10);
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(202, 202, 202);
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
 }
@@ -199,9 +225,10 @@ html {
 
 .pagination {
   text-align: center;
-  font-size: large;
+  font-size: medium;
+  font-family: Arial, Helvetica, sans-serif;
   color: rgb(0, 0, 0);
-  padding-top: 10px;
+  padding-top: 20px;
 }
 .camera-index {
   display: flex;
@@ -213,12 +240,15 @@ html {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: rgb(120 145 197 / 69%);
+  background-image: url("img/background.png");
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
+  /* background-color: rgb(120 145 197 / 69%); */
   /*background-color: rgb(184, 176, 250);*/
   padding: 50px;
   border-radius: none;
   width: 260px;
   line-height: 2;
+  font-size: large;
 }
 
 .upload-container input{
@@ -266,7 +296,7 @@ input[type="file"]::file-selector-button {
   border: none;
   color: rgb(3, 3, 3);
   /*background-color: rgb(184, 176, 250);*/
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(202, 202, 202);
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
 }
@@ -279,12 +309,6 @@ input[type="file"]::file-selector-button {
 .input-element label {
   margin-bottom: 0;
 }
-
-/* footer{
-  position: absolute;
-  right: 45%;
-  bottom: 0;
-} */
 
 footer div {
   text-align: center;
@@ -321,7 +345,9 @@ div.login {
   text-align: center;
   color: black;
   /*background-color: rgb(184, 176, 250);*/
-  background-color: rgb(120 145 197 / 69%);
+  /* background-color: rgb(120 145 197 / 69%); */
+  background-image: url("img/background.png");
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 3%;
   margin: 3%;
 }
@@ -332,8 +358,10 @@ div.login {
   margin-top: 7px;
   text-align: center;
   color: black;
-  background-color: rgb(120 145 197 / 69%);
+  /* background-color: rgb(120 145 197 / 69%); */
   /*background-color: rgb(184, 176, 250);*/
+  background-image: url("img/background.png");
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 3%;
   margin: 5%;
   margin-top: 50%;
@@ -380,10 +408,10 @@ div.logout{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: rgb(120 145 197 / 69%);
   padding: 50px;
   border-radius: none;
   width: 260px;
+  font-size: large;
 }
 input.notif
 {
@@ -396,7 +424,7 @@ input.notif
 
 textarea {
   width: 100%;
-  height: 4vh;
+  height: 6vh;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
@@ -418,23 +446,11 @@ form.comments
   display: flex;
 }
 
-.border-profile button.like {
-  margin-top: 25%;
-  border-radius: none;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-  transition: 0.3s opacity, 0.3s transform;
-}
-.border-profile button.like:hover {
-  opacity: 0.6;
-  transform: scale(1.1);
-}
-
 .like-container{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   display: flex;
+  background-color: inherit;
 }
 
 .container {
@@ -479,8 +495,9 @@ form.comments
 .sticker-middle{
   display: flex;
   flex-direction: center;
+  font-size: large;
   height: 15vh;
-  border: solid rgb(120 145 197 / 69%) 3px;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   background-color: rgba(255, 255, 255, 0.664);
 }
 
@@ -492,4 +509,18 @@ form.comments
 .sticker-container img
 {
   height:85%;
+}
+
+button#take_photo, button#web_add, button#start_camera {
+  border-radius: none;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: large;
+  cursor: pointer;
+  transition: 0.3s opacity, 0.3s transform;
+  margin-top: 2vh;
+}
+button#take_photo:hover , button#web_add:hover , button#start_camera:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
 }

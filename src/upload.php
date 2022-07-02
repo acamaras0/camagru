@@ -25,20 +25,20 @@ header('location:../index.php');
     </br>    
     <div class="middle">
         <div class="container">
-            <button id="start_camera"><img src="../img/cam.png" width="30">Open camera!</button>
+            <button id="start_camera">Open camera!</button>
             <div class="view-finder">
                 <div class="sticker-preview" id="sticker_preview"></div>
                 <div class="sticker-preview1" id="sticker_preview1"></div>
                 <video id="video" width="340" height="240" autoplay></video>
             </div>
-            <button id="take_photo"><img src="../img/capture.png" width="30">Take a photo!</button>
+            <button id="take_photo"><img src="../img/capture.png" width="30"></button>
             <div class="view-finder">
                 <div class="canvas-preview" id="canvas_preview"></div>
                 <canvas id="canvas" width="375" height="280" value="canvas"></canvas>
             </div>
+            <p>Pick a sticker:</p>
             <div class="sticker-container">
                 <div class="sticker-middle">
-                    <p>Pick a sticker:</p>
                     <img id="s1" onclick="s_path1()" src="../stickers/unicorn1.png" alt="">
                     <img id="s2" onclick="s_path2()" src="../stickers/unicorn2.png" alt="">
                     <img id="s3" onclick="s_path3()" src="../stickers/unicorn3.png" alt="">
@@ -56,8 +56,7 @@ header('location:../index.php');
         <br />
         <div class="upload-container">
             <form action="store_uploaded_pic.php" method="post" enctype="multipart/form-data">
-                Or select image to upload:
-
+                Or select an image to upload:
                 <div class="choose"><input type="file" name="fileToUpload" id="fileToUpload" required></div>
                 <div class="upload"><input type="submit" value="Upload" name="submit"></div>
                 <input type="hidden" id="stamp1" name="stamp" value="">
