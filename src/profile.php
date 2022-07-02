@@ -66,19 +66,23 @@
                                 <button  class="submit-comment" type="submit" name="submit" value="OK"><img src="../img/send.png" width="18" alt="del"></button>
                             </form>
                         <?php
-                        $comments = "SELECT * FROM user_comments WHERE picture_name='$id'";
-                        $qry_comments= $conn->query($comments);
-                        $res_comments = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
-                        foreach($res_comments as $key_comments)
+                            $comments = "SELECT * FROM user_comments WHERE picture_name='$id'";
+                            $qry_comments= $conn->query($comments);
+                            $res_comments = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
+                            $id_username = $res_comments[0]['id_owner'];
+                            $sql = "SELECT u_name FROM user_info WHERE id='$id_username'"; 
+                            $qry = $conn->query($sql);
+                            $u_name = $qry->fetchAll(PDO::FETCH_ASSOC);
+                            foreach($res_comments as $key_comments)
                         {
                         ?>
                             <!DOCTYPE html>
                             <html lang="en">
                             <body>
-                                <div class="show-comments">
-                                    <p class="com"><div class="user_com"><?php echo "@". $key_comments['picture_owner']?>
-                                    &nbsp<?php echo $key_comments['comments']?></div></p>
-                                </div>
+                            <div class="show-comments">
+                                <p class="com"><div class="user_com"><?php echo "@". $u_name[0]['u_name']?>
+                                &nbsp<?php echo $key_comments['comments']?></div></p>
+                            </div>
                         </body>
                         </html>
                         <?php
