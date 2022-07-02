@@ -88,8 +88,8 @@ if(isset($_POST['submit']))
                     $sql = $conn->prepare("UPDATE user_comments SET picture_owner=:picture_owner WHERE picture_owner='$user'");
                     $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
                     $sql->execute();
-                    $sql = $conn->prepare("UPDATE user_likes SET picture_owner=:picture_owner WHERE picture_owner='$user'");
-                    $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
+                    $sql = $conn->prepare("UPDATE user_likes SET like_owner=:like_owner WHERE like_owner='$user'");
+                    $sql->bindParam(':like_owner', $new_username, PDO::PARAM_STR);
                     $sql->execute();
                 }
                 catch(PDOException $e)
@@ -148,10 +148,9 @@ else if (isset($_POST['delete_user']))
         try
         {
             $conn = connection();
-            $sql = "SELECT picture_path FROM user_pictures WHERE id_owner:='$user_id'";
+            $sql = "SELECT picture_path FROM user_pictures WHERE id_owner='$user_id'";
             $qry = $conn->query($sql);
             $res = $qry->fetchAll(PDO::FETCH_ASSOC);
-            print_r($res);
             foreach($res as $key)
             {
                 $path = $key['picture_path'];
@@ -181,8 +180,8 @@ else if (isset($_POST['delete_user']))
         }
         $conn = null;
         print_msg("Account deleted successfully!");
-        header('Refresh: 10; ../index.php');
         $_SESSION['logged_in_user'] == "";
+        header('Refresh: 2; landing.php');
     }
     else
     {

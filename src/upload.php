@@ -25,18 +25,18 @@ header('location:../index.php');
     </br>    
     <div class="middle">
         <div class="container">
-        <p>Pick a sticker:</p>
-            <div class="sticker-container">
-                <div class="sticker-middle">
-                    <img id="s1" src="../stickers/unicorn1.png" alt="">
-                    <img id="s2" src="../stickers/unicorn2.png" alt="">
-                    <img id="s3" src="../stickers/unicorn3.png" alt="">
-                    <img id="s4" src="../stickers/unicorn4.png" alt="">
-                    <img id="s5" src="../stickers/unicorn5.png" alt="">
-                </div>
-            </div>
             <button id="start_camera">Open camera!</button>
-                <video id="video" width="340" height="240" autoplay></video>
+            <video id="video" width="340" height="240" autoplay></video>
+            <p>Pick a sticker:</p>
+                <div class="sticker-container">
+                    <div class="sticker-middle">
+                        <img id="s1" src="../stickers/unicorn1.png" alt="">
+                        <img id="s2" src="../stickers/unicorn2.png" alt="">
+                        <img id="s3" src="../stickers/unicorn3.png" alt="">
+                        <img id="s4" src="../stickers/unicorn4.png" alt="">
+                        <img id="s5" src="../stickers/unicorn5.png" alt="">
+                    </div>
+                </div>
             <button id="take_photo"><img src="../img/capture.png" width="30"></button>
             <div class="view-finder">
                 <div class="canvas-preview" id="canvas_preview"></div>
