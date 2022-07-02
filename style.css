@@ -462,26 +462,6 @@ form.comments
   position:relative;
 }
 
-.sticker-preview {
-  position:absolute;
-  height: 240px;
-  width: 328px;
-  background-repeat: no-repeat;
-  background-size: 90px;
-  background-position-x: right;
-  background-position-y: bottom;
-}
-
-.sticker-preview1 {
-  position:absolute;
-  height: 240px;
-  width: 328px;
-  background-repeat: no-repeat;
-  background-size: 90px;
-  background-position-x: left;
-  background-position-y: top;
-}
-
 .canvas-preview {
   position:absolute;
   height: 280px;
@@ -492,6 +472,15 @@ form.comments
   background-position-y: bottom;
 }
 
+.canvas-preview1 {
+  position:absolute;
+  height: 280px;
+  width: 375px;
+  background-repeat: no-repeat;
+  background-size: 90px;
+  background-position-x: left;
+  background-position-y: top;
+}
 .sticker-middle{
   display: flex;
   flex-direction: center;

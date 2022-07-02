@@ -25,18 +25,7 @@ header('location:../index.php');
     </br>    
     <div class="middle">
         <div class="container">
-            <button id="start_camera">Open camera!</button>
-            <div class="view-finder">
-                <div class="sticker-preview" id="sticker_preview"></div>
-                <div class="sticker-preview1" id="sticker_preview1"></div>
-                <video id="video" width="340" height="240" autoplay></video>
-            </div>
-            <button id="take_photo"><img src="../img/capture.png" width="30"></button>
-            <div class="view-finder">
-                <div class="canvas-preview" id="canvas_preview"></div>
-                <canvas id="canvas" width="375" height="280" value="canvas"></canvas>
-            </div>
-            <p>Pick a sticker:</p>
+        <p>Pick a sticker:</p>
             <div class="sticker-container">
                 <div class="sticker-middle">
                     <img id="s1" onclick="s_path1()" src="../stickers/unicorn1.png" alt="">
@@ -44,9 +33,17 @@ header('location:../index.php');
                     <img id="s3" onclick="s_path3()" src="../stickers/unicorn3.png" alt="">
                     <img id="s4" onclick="s_path4()" src="../stickers/unicorn4.png" alt="">
                     <img id="s5" onclick="s_path5()" src="../stickers/unicorn5.png" alt="">
-                    <img id="s6" onclick="s_path6()" src="../stickers/unicorn6.png" alt="">
                 </div>
             </div>
+            <button id="start_camera">Open camera!</button>
+                <video id="video" width="340" height="240" autoplay></video>
+            <button id="take_photo"><img src="../img/capture.png" width="30"></button>
+            <div class="view-finder">
+                <div class="canvas-preview" id="canvas_preview"></div>
+                <div class="canvas-preview1" id="canvas_preview1"></div>
+                <canvas id="canvas" width="375" height="280" value="canvas"></canvas>
+            </div>
+            
             <form class="form" action="store_web_pic.php" method="POST" enctype="multipart/form-data">
                 <button id="web_add" type="submit" name="submit-web" value="">Submit</button>
 				<input type="hidden" id="web_photo" name="new_pic" value="">
@@ -64,7 +61,6 @@ header('location:../index.php');
         </div>
     </div>
         <script>
-
             let click_button = document.getElementById("take_photo"),
             start_camera = document.getElementById("start_camera"),
             canvas = document.getElementById("canvas"),
@@ -77,11 +73,9 @@ header('location:../index.php');
             u2 = document.getElementById("s2"),
             u3 = document.getElementById("s3"),
             u4 = document.getElementById("s4"),
-            u5 = document.getElementById("s5"),
-            u6 = document.getElementById("s6");
+            u5 = document.getElementById("s5");
 
             function s_path1(){
-                sticker_preview.style.backgroundImage = "url(" + u1.src  +")";
                 canvas_preview.style.backgroundImage = "url(" + u1.src  +")";
                 sticker_web.value = u1.src;
                 sticker_device.value = u1.src;
@@ -90,7 +84,6 @@ header('location:../index.php');
             }
 
             function s_path2(){
-                sticker_preview.style.backgroundImage = "url(" + u2.src  +")";
                 canvas_preview.style.backgroundImage = "url(" + u2.src  +")";
                 sticker_web.value = u2.src;
                 sticker_device.value = u2.src;
@@ -99,7 +92,6 @@ header('location:../index.php');
             }
 
             function s_path3(){
-                sticker_preview.style.backgroundImage = "url(" + u3.src  +")";
                 canvas_preview.style.backgroundImage = "url(" + u3.src  +")";
                 sticker_web.value = u3.src;
                 sticker_device.value = u3.src;
@@ -108,7 +100,6 @@ header('location:../index.php');
             }
 
             function s_path4(){
-                sticker_preview.style.backgroundImage = "url(" + u4.src  +")";
                 canvas_preview.style.backgroundImage = "url(" + u4.src  +")";
                 sticker_web.value = u4.src;
                 sticker_device.value = u4.src;
@@ -117,20 +108,10 @@ header('location:../index.php');
             }
 
             function s_path5(){
-                sticker_preview.style.backgroundImage = "url(" + u5.src  +")";
                 canvas_preview.style.backgroundImage = "url(" + u5.src  +")";
                 sticker_web.value = u5.src;
                 sticker_device.value = u5.src;
                 //sticker_preview1.style.backgroundImage = "url(" + u5.src  +")";
-                check = 1;
-            }
-
-            function s_path6(){
-                sticker_preview.style.backgroundImage = "url(" + u6.src  +")";
-                canvas_preview.style.backgroundImage = "url(" + u6.src  +")";
-                sticker_web.value = u6.src;
-                sticker_device.value = u6.src;
-                //sticker_preview1.style.backgroundImage = "url(" + u6.src  +")";
                 check = 1;
             }
 
@@ -140,12 +121,12 @@ header('location:../index.php');
         	});
 
 	        click_button.addEventListener('click', function() {
-		        // if (check == 1)
-		        // {
+                if (check == 1)
+                {
 			        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
 			        let image_data_url = canvas.toDataURL('image/jpeg');
 			        new_pic.value = image_data_url;
-		        // }
+                }
 	        });
                 
         </script>
