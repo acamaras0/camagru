@@ -86,7 +86,7 @@
                     $img = imagecreatefromgif($target_file);
                 $scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
                 if ($imageFileType == "gif")
-                    imagegif($scale, $target_file);
+                    imagegif($scale, $img);
                 else if ($imageFileType == "png")
                     imagepng($scale, $target_file);
                 else
@@ -106,6 +106,10 @@
             $sticker = imagecreatefrompng($sticker_path);
             if ($imageFileType == "jpeg" || $imageFileType== "jpg")
                 $img = imagecreatefromjpeg($target_file);
+            else if ($imageFileType == "png")
+                $img = imagecreatefrompng($target_file);
+            else if ($imageFileType == "gif")
+                $img = imagecreatefromgif($target_file);
             $margin_r = 1;
             $margin_b = 1;
 
