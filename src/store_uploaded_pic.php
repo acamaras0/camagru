@@ -16,8 +16,8 @@
     $target_dir = "../uploads/";
     $target_file1 = $target_dir . $file_name;
     $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
-    if ($imageFileType1 != "gif")
-        $file_name = uniqid(). ".jpeg";
+    if ($imageFileType1 != "gif" && $imageFileType1 != "png")
+        $file_name = uniqid() . ".jpeg";
     $target_file = $target_dir . $file_name;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $pic_owner = $_SESSION['logged_in_user'];
@@ -54,9 +54,9 @@
         }
         
         // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" )
+        if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "gif" )
         {
-            print_msg ("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+            print_msg ("Sorry, only JPG, JPEG & GIF files are allowed.");
             $uploadOk = 0;
         }
         
@@ -86,15 +86,13 @@
                     $img = imagecreatefrompng($target_file);
                 else if ($imageFileType == "gif")
                     $img = imagecreatefromgif($target_file);
-                //$scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
+                $scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
                 if ($imageFileType == "gif")
-                    imagegif($img, $target_file, 100);
-                else if ($imageFileType == "png")
-                    imagepng($img, $target_file, 100);
+                    imagegif($scale, $target_file1);
                 else
-                    imagejpeg($img, $target_file, 100);
+                    imagejpeg($scale, $target_file, 100);
                 imagedestroy($img);
-                //imagedestroy($scale);
+                imagedestroy($scale);
                 header("Location: upload.php");
             }
             else 
@@ -108,10 +106,6 @@
             $sticker = imagecreatefrompng($sticker_path);
             if ($imageFileType == "jpeg" || $imageFileType== "jpg")
                 $img = imagecreatefromjpeg($target_file);
-            else if ($imageFileType == "png")
-                $img = imagecreatefrompng($target_file);
-            else if ($imageFileType == "gif")
-                $img = imagecreatefromgif($target_file);
             $margin_r = 1;
             $margin_b = 1;
 
@@ -129,15 +123,10 @@
                 $margin_t=125;
                 imagecopy($img, $sticker0, imagesx($img) - $sx0 - $margin_l, imagesy($img) - $sy0 - $margin_t, 0, 0, imagesx($sticker0), imagesy($sticker0));
             }
-            //$scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
-            if ($imageFileType == "gif")
-                imagegif($scale, $target_file, 100);
-            else if ($imageFileType == "png")
-                imagepng($scale, $target_file, 100);
-            else
-                imagejpeg($scale, $target_file, 100);
+            $scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
+            imagejpeg($scale, $target_file, 100);
             imagedestroy($img);
-            //imagedestroy($scale);
+            imagedestroy($scale);
         }
     }
 ?>
