@@ -430,6 +430,7 @@ textarea {
   font-size: 16px;
   resize: none;
   margin-top: 7px;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.07);
 }
 
 form.comments
@@ -439,8 +440,12 @@ form.comments
 
 .show-comments
 {
-  background-color: white;
+  background-color: #dddcd773;
   display: flex;
+  padding: 2%;
+  border: 2px;
+  border-radius: 3px;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
 }
 
 .like-container{
@@ -519,6 +524,7 @@ form.comments
 }
 
 button#take_photo, button#web_add, button#start_camera {
+  padding-top: 5px;
   border-radius: none;
   background-color: inherit;
   font-family: inherit;
