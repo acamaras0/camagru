@@ -12,13 +12,11 @@
     if (empty($_SESSION['logged_in_user']))
         header('location:../index.php');
 
-    $file_name = basename($_FILES["fileToUpload"]["name"]);
     $target_dir = "../uploads/";
+    $file_name1 = basename($_FILES["fileToUpload"]["name"]);
+    $file_name = str_replace(" ", "", $file_name1);
     $target_file1 = $target_dir . $file_name;
-    $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
-    if ($imageFileType1 != "gif" && $imageFileType1 != "png")
-        $file_name = uniqid() . ".jpeg";
-    $target_file = $target_dir . $file_name;
+    $target_file = str_replace(" ", "", $target_file1);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $pic_owner = $_SESSION['logged_in_user'];
     get_id();
@@ -54,9 +52,9 @@
         }
         
         // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "gif" )
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" )
         {
-            print_msg ("Sorry, only JPG, JPEG & GIF files are allowed.");
+            print_msg ("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
             $uploadOk = 0;
         }
         
@@ -68,7 +66,7 @@
         } 
         else 
         {
-            if (move_uploaded_file(trim($_FILES["fileToUpload"]["tmp_name"], " "), $target_file))
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
             {
                 $conn = connection();
                 $sql = $conn->prepare("INSERT INTO user_pictures(picture_path, picture_name, picture_owner, id_owner, cam_shot)
@@ -88,7 +86,9 @@
                     $img = imagecreatefromgif($target_file);
                 $scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
                 if ($imageFileType == "gif")
-                    imagegif($scale, $target_file1);
+                    imagegif($scale, $target_file);
+                else if ($imageFileType == "png")
+                    imagepng($scale, $target_file);
                 else
                     imagejpeg($scale, $target_file, 100);
                 imagedestroy($img);
@@ -124,7 +124,12 @@
                 imagecopy($img, $sticker0, imagesx($img) - $sx0 - $margin_l, imagesy($img) - $sy0 - $margin_t, 0, 0, imagesx($sticker0), imagesy($sticker0));
             }
             $scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
-            imagejpeg($scale, $target_file, 100);
+            if ($imageFileType == "gif")
+                imagegif($scale, $target_file);
+            else if ($imageFileType == "png")
+                imagepng($scale, $target_file);
+            else
+                imagejpeg($scale, $target_file, 100);
             imagedestroy($img);
             imagedestroy($scale);
         }
