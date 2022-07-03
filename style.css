@@ -459,6 +459,27 @@ form.comments
   position:relative;
 }
 
+.sticker-preview{
+  position:absolute;
+  height: 230px;
+  width: 330px;
+  background-repeat: no-repeat;
+  background-size: 90px;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+
+.sticker-preview1{
+  position:absolute;
+  height: 230px;
+  width: 330px;
+  margin-left: 3vh;
+  background-repeat: no-repeat;
+  background-size: 90px;
+  background-position-x: left;
+  background-position-y: top;
+}
+
 .canvas-preview {
   position:absolute;
   height: 280px;

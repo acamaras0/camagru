@@ -84,15 +84,7 @@
                     $img = imagecreatefrompng($target_file);
                 else if ($imageFileType == "gif")
                     $img = imagecreatefromgif($target_file);
-                $scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
-                if ($imageFileType == "gif")
-                    imagegif($scale, $img);
-                else if ($imageFileType == "png")
-                    imagepng($scale, $target_file);
-                else
-                    imagejpeg($scale, $target_file, 100);
                 imagedestroy($img);
-                imagedestroy($scale);
                 header("Location: upload.php");
             }
             else 
@@ -134,8 +126,8 @@
                 imagepng($scale, $target_file);
             else
                 imagejpeg($scale, $target_file, 100);
-            imagedestroy($img);
             imagedestroy($scale);
+            imagedestroy($img);
         }
     }
 ?>

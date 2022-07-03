@@ -26,7 +26,11 @@ header('location:../index.php');
     <div class="middle">
         <div class="container">
             <button id="start_camera">Open camera!</button>
-            <video id="video" width="340" height="240" autoplay></video>
+            <div class="view-finder">
+                <div class="sticker-preview" id="sticker_preview"></div>
+                <div class="sticker-preview1" id="sticker_preview1"></div>
+                <video id="video" width="340" height="240" autoplay></video>
+            </div>
             <p>Pick a sticker:</p>
                 <div class="sticker-container">
                     <div class="sticker-middle">
@@ -101,6 +105,7 @@ header('location:../index.php');
                 if (click===1)
                 {
                     canvas_preview.style.backgroundImage = "url(" + paths[i]  +")";
+                    sticker_preview.style.backgroundImage = "url(" + paths[i]  +")";
                     sticker_web.value = paths[i];
                     sticker_device.value = paths[i];
                     click++;
@@ -108,6 +113,7 @@ header('location:../index.php');
                 else if (click === 2)
                 {
                     canvas_preview1.style.backgroundImage = "url(" + paths[i]  +")";
+                    sticker_preview1.style.backgroundImage = "url(" + paths[i]  +")";
                     sticker_web1.value = paths[i];
                     sticker_device1.value = paths[i];
                     click++;
