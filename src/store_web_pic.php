@@ -50,7 +50,7 @@ if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
 		$sy = imagesy($sticker);
 
         imagecopy($picture, $sticker, imagesx($picture) - $sx - $margin_r, imagesy($picture) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
-        if (isset($_POST['stamp0']))
+        if ($_POST['stamp0'] != "")
         {
             $sticker0 = imagecreatefrompng($sticker_path0);
             $sx0 = imagesx($sticker0);

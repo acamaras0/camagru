@@ -112,7 +112,7 @@
             $sy = imagesy($sticker);
 
             imagecopy($img, $sticker, imagesx($img) - $sx - $margin_r, imagesy($img) - $sy - $margin_b, 0, 0, imagesx($sticker), imagesy($sticker));
-            if (isset($_POST['stamp0']))
+            if ($_POST['stamp0'] != "")
             {
                 $sticker_path0 = $_POST['stamp0'];
                 $sticker0 = imagecreatefrompng($sticker_path0);
