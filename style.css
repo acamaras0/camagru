@@ -532,6 +532,8 @@ button#take_photo, button#web_add, button#start_camera {
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
   margin-top: 2vh;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.09);
+  border: 2px white;
 }
 button#take_photo:hover , button#web_add:hover , button#start_camera:hover {
   opacity: 0.6;
