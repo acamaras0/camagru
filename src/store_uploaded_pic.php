@@ -12,9 +12,13 @@
     if (empty($_SESSION['logged_in_user']))
         header('location:../index.php');
 
-    $target_dir = "../uploads/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $file_name = basename($_FILES["fileToUpload"]["name"]);
+    $target_dir = "../uploads/";
+    $target_file1 = $target_dir . $file_name;
+    $imageFileType1 = strtolower(pathinfo($target_file1, PATHINFO_EXTENSION));
+    if ($imageFileType1 != "gif")
+        $file_name = uniqid(). ".jpeg";
+    $target_file = $target_dir . $file_name;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $pic_owner = $_SESSION['logged_in_user'];
     get_id();
@@ -64,8 +68,7 @@
         } 
         else 
         {
-            //move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
+            if (move_uploaded_file(trim($_FILES["fileToUpload"]["tmp_name"], " "), $target_file))
             {
                 $conn = connection();
                 $sql = $conn->prepare("INSERT INTO user_pictures(picture_path, picture_name, picture_owner, id_owner, cam_shot)
@@ -83,12 +86,16 @@
                     $img = imagecreatefrompng($target_file);
                 else if ($imageFileType == "gif")
                     $img = imagecreatefromgif($target_file);
-                $scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
-                imagejpeg($scale, $target_file, 100);
+                //$scale = imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
+                if ($imageFileType == "gif")
+                    imagegif($img, $target_file, 100);
+                else if ($imageFileType == "png")
+                    imagepng($img, $target_file, 100);
+                else
+                    imagejpeg($img, $target_file, 100);
                 imagedestroy($img);
-                imagedestroy($scale);
+                //imagedestroy($scale);
                 header("Location: upload.php");
-                //print_msg("The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.");
             }
             else 
             {
@@ -122,10 +129,15 @@
                 $margin_t=125;
                 imagecopy($img, $sticker0, imagesx($img) - $sx0 - $margin_l, imagesy($img) - $sy0 - $margin_t, 0, 0, imagesx($sticker0), imagesy($sticker0));
             }
-            $scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
-            imagejpeg($scale, $target_file, 100);
+            //$scale= imagescale($img, 375, -1, IMG_BILINEAR_FIXED);
+            if ($imageFileType == "gif")
+                imagegif($scale, $target_file, 100);
+            else if ($imageFileType == "png")
+                imagepng($scale, $target_file, 100);
+            else
+                imagejpeg($scale, $target_file, 100);
             imagedestroy($img);
-            imagedestroy($scale);
+            //imagedestroy($scale);
         }
     }
 ?>
