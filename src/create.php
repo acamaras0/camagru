@@ -11,7 +11,7 @@
     if(isset($_POST['submit']))
     {
         $new_email = $_POST['email'];
-        $new_fullname = $_POST['name'];
+        $new_fullname = strip_tags($_POST['name']);
         $new_user = strip_tags($_POST['login']);
         $new_pwd = $_POST['passwd'];
         $re_pwd = $_POST['re-passwd'];

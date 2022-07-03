@@ -10,8 +10,8 @@ if ($_SESSION['logged_in_user'] == "")
     header("Location: landing.php");
 $user = $_SESSION['logged_in_user'];
 $email = $_POST['email'];
-$full_name = $_POST['fullname'];
-$new_username = $_POST['username'];
+$full_name = strip_tags($_POST['fullname']);
+$new_username = strip_tags($_POST['username']);
 $password = $_POST['passwd'];
 $repeat_password = $_POST['re-passwd'];
 $current_password = $_POST['current-passwd'];
@@ -181,6 +181,7 @@ else if (isset($_POST['delete_user']))
         $conn = null;
         print_msg("Account deleted successfully!");
         $_SESSION['logged_in_user'] == "";
+        session_destroy();
         header('Refresh: 2; landing.php');
     }
     else
