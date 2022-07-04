@@ -423,6 +423,7 @@ input.notif
   margin-left: 40%;
   margin-right: 40%;
   box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.09);
+  cursor: pointer;
 }
 
 textarea {
