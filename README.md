@@ -1,9 +1,9 @@
-# camagru
+# Camagru
 
 ### For this project I used **PHP** for the back-end part and **HTML**, **CSS** and **Javascript** for the front-end.
 
-A small Instagram-like site that enables users to make and share photo edits.
-The usage of frameworks is forbidden.
+Camagru is the first school project from the web development branch. It is a small Instagram-like website that enables users to make and share photo edits.
+For this school project, the usage of frameworks was forbidden, so everything had to be done manually.
 
 A small sneak peek:
 
@@ -15,11 +15,13 @@ Basic functionalities are implemented:
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/8.png)
 
-2. Login posibility:,  
+After the "Submit" button was pressed, if every field was filled accordingly, an account activation e-mail will be sent to the corresponding e-mail address.
+
+2. Login posibility: 
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/10.png)
 
-3. User information modifications: change username, fullname, password or email and it is also possible to delete your own account.
+3. User information modifications: change username, fullname, password or email. It is also possible to delete your own account.
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/7.png)
 
@@ -30,4 +32,6 @@ Basic functionalities are implemented:
 5. Commenting and liking them and the possibility of deleting your own pictures is also implemented:
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/3.png)
+
+If a picture gets likes and/or comments, the user will get a notification email. If the user prefers not to get notified, they have the possibility to deactivate the notifications in the settings page.
 
