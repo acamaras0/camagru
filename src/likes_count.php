@@ -2,6 +2,7 @@
 session_start();
 require_once('connection.php');
 require_once('print_msg.php');
+require_once('send_email.php');
 
 if ($_SESSION['logged_in_user'] == "")
 header("Location: ../index.php");
@@ -52,6 +53,22 @@ if (isset($_POST['heart']) && isset($_POST['user_like']))
         catch(PDOException $e)
         {
             echo $sql . "<br>" . $e->getMessage();
+        }
+        $conn = null;
+        try
+        {
+            $conn = connection();
+            $sql = "SELECT * FROM user_info WHERE u_name='$picture_owner'";
+            $sql = $conn->query($sql);
+            $res = $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e)
+        {
+            echo $sql . "<br>" . $e->getMessage();
+        }
+        if($res[0]['notif_status'] == 1)
+        {
+            send_email($res[0]['email'], 0, 0, 0, 4);
         }
         $conn = null;
     }

@@ -74,7 +74,7 @@ if(isset($_POST['submit']))
         }
         if (!empty($new_username))
         {
-            if (info_check(2, 0, $user) == 1)
+            if (info_check(2, 0, $user) == 0)
             {
                 try
                 {

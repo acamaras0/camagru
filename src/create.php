@@ -6,8 +6,6 @@
     require_once('print_msg.php');
     session_start();
 
-
-
     if(isset($_POST['submit']))
     {
         $new_email = $_POST['email'];
@@ -23,7 +21,7 @@
             print_msg("Username has to be in between 4 and 20 characters long.");
             header('Refresh: 2; create.php');
         }
-        else if ( character_check($new_user) == 1)
+        else if (character_check($new_user) == 1)
         {
             print_msg("It can only contain aphabetical characters, numbers and underscores.");
             header('Refresh: 2; create.php');
@@ -31,14 +29,22 @@
         else if (($new_pwd != $re_pwd) || strlen($new_pwd < 10) || number_check($new_pwd) == 0 || character_check($new_pwd) == 0)
         {
             print_msg("Passwords have to be identical, minimum 10 characters long, including a number, a capital letter and a special character.");
-            header('Refresh: 3; create.php');
+            header('Refresh: 5; create.php');
         }
-    
-
-        if($_POST['email'] && $_POST['name'] && $_POST['login'] && $_POST['passwd'] === $_POST['re-passwd'] && isset($_POST['submit']))
+        else if($_POST['email'] && $_POST['name'] && $_POST['login'] && $_POST['passwd'] === $_POST['re-passwd'] && isset($_POST['submit']))
         {
             $double_user_verification = verif_user($new_email, $new_user);
-            if ($double_user_verification == 0)
+            if($double_user_verification == 2)
+            {
+                print_msg("Email address already in use.");
+                header("Refresh: 2; create.php?message=2");
+            }
+            else if($double_user_verification == 1)
+            {
+                print_msg("Username already in use.");
+                header("Refresh: 2; create.php?message=3");
+            }
+            else if($double_user_verification == 0)
             {
                 $new_pwd = hash('whirlpool', $new_pwd);
                 try
@@ -64,16 +70,6 @@
                 send_email($new_email, $activation_code, $new_user, $new_pwd, 1);
                 print_msg("User created succesfully! Activation link sent!");
                 header("Refresh: 2; login.php?message=1");
-            }
-            else if($double_user_verification == 2)
-            {
-                print_msg("Email address already in use.");
-                header("Refresh: 2; create.php?message=2");
-            }
-            else if($double_user_verification == 1)
-            {
-                print_msg("Username already in use.");
-                header("Refresh: 2; create.php?message=3");
             }
         }
     }

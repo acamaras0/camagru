@@ -47,7 +47,6 @@ if(isset($_POST['submit']))
         {
             echo $sql . "<br>" . $e->getMessage();
         }
-        print_r($res[0]['email']);
         if($res[0]['notif_status'] == 1)
         {
             send_email($res[0]['email'], 0, 0, 0, 3);
