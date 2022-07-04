@@ -27,18 +27,25 @@ if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
     
     $file = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
+
+    $conn = connection();
+    $sql1 = "SELECT fullname FROM user_info WHERE id='$user'";
+    $qry = $conn->query($sql1);
+    $res = $qry->fetchAll(PDO::FETCH_ASSOC);
+    $fullname = $res[0]['fullname'];
     try
     {
         $conn = connection();
-        $sql = $conn->prepare("INSERT INTO user_pictures(picture_path, picture_name, picture_owner, id_owner, cam_shot)
-                                        VALUES (:picture_path, :picture_name, :picture_owner, :id_owner, :cam_shot)");
-        $sql->bindParam(':picture_path', $file, PDO::PARAM_STR);
-        $sql->bindParam(':picture_name', $fileName, PDO::PARAM_STR);
-        $sql->bindParam(':picture_owner', $pic_owner, PDO::PARAM_STR);
-        $sql->bindParam(':id_owner', $user, PDO::PARAM_STR);
-        $sql->bindParam(':cam_shot', $shot, PDO::PARAM_STR);
-        $sql->execute();
-        $conn = null;
+            $sql = $conn->prepare("INSERT INTO user_pictures(picture_path, picture_name, picture_owner, fullname, id_owner, cam_shot)
+                                VALUES (:picture_path, :picture_name, :picture_owner, :fullname, :id_owner, :cam_shot)");
+            $sql->bindParam(':picture_path', $file, PDO::PARAM_STR);
+            $sql->bindParam(':picture_name', $fileName, PDO::PARAM_STR);
+            $sql->bindParam(':picture_owner', $pic_owner, PDO::PARAM_STR);
+            $sql->bindParam(':fullname', $fullname, PDO::PARAM_STR);
+            $sql->bindParam(':id_owner', $user, PDO::PARAM_STR);
+            $sql->bindParam(':cam_shot', $shot, PDO::PARAM_STR);
+            $sql->execute();
+            $conn = null;
 
         $sticker = imagecreatefrompng($sticker_path);
         $picture = imagecreatefromjpeg($file);
@@ -63,7 +70,6 @@ if (!empty($_POST['new_pic']) && !empty($_POST['stamp']))
 		imagejpeg($picture, $file, 100);
 		imagedestroy($picture);
         print_msg("The file ". $file_name . "has been uploaded.");
-
     }
     catch(PDOException $e)
     {

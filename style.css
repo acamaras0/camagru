@@ -546,10 +546,9 @@ button#take_photo:hover , button#web_add:hover , button#start_camera:hover {
 }
 
 img.img_size{
-  width: 10vw;
+  width: 14vw;
   border: 1px, white;
-  border-radius: 80%;
-
+  border-radius: 5px;
 }
 
 .slide {

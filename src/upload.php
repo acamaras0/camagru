@@ -56,7 +56,8 @@ header('location:../index.php');
                     }    
                 ?>
             </div>
-        </div>   
+        </div>  
+        </br> 
         <div class="container">
             <button id="start_camera">Open camera!</button>
             <div class="view-finder">

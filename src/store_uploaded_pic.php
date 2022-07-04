@@ -1,9 +1,4 @@
 <?php
-
-// ini_set('display_errors', '1');
-// ini_set('display_startup_errors', '1');
-// error_reporting(E_ALL);
-
     session_start();
     require_once("print_msg.php");
     require_once("connection.php");
@@ -23,6 +18,12 @@
     $user = $_SESSION['logged_user_id'];
     $uploadOk = 1;
     $shot = 0;
+    $conn = connection();
+    $sql = "SELECT fullname FROM user_info WHERE id='$user'";
+    $qry = $conn->query($sql);
+    $res = $qry->fetchAll(PDO::FETCH_ASSOC);
+    $fullname = $res[0]['fullname'];
+    $conn = null;
 
     // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) 
@@ -69,11 +70,12 @@
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
             {
                 $conn = connection();
-                $sql = $conn->prepare("INSERT INTO user_pictures(picture_path, picture_name, picture_owner, id_owner, cam_shot)
-                                        VALUES (:picture_path, :picture_name, :picture_owner, :id_owner, :cam_shot)");
+                $sql = $conn->prepare("INSERT INTO user_pictures(picture_path, picture_name, picture_owner, fullname, id_owner, cam_shot)
+                                        VALUES (:picture_path, :picture_name, :picture_owner, :fullname, :id_owner, :cam_shot)");
                 $sql->bindParam(':picture_path', $target_file, PDO::PARAM_STR);
                 $sql->bindParam(':picture_name', $file_name, PDO::PARAM_STR);
                 $sql->bindParam(':picture_owner', $pic_owner, PDO::PARAM_STR);
+                $sql->bindParam(':fullname', $fullname, PDO::PARAM_STR);
                 $sql->bindParam(':id_owner', $user, PDO::PARAM_STR);
                 $sql->bindParam(':cam_shot', $shot, PDO::PARAM_STR);
                 $sql->execute();
