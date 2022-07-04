@@ -1,4 +1,6 @@
-# camagru
+## camagru
+
+# For this project I used **PHP** for the back-end part and **HTML**, **CSS** and **Javascript** for the front-end.
 
 A small Instagram-like site that enables users to make and share photo edits.
 The usage of frameworks is forbidden.
@@ -29,4 +31,3 @@ Basic functionalities are implemented:
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/3.png)
 
-For this project I used **PHP** for the back-end part and **HTML**, **CSS** and **Javascript** for the front-end.
