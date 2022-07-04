@@ -28,3 +28,5 @@ Basic functionalities are implemented:
 5. Commenting and liking them and the possibility of deleting your own pictures is also implemented:
 
 ![This is an image](https://github.com/acamaras0/camagru/blob/main/screenshots/3.png)
+
+For this project I used **PHP** for the back-end part and **HTML**, **CSS** and **Javascript** for the front-end.
