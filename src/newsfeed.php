@@ -93,12 +93,12 @@
                             $comments = "SELECT * FROM user_comments WHERE picture_name='$id'";
                             $qry_comments= $conn->query($comments);
                             $res_comments = $qry_comments->fetchAll(PDO::FETCH_ASSOC);
-                            $id_username = $res_comments[0]['id_owner'];
-                            $sql = "SELECT u_name FROM user_info WHERE id='$id_username'"; 
-                            $qry = $conn->query($sql);
-                            $u_name = $qry->fetchAll(PDO::FETCH_ASSOC);
                             foreach($res_comments as $key_comments)
                             {
+                                $id_new = $key_comments['id_owner'];
+                                $sql = "SELECT u_name FROM user_info WHERE id='$id_new'"; 
+                                $qry = $conn->query($sql);
+                                $u_name = $qry->fetchAll(PDO::FETCH_ASSOC);
                             ?>
                                 <!DOCTYPE html>
                                 <html lang="en">
