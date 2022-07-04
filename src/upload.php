@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("connection.php");
+require_once("get_user_id.php");
 
 if (!isset($_SESSION['logged_user_id']))
 header('location:../index.php');
@@ -22,8 +23,40 @@ header('location:../index.php');
         <div class="header">
             <?php include('../partials/header_profile.php'); ?>
     </div>
-    </br>    
+    </br>
     <div class="middle">
+        <div class="thumbnails">
+            <div class="slide">
+                <?php
+                    require_once("connection.php");
+                    require_once("get_user_id.php");
+                    get_id();
+                    $user_id = $_SESSION['logged_user_id'];
+                    $conn = connection();
+                    $sql = "SELECT picture_path, cam_shot FROM user_pictures WHERE id_owner='$user_id'";
+                    $stmt = $conn->query($sql);
+                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    if($result)
+                    {
+                        foreach($result as $k)
+                        {
+                            if ($k['cam_shot'] == 1)
+                            {
+                                $img_id = $k['picture_name'];
+                                ?>
+                                    <!DOCTYPE html>
+                                        <html>
+                                            <body>
+                                                <img class="img_size" src=<?php echo $k['picture_path'];?>>&nbsp
+                                            </body>
+                                    </html>
+                            <?php        
+                            }
+                        }
+                    }    
+                ?>
+            </div>
+        </div>   
         <div class="container">
             <button id="start_camera">Open camera!</button>
             <div class="view-finder">

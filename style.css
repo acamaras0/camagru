@@ -544,3 +544,16 @@ button#take_photo:hover , button#web_add:hover , button#start_camera:hover {
   opacity: 0.6;
   transform: scale(1.1);
 }
+
+img.img_size{
+  width: 10vw;
+  border: 1px, white;
+  border-radius: 80%;
+
+}
+
+.slide {
+  overflow: auto;
+  display: flex;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.09);
+}
