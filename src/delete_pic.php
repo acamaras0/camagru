@@ -11,7 +11,6 @@ $user_id = $_SESSION['logged_user_id'];
 if(isset($_POST['delete_pic']) && isset($_POST['picture_path']) && $user_id == $_POST['id_owner'])
 {
     $img = $_POST['picture_path'];
-    $user_id = $_SESSION['logged_user_id'];
     try
     {
         $conn = connection();
