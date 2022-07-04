@@ -332,6 +332,11 @@ label.question {
   width: 100%;
 }
 
+label.info{
+  font-size: 15px;
+  font-style: italic;
+}
+
 div.login {
   margin-bottom: 10px;
 }

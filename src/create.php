@@ -97,15 +97,15 @@
                 <h1>Sign up</h1>
                 <div class="email-new input-element">
                     <label>Email address</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" placeholder="example@example.com" required>
                 </div>
                 <div class="fullname input-element">
                     <label>Full name</label>
-                    <input type="text" name="name" required>
+                    <input type="text" name="name" placeholder="John Doe" required>
                 </div>
                 <div class="username-new input-element">
                     <label>Username</label>
-                    <input type="text" name="login" required>
+                    <input type="text" name="login" placeholder="4-20 characters long" required>
                 </div>
                 <div class="password-new input-element">
                     <label>Password</label>
@@ -115,9 +115,14 @@
                     <label>Repeat password</label>
                     <input type="password" name="re-passwd" required>
                 </div>
+                
                 <div class="button-container">
                     <button class="create-button" type="submit" name="submit">Sign up</button>
                 </div>
+                </br>
+                <label class="info">*Username has to be in between 4-20 characters long.</lable>
+                <label class="info">*Passwords have to be identical, minimum 10 characters long, including a number, a capital letter and a special character.</lable>
+
             </div>
         </form>
     </div>
