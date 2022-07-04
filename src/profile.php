@@ -48,6 +48,8 @@
                                 <input type="hidden" name="picture_path" value=<?php echo $key['picture_path'];?>>
                             </form>
                             <div class="username"><?php echo "@" . $key['picture_owner'];?></div>
+                            <div class="fname"><?php echo $key['fullname'];?></div>
+                            </br>
                             <?php echo " " . $key['created_at']?>
                             <img class="picture" src=<?php echo $key['picture_path'];?>>
                             <div class="like-container">

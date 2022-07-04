@@ -72,6 +72,8 @@
                             }
                             ?>
                             <div class="username"><?php echo "@" . $key0['picture_owner'];?></div>
+                            <div class="fname"><?php echo $key0['fullname'];?></div>
+                        </br>
                             <?php echo " " . $key0['created_at']?>
                             <img class="picture" src=<?php echo $key0['picture_path'];?>>
                             <div class="like-container">
