@@ -6,7 +6,7 @@ require_once('get_user_id.php');
 
 if ($_SESSION['logged_in_user'] == "")
     header("Location: ../index.php");
-
+get_id();
 $user_id = $_SESSION['logged_user_id'];
 if(isset($_POST['delete_pic']) && isset($_POST['picture_path']) && $user_id == $_POST['id_owner'])
 {
@@ -20,7 +20,8 @@ if(isset($_POST['delete_pic']) && isset($_POST['picture_path']) && $user_id == $
         $conn->exec($sql);
         $sql = "DELETE FROM user_likes WHERE id_owner='$user_id'";
         $conn->exec($sql);
-        unlink($img);
+        if ($user_id == $_POST['id_owner'])
+            unlink($img);
     }
     catch(PDOException $e)
     {
