@@ -16,7 +16,6 @@
     $pic_owner = $_SESSION['logged_in_user'];
     get_id();
     $user = $_SESSION['logged_user_id'];
-    $uploadOk = 1;
     $shot = 0;
 
     $conn = connection();
@@ -26,39 +25,31 @@
     $fullname = $res[0]['fullname'];
     $conn = null;
 
-    // Check if image file is a actual image or fake image
     if(isset($_POST["submit"])) 
     {
+        //header("Location: upload.php");
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if($check !== false) 
+        if($check === false) 
         {
-            $uploadOk = 1;
-        }
-        else 
-        {
-            print_msg ("File is not an image.");
-            $uploadOk = 0;
+            print_msg("File is not an image.");
+            header('Refresh: 2; upload.php');
+            return;
         }
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 1000000) 
+        else if ($_FILES["fileToUpload"]["size"] > 1000000) 
         {
-            print_msg ("Sorry, your file is too large.");
-            $uploadOk = 0;
+            print_msg("Sorry, your file is too large.");
+            header('Refresh: 2; upload.php');
+            return;
         }
-        
         // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" )
+        else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" )
         {
-            print_msg ("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
-            $uploadOk = 0;
+            print_msg("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+            header('Refresh: 3; upload.php');
+            return;
         }
-        
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0)
-        {
-            print_msg ("Your file was not uploaded.");
         // if everything is ok, try to upload file
-        } 
         else 
         {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file))
@@ -86,6 +77,7 @@
             else 
             {
                 print_msg("Sorry, there was an error.");
+                header("Location: upload.php");
             }
         }
         if (isset($_POST['stamp']))
