@@ -3,6 +3,7 @@ session_start();
 
 if($_SESSION['logged_in_user'] == "")
     header("Location: landing.php");
+    
 $_SESSION['logged_in_user'] = "";
 ?>
 

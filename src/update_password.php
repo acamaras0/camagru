@@ -33,7 +33,8 @@ if(isset($_POST['new']) && isset($_POST['repeat']) && isset($_POST['username']))
     }
     else
     {
-        print_msg("Passwords have to be the same. Try again!");
+        print_msg("Passwords have to be identical. Try again!");
+        header('Refresh: 2 ; login.php');
     }
 }
 else

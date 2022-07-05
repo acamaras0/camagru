@@ -5,7 +5,8 @@ require_once('print_msg.php');
 require_once('send_email.php');
 
 if ($_SESSION['logged_in_user'] == "")
-header("Location: ../index.php");
+    header("Location: ../index.php");
+
 if (isset($_POST['heart']) && isset($_POST['user_like']))
 {
     header('Location: newsfeed.php');

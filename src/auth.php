@@ -1,5 +1,8 @@
 <?php
     require_once('connection.php');
+
+    //checks that the login and password match and also if the account was activated
+
     function auth($login, $passwd)
     {
         $res = 0;

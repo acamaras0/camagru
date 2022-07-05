@@ -190,7 +190,6 @@ else if (isset($_POST['delete_user']))
         header('Refresh: 2; settings.php');
     }
 }
-
 ?>
 
 <!DOCTYPE html>

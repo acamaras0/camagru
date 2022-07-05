@@ -18,6 +18,7 @@
     $user = $_SESSION['logged_user_id'];
     $uploadOk = 1;
     $shot = 0;
+
     $conn = connection();
     $sql = "SELECT fullname FROM user_info WHERE id='$user'";
     $qry = $conn->query($sql);
@@ -38,15 +39,8 @@
             print_msg ("File is not an image.");
             $uploadOk = 0;
         }
-         // Check if file already exists
-        if (file_exists($target_file)) 
-        {
-            print_msg("Sorry, file already exists.");
-            $uploadOk = 0;
-        }
-        
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 100000000) 
+        if ($_FILES["fileToUpload"]["size"] > 1000000) 
         {
             print_msg ("Sorry, your file is too large.");
             $uploadOk = 0;

@@ -1,6 +1,9 @@
 <?php
 require_once('connection.php');
 
+// when creating a new user, this functions checks if we already have the username
+// and/or the email address registered in the database
+
 function info_check($check ,$email, $username)
 {
     try

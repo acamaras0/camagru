@@ -50,7 +50,7 @@
                             <div class="username"><?php echo "@" . $key['picture_owner'];?></div>
                             <div class="fname"><?php echo $key['fullname'];?></div>
                             </br>
-                            <?php echo " " . $key['created_at']?>
+                            <p><?php echo " " . $key['created_at']?></p>
                             <img class="picture" src=<?php echo $key['picture_path'];?>>
                             <div class="like-container">
                                 <form class="likes" action="likes_count.php" method="post">
@@ -76,19 +76,19 @@
                             $qry = $conn->query($sql);
                             $u_name = $qry->fetchAll(PDO::FETCH_ASSOC);
                             foreach($res_comments as $key_comments)
-                        {
-                        ?>
-                            <!DOCTYPE html>
-                            <html lang="en">
-                            <body>
-                            <div class="show-comments">
-                                <p class="com"><div class="user_com"><?php echo "@". $u_name[0]['u_name']?>
-                                &nbsp<?php echo $key_comments['comments']?></div></p>
-                            </div>
-                        </body>
-                        </html>
-                        <?php
-                        } 
+                            {
+                                ?>
+                                    <!DOCTYPE html>
+                                    <html lang="en">
+                                    <body>
+                                    <div class="show-comments">
+                                        <p class="com"><div class="user_com"><?php echo "@". $u_name[0]['u_name']?>
+                                        &nbsp<?php echo $key_comments['comments']?></div></p>
+                                    </div>
+                                </body>
+                                </html>
+                                <?php
+                            } 
                         ?>
                         </div>
                     </div>
@@ -102,8 +102,8 @@
     }
     $conn = null;
     ?>
-            <div class="footer">
-                <?php	include('../partials/footer.php');	?>
-            </div>
-        </body>
-        </html> 
+        <div class="footer">
+            <?php	include('../partials/footer.php');	?>
+        </div>
+    </body>
+</html> 

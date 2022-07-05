@@ -29,6 +29,5 @@ function send_email($address, $activation_code, $username, $password, $type)
         $content = "It seems someone liked your picture! Go check it out fast!" . PHP_EOL . PHP_EOL . "http://localhost:8080/camagru/src/profile.php";
         mail($recipient, $subject, $content);
     }
-
 }
 ?>

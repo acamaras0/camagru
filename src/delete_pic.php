@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
 session_start();
 require_once('connection.php');
 require_once('print_msg.php');
@@ -10,6 +6,7 @@ require_once('get_user_id.php');
 
 if ($_SESSION['logged_in_user'] == "")
     header("Location: ../index.php");
+
 get_id();
 $user_id = $_SESSION['logged_user_id'];
 $path = $_POST['picture_path'];
@@ -19,6 +16,7 @@ $checkDel = "SELECT id_owner FROM user_pictures WHERE picture_path = '$path'";
 $qry= $conn->query($checkDel);
 $res = $qry->fetchAll(PDO::FETCH_ASSOC);
 $id_on_pic = $res[0]['id_owner'];
+
 if(isset($_POST['delete_pic']) && isset($_POST['picture_path']) && ($user_id == $id_on_pic))
 {
     $img = $_POST['picture_path'];

@@ -1,4 +1,5 @@
 <?php
+    // this function does the connection to the database
 
     function connection()
     {

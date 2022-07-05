@@ -23,7 +23,7 @@
                 echo $qry . "<br>" . $e->getMessage();
             }
             $conn = null;
-            send_email($address,0 ,$username, $password, 2);
+            send_email($address, 0, $username, $password, 2);
             print_msg("A link to reset your password was sent to your email.");
             header('Refresh: 2; login.php');
         }

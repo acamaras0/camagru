@@ -3,8 +3,7 @@ session_start();
 require_once("connection.php");
 
 function get_id()
-{
-    
+{  
     $pic_owner = $_SESSION['logged_in_user'];
     try
     {

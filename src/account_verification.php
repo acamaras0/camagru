@@ -3,6 +3,7 @@
     require_once("connection.php");
     require_once("print_msg.php");
 
+    // sets the activation status to true.
     function update_status($activation_code)
     {
         $status = 1;
@@ -21,6 +22,7 @@
         $conn = null;
     }
 
+    //checks that the activation code sent in the email matches the one in the database
     function code_check($activation_code)
     {
         try
@@ -49,7 +51,6 @@
         return 0;
     }
 
-
     if(isset($_GET['code']) && !empty($_GET['code']))
     {
         $activation_code = $_GET['code'];
@@ -62,7 +63,7 @@
         }
     }
     else 
-        print_msg("A problem has occured. Try agin later.");
+        print_msg("A problem has occured. Try again later.");
 ?>
 
 <!DOCTYPE html>

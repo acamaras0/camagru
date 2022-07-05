@@ -36,6 +36,7 @@ if(isset($_POST['submit']))
             echo $sql . "<br>" . $e->getMessage();
         }
         $conn = null;
+        
         try
         {
             $conn = connection();

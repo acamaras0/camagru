@@ -5,9 +5,11 @@
 
     if ($_SESSION['logged_in_user'] == "")
         header("Location: ../index.php");
+
     get_id();
     $conn = connection();
     $username = $_SESSION['logged_user_id'];
+
     if (isset($_GET['page_no']) && $_GET['page_no'] != "")
     {
         $page = $_GET['page_no'];
@@ -26,7 +28,7 @@
     $total_pictures = $res[0]['COUNT(*)'];
     $total_pages = ceil($total_pictures / $total_pictures_per_page);
 ?>
-        <!DOCTYPE html>
+    <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -42,7 +44,7 @@
             <div class="header">
                 <?php include('../partials/header_newsfeed.php'); ?>
             </div>
-    <?php
+<?php
     try
     {
      $conn = connection();
@@ -128,12 +130,12 @@
     $conn = null;
 ?>
     <div class="pagination">
-            <a class="arrows" <?php if($page > 1){echo "href='?page_no=$prev_page'";} ?>> ⬅ </a>&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a class="arrows" <?php if($page > 1){echo "href='?page_no=$prev_page'";} ?>> ⬅ </a>&nbsp&nbsp&nbsp&nbsp&nbsp
             <?php echo $page; ?>&nbsp&nbsp&nbsp&nbsp&nbsp
-            <a class="arrows" <?php if($page < $total_pages){echo "href='?page_no=$next_page'";} ?>> ➡ </a>
+        <a class="arrows" <?php if($page < $total_pages){echo "href='?page_no=$next_page'";} ?>> ➡ </a>
     </div>
-        <div class="footer">
-            <?php	include('../partials/footer.php');	?>
-        </div>
+    <div class="footer">
+        <?php	include('../partials/footer.php');	?>
+    </div>
     </body>
-    </html> 
+</html> 

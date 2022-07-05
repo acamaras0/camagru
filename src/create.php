@@ -120,7 +120,7 @@
                     <button class="create-button" type="submit" name="submit">Sign up</button>
                 </div>
                 </br>
-                <label class="info">*Username has to be in between 4-20 characters long.</lable>
+                <label class="info">*Username has to be in between 4-20 characters long.</lable></br>
                 <label class="info">*Passwords have to be identical, minimum 10 characters long, including a number, a capital letter and a special character.</lable>
 
             </div>
