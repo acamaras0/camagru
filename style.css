@@ -7,10 +7,6 @@ a.index-picture {
   padding-bottom: 15vh;
 }
 
-/* .header{
-  padding-bottom: 7vw;
-} */
-
 img.picture
 {
   margin-top: 2%;
@@ -25,14 +21,6 @@ img.picture
 html {
   margin: 0;
   padding: 0;
-  /*background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);*/
-  /* background-image: linear-gradient(
-    -225deg,
-    #69eacb 0%,
-    #eaccf8 48%,
-    #6654f1 100%
-  ); */
-  /*background-color: #ffffff;*/
   background-image: url("img/background.png");
   color: rgb(0, 0, 0);
   font-family: "Cormorant Garamond", serif;
@@ -90,8 +78,6 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /*background-color: rgba(183, 176, 250, 0.452);*/
-  /*background-color: rgb(120 145 197 / 92%);*/
   background-image: url("img/background.png");
   box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 3vw;
@@ -155,8 +141,6 @@ p.like_count{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  /*background-color:  rgba(183, 176, 250, 0.452);*/
-  /* background-color: rgb(120 145 197 / 69%); */
   background-image: url("img/background.png");
   box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 50px;
@@ -171,8 +155,6 @@ p.like_count{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  /*background-color:  rgba(183, 176, 250, 0.452);*/
-  /* background-color: rgb(120 145 197 / 69%); */
   background-image: url("img/background.png");
   box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 48px;
@@ -239,8 +221,6 @@ p.like_count{
   text-align: center;
   background-image: url("img/background.png");
   box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
-  /* background-color: rgb(120 145 197 / 69%); */
-  /*background-color: rgb(184, 176, 250);*/
   padding: 50px;
   border-radius: none;
   width: 260px;
@@ -292,7 +272,6 @@ input[type="file"]::file-selector-button {
   font-size: 20px;
   border: none;
   color: rgb(3, 3, 3);
-  /*background-color: rgb(184, 176, 250);*/
   background-color: rgb(202, 202, 202);
   cursor: pointer;
   transition: 0.3s opacity, 0.3s transform;
@@ -346,8 +325,6 @@ div.login {
   margin-top: 7px;
   text-align: center;
   color: black;
-  /*background-color: rgb(184, 176, 250);*/
-  /* background-color: rgb(120 145 197 / 69%); */
   background-image: url("img/background.png");
   box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 3%;
@@ -360,8 +337,6 @@ div.login {
   margin-top: 7px;
   text-align: center;
   color: black;
-  /* background-color: rgb(120 145 197 / 69%); */
-  /*background-color: rgb(184, 176, 250);*/
   background-image: url("img/background.png");
   box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.18);
   padding: 3%;
