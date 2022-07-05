@@ -27,7 +27,6 @@
 
     if(isset($_POST["submit"])) 
     {
-        //header("Location: upload.php");
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if($check === false) 
         {
