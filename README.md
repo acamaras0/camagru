@@ -1,6 +1,6 @@
 # Camagru
 
-### For this project I used **PHP** for the back-end part and **HTML**, **CSS** and **Javascript** for the front-end.
+### For this project I used **PHP** for the back-end part and **HTML**, **CSS**, **Javascript** for the front-end and **MySql** for the database part. 
 
 Camagru is the first school project from the web development branch. It is a small Instagram-like website that enables users to make and share photo edits.
 For this school project, the usage of frameworks was forbidden, so everything had to be done manually.
