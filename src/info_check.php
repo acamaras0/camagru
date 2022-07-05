@@ -9,7 +9,7 @@ function info_check($check ,$email, $username)
     try
     {
         $conn = connection();
-        $sql = "SELECT email FROM user_info";
+        $sql = "SELECT * FROM user_info";
         $qry = $conn->query($sql);
         $res = $qry->fetchAll(PDO::FETCH_ASSOC);
     }

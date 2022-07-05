@@ -84,7 +84,6 @@
                                     <button  class="like" type="like" name="heart" value="OK"><img src="../img/heart.png" width="25" alt="del"></button>
                                     <input type="hidden" name="picture_owner" value=<?php echo $key0['picture_owner'];?>>
                                     <input type="hidden" name="picture_name" value=<?php echo $key0['picture_name'];?>>
-                                    <input type="hidden" name="user_like" value=<?php echo $username;?>>
                                 </form>
                                 <p class="like_count"><?php echo $res_likes[0]['COUNT(*)'];?></p>
                             </div>

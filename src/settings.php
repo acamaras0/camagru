@@ -3,6 +3,7 @@ session_start();
 require_once('connection.php');
 require_once('print_msg.php');
 require_once('info_check.php');
+require_once('character_check.php');
 require_once('auth.php');
 require_once('get_user_id.php');
 
@@ -44,12 +45,12 @@ if(isset($_POST['submit']))
             else
             {
                 print_msg("Email already in use.");
-                header('Refresh  2; settings.php');
+                header('Refresh:  2; settings.php');
             }
         }
-        if (!empty($full_name))
+        else if (!empty($full_name))
         {
-            if (info_check(2, 0, $user) == 1)
+            if (info_check(2, 0, $user) == 0)
             {
                 try
                 {
@@ -72,34 +73,42 @@ if(isset($_POST['submit']))
                 header('Refresh  2; settings.php');
             }
         }
-        if (!empty($new_username))
+        else if (!empty($new_username))
         {
-            if (info_check(2, 0, $user) == 0)
+            if (info_check(2, 0, $new_username) == 1 && character_check($new_username) == 0)
             {
-                try
+                if (strlen($new_username) <= 20 && strlen($new_username) >= 4)
                 {
-                    $conn = connection();
-                    $sql = $conn->prepare("UPDATE user_info SET u_name=:new_username WHERE u_name='$user'");
-                    $sql->bindParam(':new_username', $new_username, PDO::PARAM_STR);
-                    $sql->execute();
-                    $sql = $conn->prepare("UPDATE user_pictures SET picture_owner=:picture_owner WHERE picture_owner='$user'");
-                    $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
-                    $sql->execute();
-                    $sql = $conn->prepare("UPDATE user_comments SET picture_owner=:picture_owner WHERE picture_owner='$user'");
-                    $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
-                    $sql->execute();
-                    $sql = $conn->prepare("UPDATE user_likes SET like_owner=:like_owner WHERE like_owner='$user'");
-                    $sql->bindParam(':like_owner', $new_username, PDO::PARAM_STR);
-                    $sql->execute();
+                    try
+                    {
+                        $conn = connection();
+                        $sql = $conn->prepare("UPDATE user_info SET u_name=:new_username WHERE u_name='$user'");
+                        $sql->bindParam(':new_username', $new_username, PDO::PARAM_STR);
+                        $sql->execute();
+                        $sql = $conn->prepare("UPDATE user_pictures SET picture_owner=:picture_owner WHERE picture_owner='$user'");
+                        $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
+                        $sql->execute();
+                        $sql = $conn->prepare("UPDATE user_comments SET picture_owner=:picture_owner WHERE picture_owner='$user'");
+                        $sql->bindParam(':picture_owner', $new_username, PDO::PARAM_STR);
+                        $sql->execute();
+                        $sql = $conn->prepare("UPDATE user_likes SET like_owner=:like_owner WHERE like_owner='$user'");
+                        $sql->bindParam(':like_owner', $new_username, PDO::PARAM_STR);
+                        $sql->execute();
+                    }
+                    catch(PDOException $e)
+                    {
+                        echo $qry . "<br>" . $e->getMessage();
+                    }
+                    $conn = null;
+                    $_SESSION['logged_in_user'] = $new_username;
+                    print_msg("Username successfully changed.");
+                    header('Refresh: 2; settings.php');
                 }
-                catch(PDOException $e)
+                else
                 {
-                    echo $qry . "<br>" . $e->getMessage();
+                    print_msg("Username has to be in between 4 and 20 characters long.");
+                    header('Refresh: 2; settings.php');
                 }
-                $conn = null;
-                $_SESSION['logged_in_user'] = $new_username;
-                print_msg("Username successfully changed.");
-                header('Refresh: 2; settings.php');
             }
             else
             {
@@ -107,9 +116,9 @@ if(isset($_POST['submit']))
                 header('Refresh: 2; settings.php');
             }
         }
-        if(!empty($password))
+        else if(!empty($password))
         {
-            if($password == $repeat_password)
+            if($password == $repeat_password && strlen($password > 10) && number_check($password) == 1 && character_check($password) == 1)
             {
                 $password = hash('whirlpool', $password);
                 try
@@ -125,23 +134,20 @@ if(isset($_POST['submit']))
                 }
                 $conn = null;
                 print_msg("Password successfully changed.");
-                header('Refresh: 2; profile.php');
+                header('Refresh: 2; settings.php');
             }
             else
             {
-                print_msg("The passwords have to identical.");
-                header('Refresh: 2; settings.php');
+                print_msg("Passwords have to be identical, minimum 10 characters long, including a number, a capital letter and a special character.");
+                header('Refresh: 6; settings.php');
             }
         }
     }
     else
-    {
-        print_msg("Password incorrect! Try again!");
-        header('Refresh: 2; settings.php');
-    }
-    
+        print_msg("Wrong password.");
 }
-else if (isset($_POST['delete_user']))
+
+if (isset($_POST['delete_user']))
 {
     if (auth($user, $current_password) == 2)
     {
